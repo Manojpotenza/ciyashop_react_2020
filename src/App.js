@@ -1,5 +1,5 @@
 import React,{Component,Fragment} from 'react';
-import {Switch,Route} from 'react-router-dom';
+import {Switch,Route,withRouter} from 'react-router-dom';
 
 import Headers from './layouts/header/Header';
 import Footer from './layouts/footer/Footer';
@@ -43,9 +43,19 @@ import Invoices from './component/admin/Invoices';
 import OrderHistory from './component/Account/OrderHistory';
 import AdminDashboard from './component/admin';
 import SavedCardsadd from './component/Account/SavedCardsadd';
+import  {receiveProducts} from './actions';
+import { connect } from 'react-redux';
 
-class App extends Component {
+class App extends React.Component {
 
+  constructor(props)
+  {
+    super(props)
+  }
+  componentWillMount()
+  {
+    this.props.receiveProducts();
+  }
   getUrl(pathname) {
       let pathArray = pathname.split('/');
       return `/${pathArray[1]}` === '/ComingSoon'  ? true : `/${pathArray[1]}` === '/Maintenance' ? true :`/${pathArray[1]}` === '/admin-panel'  ? true : false;
@@ -111,4 +121,19 @@ class App extends Component {
   }
 }
 
-export default App;
+const AppMapStateToProps = state => {
+  return {
+    products: state.data.products
+  };
+};
+
+const AppMapDispatchToProps = dispatch => {
+  return {
+    receiveProducts: () => {
+     dispatch(receiveProducts());
+    }
+  };
+};
+
+
+export default connect(AppMapStateToProps,AppMapDispatchToProps)(withRouter(App))

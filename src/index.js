@@ -10,13 +10,17 @@ import { ProductsData } from './actions';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import servicesstore from "./services/store";
+//import servicesstore from "./services/store";
+import {rootReducer} from './reducers';
+import thunk from 'redux-thunk';
+import {createStore,applyMiddleware,compose } from 'redux';
 
 class Root extends React.Component {
    render() {
-      servicesstore.dispatch(ProductsData());
+      const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+      const store= createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
        return(
-            <Provider store={servicesstore}>
+            <Provider store={store}>
                <BrowserRouter>
                   <Switch>
                      <Route path="/" component={App} />
