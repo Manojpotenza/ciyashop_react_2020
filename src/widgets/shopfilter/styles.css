@@ -65,3 +65,109 @@
 .sliderHandle:focus {
   border: 2px solid #2fa92f !important;
 }
+/*=============================================
+        Horizontal Filter
+===============================================*/
+.horizontal-filter-dropdown{
+  display: inline-block;
+}
+.horizontal-filter-dropdown .btn-secondary{
+  background-color: #f8f9fa !important;
+  border-color: #dadce0 !important;
+  color: #3c4043 !important;
+  background: #fff;
+  transition: all 0s ease!important;
+  -webkit-transition: all 0s ease!important;
+  border-radius: 25px !important;
+  line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    -webkit-box-shadow: 0 2px 0 rgba(0,0,0,.015);
+    box-shadow: 0 2px 0 rgba(0,0,0,.015);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 32px;
+    padding: 0 15px;
+    font-size: 14px !important;
+    border-radius: 4px;
+    color: rgba(0,0,0,.65);
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    margin-left: 20px;
+    padding: 0px 25px ;
+}
+.horizontal-filter-dropdown .btn-secondary:hover , .horizontal-filter-dropdown .btn-secondary:focus{
+  background-color: #f8f9fa;
+    border-color: #dadce0;
+    color: #3c4043;
+}
+.horizontal-filter-dropdown .dropdown-menu.show{
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+    background: #fff;
+    border-radius: 9px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.16);
+    margin-top: 5px;
+}
+.filter-title{
+  font-weight: 600;
+    color: #212121;
+    font-size: 15px;
+}
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+.animated {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@media (print), (prefers-reduced-motion: reduce) {
+  .animated {
+    -webkit-animation-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    -webkit-transition-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+  }
+}
