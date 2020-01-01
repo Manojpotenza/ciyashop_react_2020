@@ -47,7 +47,6 @@ import  {receiveProducts} from './actions';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
-
   constructor(props)
   {
     super(props)
@@ -65,8 +64,8 @@ class App extends React.Component {
     const { location } = this.props;
     return (
       <IntlProvider
-          locale="a"
-          messages="s"
+        locale="a"
+        messages="s"
       >
          <Fragment>
            {
@@ -130,7 +129,7 @@ const AppMapStateToProps = state => {
 const AppMapDispatchToProps = dispatch => {
   return {
     receiveProducts: () => {
-     dispatch(receiveProducts());
+      dispatch(receiveProducts());
     }
   };
 };

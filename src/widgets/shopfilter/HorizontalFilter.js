@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Container, Form, Nav, Button,Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { Row, Col, Container, Form, Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu,Button} from 'reactstrap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import { uniqueCategory, uniqueSizes, uniqueColors, uniqueMinMaxPrice } from '../../services';
@@ -29,6 +29,17 @@ class HorizontalFilter extends Component {
         this.colordrop=this.colordrop.bind(this);
         this.categoryfilter_toggle = this.categoryfilter_toggle.bind(this);
         this.sizefilter_toggle = this.sizefilter_toggle.bind(this);
+        this.showfilter = this.showfilter.bind(this);
+        this.closefilter = this.closefilter.bind(this);
+    }
+    showfilter(){
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
+        document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
+    }
+    closefilter(){
+        document.getElementById("site-header-row").setAttribute("class","site-header-row");
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
+       
     }
     pricefilter_toggle() {
         this.setState({
@@ -117,6 +128,24 @@ class HorizontalFilter extends Component {
             return str.charAt(0).toUpperCase() + str.slice(1);
     }
     
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll); 
+      }
+      componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+      }
+      
+      handleScroll(event) {
+        var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
+        document.body.scrollTop;
+
+        if(scrollTop > 100)
+        {
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
+        } else {
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+        }
+      }
 
     render() {
         const {colorfilter,colordrop,removecolorlist} = this.state;
@@ -133,6 +162,9 @@ class HorizontalFilter extends Component {
         return (
             <div className="d-flex align-items-center filters-wrapper">
                 <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
+                 <Button onClick={this.showfilter} className="btn-filter">
+                 <i className="fa fa-filter"> </i> Filter by
+                </Button>
                 <Dropdown isOpen={this.state.pricefilter} toggle={this.pricefilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
                         <span className="mb-0">Filter by Price</span>
@@ -245,10 +277,10 @@ class HorizontalFilter extends Component {
 
                     </DropdownMenu>
                 </Dropdown>
-
-                <div className="off-canvas-filter">
+                <div className="site-header-row" id="site-header-row"></div>
+                <div className="off-canvas-filter" id="off-canvas-filter">
                 <div class="sidebar-widget-heading">
-					<a href="#" class="close-sidebar-widget">Close</a>
+					<a href="#" onClick={this.closefilter} class="close-sidebar-widget">Close</a>
 				</div>
             <div className="widget widget_price_filter">
                 <h4 className="widget-title">Filter by Price</h4>
