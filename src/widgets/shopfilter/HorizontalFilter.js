@@ -27,10 +27,16 @@ class HorizontalFilter extends Component {
         this.categoryfilter_toggle = this.categoryfilter_toggle.bind(this);
         this.sizefilter_toggle = this.sizefilter_toggle.bind(this);
         this.showfilter = this.showfilter.bind(this);
+        this.closefilter = this.closefilter.bind(this);
     }
     showfilter(){
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
         document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
+    }
+    closefilter(){
+        document.getElementById("site-header-row").setAttribute("class","site-header-row");
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
+       
     }
     pricefilter_toggle() {
         this.setState({
@@ -87,7 +93,24 @@ class HorizontalFilter extends Component {
         }
         this.props.sizeValue(sizes);
     }
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll); 
+      }
+      componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+      }
+      
+      handleScroll(event) {
+        var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
+        document.body.scrollTop;
 
+        if(scrollTop > 100)
+        {
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
+        } else {
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+        }
+      }
 
     render() {
         const sizeFilterValues = this.props.filters.size;
@@ -220,10 +243,10 @@ class HorizontalFilter extends Component {
 
                     </DropdownMenu>
                 </Dropdown>
-<div className="site-header-row" id="site-header-row"></div>
+                <div className="site-header-row" id="site-header-row"></div>
                 <div className="off-canvas-filter" id="off-canvas-filter">
                 <div class="sidebar-widget-heading">
-					<a href="#" class="close-sidebar-widget">Close</a>
+					<a href="#" onClick={this.closefilter} class="close-sidebar-widget">Close</a>
 				</div>
             <div className="widget widget_price_filter">
                 <h4 className="widget-title">Filter by Price</h4>

@@ -93,10 +93,8 @@ class Header extends React.Component {
         if(scrollTop > 100)
         {
             document.getElementById("site-header").setAttribute("class","site-header header-style-menu-center is-sticky");
-            document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
         } else {
             document.getElementById("site-header").setAttribute("class","site-header header-style-menu-center");
-            document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
         }
       }
 
