@@ -123,7 +123,7 @@ class ShopPage extends Component {
                         <Row>
                         <div className="sidebar col-xl-3 col-lg-4 desktop">
                                 <div className="shop-sidebar-widgets">
-                                    <SideFilter />
+                                    <SideFilter /> 
                                     <SocialFilter />
                                     <ShopBanner />
                                 </div>

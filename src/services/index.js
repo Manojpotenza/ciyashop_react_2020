@@ -86,72 +86,72 @@ export const getFilterProductsdata = (data, { category, size, color,value, sortO
         const startPriceMatchValue = typeof value.min !== 'number' || value.min <= product.salePrice;
         const endPriceMatchValue = typeof value.max !== 'number' || product.salePrice <= value.max;
 
-        let filtercheck=JSON.parse(localStorage.state).filters;
-
-        if(filtercheck.category.length > 0 && filtercheck.color.length > 0 && filtercheck.size.length > 0 && filtercheck.ratings.length > 0 )
+       // let filtercheck=JSON.parse(localStorage.state).filters;
+        
+        if(category.length > 0 && color.length > 0 && size.length > 0 && ratings.length > 0 )
         {
             return  categoryMatchValue && colorMatchValue  && sizeMatchValue && ratingMatchValue && startPriceMatchValue && endPriceMatchValue && searchMatchValue;
         }
-        if(filtercheck.category.length > 0 && filtercheck.color.length > 0 && filtercheck.size.length > 0   )
+        if(category.length > 0 && color.length > 0 && size.length > 0   )
         {
             return  categoryMatchValue && colorMatchValue  && sizeMatchValue && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.category.length > 0 && filtercheck.size.length > 0 && filtercheck.ratings.length > 0  )
+        if(category.length > 0 && size.length > 0 && ratings.length > 0  )
         {
             return  categoryMatchValue && colorMatchValue  && ratingMatchValue && startPriceMatchValue && endPriceMatchValue && searchMatchValue;
         }
-        if(filtercheck.category.length > 0 && filtercheck.color.length > 0 && filtercheck.ratings.length > 0 )
+        if(category.length > 0 && color.length > 0 && ratings.length > 0 )
         {
             return  categoryMatchValue && colorMatchValue  &&  ratingMatchValue && startPriceMatchValue && endPriceMatchValue && searchMatchValue;
         }
-        if(filtercheck.color.length > 0 && filtercheck.size.length > 0 && filtercheck.ratings.length > 0 )
+        if(color.length > 0 && size.length > 0 && ratings.length > 0 )
         {
             return  colorMatchValue  && sizeMatchValue  && ratingMatchValue && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.category.length > 0 && filtercheck.color.length > 0 )
+        if(category.length > 0 && color.length > 0 )
         {
             return  categoryMatchValue && colorMatchValue   && startPriceMatchValue && endPriceMatchValue && searchMatchValue;
         }
-        if(filtercheck.category.length > 0 && filtercheck.size.length > 0)
+        if(category.length > 0 && size.length > 0)
         {
             return  categoryMatchValue && sizeMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.category.length > 0 && filtercheck.ratings.length > 0)
+        if(category.length > 0 && ratings.length > 0)
         {
             return  categoryMatchValue && ratingMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.color.length > 0 && filtercheck.size.length > 0)
+        if(color.length > 0 && size.length > 0)
         {
             return  colorMatchValue && sizeMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.color.length > 0 && filtercheck.ratings.length > 0)
+        if(color.length > 0 && ratings.length > 0)
         {
             return  colorMatchValue && ratingMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.size.length > 0 && filtercheck.ratings.length > 0)
+        if(size.length > 0 && ratings.length > 0)
         {
             return  sizeMatchValue && ratingMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.color.length > 0)
+        if(color.length > 0)
         {
             return  colorMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.category.length > 0)
+        if(category.length > 0)
         {
             return  categoryMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.size.length > 0)
+        if(size.length > 0)
         {
             return  sizeMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
-        if(filtercheck.ratings.length > 0)
+        if(ratings.length > 0)
         {
             return  ratingMatchValue   && startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
         }
         else
         {
-            return startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
-        }
+        return startPriceMatchValue && endPriceMatchValue  && searchMatchValue;
+       }
 
     }).sort((sortpro1, sortpro2) => {
         if (sortOrder === 'Pricehigh') {

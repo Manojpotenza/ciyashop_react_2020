@@ -6,8 +6,9 @@ import PostDetail from '../../templates/post-detail';
 import ProductSlider from '../../widgets/ProductSlider';
 import { Link } from 'react-router-dom';
 import { Row, Col,Container,Nav, NavItem, NavLink,TabContent, TabPane } from 'reactstrap';
-import productdata from '../../api/product';
 import classnames from 'classnames';
+import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const relatedslider = {
     dots: false,
@@ -42,7 +43,7 @@ class ProductDetail extends Component {
     {
          super(props);
          this.state={
-             AllProduct:productdata,
+             AllProduct:this.props.products,
              ProductId:parseInt(this.props.match.params.id),
              CurrentProduct:null,
              activeTab: '1'
@@ -57,29 +58,24 @@ class ProductDetail extends Component {
         let allproductdata=this.state.AllProduct;
         if(allproductdata && allproductdata.length > 0)
         {
-            for(let product of allproductdata)
-            {
+            allproductdata.map((product)=>{
                 if(product.id === CurrentProductId)
                 {
-                        this.setState({
-                            ...this.state,
-                            CurrentProduct:product
-                        })
+                    this.setState({
+                        ...this.state,
+                        CurrentProduct:product
+                    })
                 }
-            }
+            })
         }
-
-
     }
-
-
     toggle(tab) {
         if (this.state.activeTab !== tab) {
           this.setState({
             activeTab: tab
           });
         }
-      }
+    }
     render() {
         const Productedit = this.state.CurrentProduct;
 
@@ -305,11 +301,15 @@ class ProductDetail extends Component {
             null
         }
         </div>
-
-
-
-
-    )
+        )
+    }
 }
-}
-export default ProductDetail;
+
+const AppMapStateToProps = state => {
+    return {
+      products: state.data.products
+    };
+  };
+
+  
+export default connect(AppMapStateToProps)(withRouter(ProductDetail));

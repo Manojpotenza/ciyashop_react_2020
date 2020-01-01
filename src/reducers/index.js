@@ -8,7 +8,7 @@ import { IntlReducer as ReducersIntl } from 'react-redux-multilingual'
 import products  from './products';
 import filters from './filters';
 
-export default combineReducers({
+export  const rootReducer = combineReducers({
     data: products,
     filters: filters,
     ReducersIntl
