@@ -92,7 +92,7 @@ class ShopPage extends Component {
                     </Row>
                 </Container>
                 </div>
-                <div className="sticky-filter">
+                <div className="sticky-filter" id="sticky-filter">
                 <Container>
                     <Row className="d-flex align-items-center">
                     <Col md={12} className="sidebar desktop">

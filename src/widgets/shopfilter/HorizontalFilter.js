@@ -16,32 +16,35 @@ class HorizontalFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dropdownOpen: false,
-            isOpen: false
+            pricefilter: false,
+            isOpen: false,
+            colorfilter:false,
+            categoryfilter:false,
+            sizefilter:false,
         }
-        this.toggle2 = this.toggle2.bind(this);
-        this.toggle3 = this.toggle3.bind(this);
-        this.toggle4 = this.toggle4.bind(this);
-        this.toggle5 = this.toggle5.bind(this);
+        this.pricefilter_toggle = this.pricefilter_toggle.bind(this);
+        this.colorfilter_toggle = this.colorfilter_toggle.bind(this);
+        this.categoryfilter_toggle = this.categoryfilter_toggle.bind(this);
+        this.sizefilter_toggle = this.sizefilter_toggle.bind(this);
     }
-    toggle2() {
+    pricefilter_toggle() {
         this.setState({
-            dropdownOpen: !this.state.dropdownOpen
+            pricefilter: !this.state.pricefilter
         });
     }
-    toggle3() {
+    colorfilter_toggle() {
         this.setState({
-            dropdownOpen: !this.state.dropdownOpen
+            colorfilter: !this.state.colorfilter
         });
     }
-    toggle4() {
+    categoryfilter_toggle() {
         this.setState({
-            dropdownOpen: !this.state.dropdownOpen
+            categoryfilter: !this.state.categoryfilter
         });
     }
-    toggle5() {
+    sizefilter_toggle() {
         this.setState({
-            dropdownOpen: !this.state.dropdownOpen
+            sizefilter: !this.state.sizefilter
         });
     }
 
@@ -95,7 +98,7 @@ class HorizontalFilter extends Component {
         return (
             <div className="d-flex align-items-center filters-wrapper mt-5">
                 <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle2} className="horizontal-filter-dropdown">
+                <Dropdown isOpen={this.state.pricefilter} toggle={this.pricefilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
 
 
@@ -121,7 +124,7 @@ class HorizontalFilter extends Component {
 
                     </DropdownMenu>
                 </Dropdown>
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle3} className="horizontal-filter-dropdown">
+                <Dropdown isOpen={this.state.colorfilter} toggle={this.colorfilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
 
 
@@ -152,7 +155,7 @@ class HorizontalFilter extends Component {
 
 
 
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle4} className="horizontal-filter-dropdown">
+                <Dropdown isOpen={this.state.categoryfilter} toggle={this.categoryfilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
 
 
@@ -181,7 +184,7 @@ class HorizontalFilter extends Component {
 
 
 
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle5} className="horizontal-filter-dropdown">
+                <Dropdown isOpen={this.state.sizefilter} toggle={this.sizefilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
 
 
