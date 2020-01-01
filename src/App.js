@@ -76,7 +76,8 @@ class App extends React.Component {
                   <Route path="/admin-panel" component={AdminDashboard} />
                 </Switch>
               :
-              <div className="site-header-row" id="site-header-row">
+              <div>
+                
                 <Headers />
                   <Switch>
                     <Route exact path="/" component={HomePage} />

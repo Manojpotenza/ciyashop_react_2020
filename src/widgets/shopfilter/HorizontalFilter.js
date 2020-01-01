@@ -102,8 +102,10 @@ class HorizontalFilter extends Component {
         }
         return (
             <div className="d-flex align-items-center filters-wrapper">
-                 <Button onClick={this.showfilter}>
-                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p></Button>
+                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
+                 <Button onClick={this.showfilter} className="btn-filter">
+                 <i className="fa fa-filter"> </i> Filter by
+                </Button>
                 <Dropdown isOpen={this.state.pricefilter} toggle={this.pricefilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
 
@@ -218,7 +220,7 @@ class HorizontalFilter extends Component {
 
                     </DropdownMenu>
                 </Dropdown>
-
+<div className="site-header-row" id="site-header-row"></div>
                 <div className="off-canvas-filter" id="off-canvas-filter">
                 <div class="sidebar-widget-heading">
 					<a href="#" class="close-sidebar-widget">Close</a>
