@@ -67,7 +67,7 @@ class App extends Component {
                   <Route path="/admin-panel" component={AdminDashboard} />
                 </Switch>
               :
-              <div>
+              <div className="site-header-row" id="site-header-row">
                 
                 <Headers />
                   <Switch>

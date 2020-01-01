@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Container, Form, Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { Row, Col, Container, Form, Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu,Button} from 'reactstrap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import { uniqueCategory, uniqueSizes, uniqueColors, uniqueMinMaxPrice } from '../../services';
@@ -26,6 +26,11 @@ class HorizontalFilter extends Component {
         this.colorfilter_toggle = this.colorfilter_toggle.bind(this);
         this.categoryfilter_toggle = this.categoryfilter_toggle.bind(this);
         this.sizefilter_toggle = this.sizefilter_toggle.bind(this);
+        this.showfilter = this.showfilter.bind(this);
+    }
+    showfilter(){
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
+        document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
     }
     pricefilter_toggle() {
         this.setState({
@@ -97,7 +102,8 @@ class HorizontalFilter extends Component {
         }
         return (
             <div className="d-flex align-items-center filters-wrapper">
-                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
+                 <Button onClick={this.showfilter}>
+                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p></Button>
                 <Dropdown isOpen={this.state.pricefilter} toggle={this.pricefilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
 
@@ -213,7 +219,7 @@ class HorizontalFilter extends Component {
                     </DropdownMenu>
                 </Dropdown>
 
-                <div className="off-canvas-filter">
+                <div className="off-canvas-filter" id="off-canvas-filter">
                 <div class="sidebar-widget-heading">
 					<a href="#" class="close-sidebar-widget">Close</a>
 				</div>
