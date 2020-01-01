@@ -102,8 +102,8 @@
     color: rgba(0,0,0,.65);
     background-color: #fff;
     border: 1px solid #d9d9d9;
-    margin-left: 20px;
-    padding: 0px 25px ;
+    margin-left: 12px;
+    padding: 0px 15px ;
 }
 .horizontal-filter-dropdown .btn-secondary:hover , .horizontal-filter-dropdown .btn-secondary:focus{
   background-color: #f8f9fa;
@@ -121,6 +121,7 @@
     border-radius: 9px;
     box-shadow: 0 2px 20px rgba(0,0,0,.16);
     margin-top: 5px;
+    min-width: 240px;
 }
 .filter-title{
   font-weight: 600;
@@ -170,4 +171,86 @@
     -webkit-animation-iteration-count: 1 !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+.price-filter{
+  min-width: 330px;
+}
+.horizontal-filter-dropdown .dropdown-item.active, .horizontal-filter-dropdown .dropdown-item:active{
+  background-color: transparent;
+}
+.sticky-filter{
+  padding: 40px 0px 0px;
+}
+.sticky-filter.is-sticky {
+  width: 100%;
+  left: 0;
+  z-index: 999;
+  position: fixed;
+  top: 82px;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 20px 0px;
+}
+.off-canvas-filter{
+  display: none;
+}
+/* Responsive */
+@media screen and (max-width:991px) {
+  .sticky-filter.is-sticky {
+    top: 61px;
+  }
+}
+@media screen and (max-width:767px) {
+  .sticky-filter.is-sticky {
+    top: 61px;
+  }
+  .off-canvas-filter.off-canvas-filter-show{
+  -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+  }
+  .off-canvas-filter{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    padding: 0 25px;
+    width: 330px;
+    height: 100%;
+    z-index: 1021;
+    overflow: auto;
+    overflow-x: hidden;
+    -webkit-transition: all .3s ease-out 0s;
+    -moz-transition: all .3s ease-out 0s;
+    transition: all .3s ease-out 0s;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  .horizontal-filter-dropdown {
+    display: none;
+}
+  .filter-title{
+    padding: 5px 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .off-canvas-overlay{
+    background: rgba(0,0,0,.8);
+    visibility: visible;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0);
+    z-index: 1021;
+    visibility: hidden;
+    -webkit-transition: all .2s ease-in-out 0s;
+    -moz-transition: all .2s ease-in-out 0s;
+    transition: all .2s ease-in-out 0s;
+}
 }
