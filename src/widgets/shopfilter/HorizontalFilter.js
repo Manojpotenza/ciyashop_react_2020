@@ -3,14 +3,14 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Container, Form, Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { Row, Col, Container, Form, Nav, Button,Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import { uniqueCategory, uniqueSizes, uniqueColors, uniqueMinMaxPrice } from '../../services';
 import { categoryValue, sizeValue, colorValue, priceValue } from '../../actions/filter';
 import'./styles.css';
 
-
+var removecate = new Array();
 class HorizontalFilter extends Component {
 
     constructor(props) {
@@ -18,12 +18,15 @@ class HorizontalFilter extends Component {
         this.state = {
             pricefilter: false,
             isOpen: false,
-            colorfilter:false,
+            colorfilter:true,
             categoryfilter:false,
             sizefilter:false,
+            colordrop:false,
+            removecolorlist:[]
         }
         this.pricefilter_toggle = this.pricefilter_toggle.bind(this);
-        this.colorfilter_toggle = this.colorfilter_toggle.bind(this);
+        //this.colorfilter_toggle = this.colorfilter_toggle.bind(this);
+        this.colordrop=this.colordrop.bind(this);
         this.categoryfilter_toggle = this.categoryfilter_toggle.bind(this);
         this.sizefilter_toggle = this.sizefilter_toggle.bind(this);
     }
@@ -32,11 +35,11 @@ class HorizontalFilter extends Component {
             pricefilter: !this.state.pricefilter
         });
     }
-    colorfilter_toggle() {
-        this.setState({
-            colorfilter: !this.state.colorfilter
-        });
-    }
+    // colorfilter_toggle() {
+    //     this.setState({
+    //         colorfilter: !this.state.colorfilter
+    //     });
+    // }
     categoryfilter_toggle() {
         this.setState({
             categoryfilter: !this.state.categoryfilter
@@ -48,6 +51,13 @@ class HorizontalFilter extends Component {
         });
     }
 
+    colordrop()
+    {
+        this.setState(prevState => ({
+            colordrop: !prevState.colordrop
+        }));       
+    }
+
 
     onClickColorFilter = (event, colors) => {
         var index = colors.indexOf(event.target.value);
@@ -56,6 +66,21 @@ class HorizontalFilter extends Component {
         }
         else {
             colors.splice(index, 1);
+        }
+        if(colors.length > 0)
+        {
+            console.log('okat')
+            this.setState({
+                removecolorlist:colors,
+                colorfilter:false
+            })
+        }
+        else
+        {
+            console.log('not okat')
+            this.setState({
+                colorfilter:true
+            })
         }
         this.props.colorValue(colors)
     }
@@ -82,13 +107,23 @@ class HorizontalFilter extends Component {
         }
         this.props.sizeValue(sizes);
     }
-
+    Capitalize(str){
+            var i=0;
+            for(i;i<str.length;i++)
+            {
+                str=str.replace('-',' ');
+                str=str.replace(/\d+/g, '');
+            }
+            return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    
 
     render() {
+        const {colorfilter,colordrop,removecolorlist} = this.state;
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
-
+        var totalcolor=removecolorlist.length;
         if (this.props.filters.value.max > 2000) {
             this.props.filters.value.max = 2000;
         }
@@ -100,8 +135,6 @@ class HorizontalFilter extends Component {
                 <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
                 <Dropdown isOpen={this.state.pricefilter} toggle={this.pricefilter_toggle} className="horizontal-filter-dropdown">
                     <DropdownToggle caret className="btn-white">
-
-
                         <span className="mb-0">Filter by Price</span>
                     </DropdownToggle>
                     <DropdownMenu className="price-filter">
@@ -121,37 +154,37 @@ class HorizontalFilter extends Component {
                             </div>
                         </div>
                         </DropdownItem>
-
                     </DropdownMenu>
                 </Dropdown>
-                <Dropdown isOpen={this.state.colorfilter} toggle={this.colorfilter_toggle} className="horizontal-filter-dropdown">
-                    <DropdownToggle caret className="btn-white">
-
-
-                        <span className="mb-0">Filter by Color</span>
-                    </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem className="nav-link">               
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                    <h4 className="widget-title">Filter by Color</h4>
-                    <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                        <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
-                            {this.props.colors.map((color, index) => {
-                                return (
-                                    <div className="form-check pgs-filter-checkbox" key={index}>
-                                        <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
-                                        <label className="form-check-label"
-                                            htmlFor={color}>{color}</label>
-                                    </div>
-                                )
-                            })}
-                        </ul>
+                <div className="horizontal-filter-dropdown">
+                    {(colorfilter) ?
+                       <Button caret className="btn-white"  onClick={this.colordrop}>
+                            <span className="mb-0">Filter by Color</span>
+                        </Button>
+                    :
+                        <Button caret className="btn-white" onClick={this.colordrop}>Color: <b>{(removecolorlist.length === 1) ? this.Capitalize(removecolorlist[0]) : this.Capitalize(removecolorlist[0]) +'+'+(totalcolor-1)}</b></Button>
+                    }
+                 
+                    
+                    {(colordrop) ? 
+                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
+                        <h4 className="widget-title">Filter by Color</h4>
+                        <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                            <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
+                                {this.props.colors.map((color, index) => {
+                                    return (
+                                        <div className="form-check pgs-filter-checkbox" key={index}>
+                                            <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                            <label className="form-check-label"
+                                                htmlFor={color}>{color}</label>
+                                        </div>
+                                    )
+                                })}
+                            </ul>
+                        </div>
                     </div>
+                    :null}
                 </div>
-                        </DropdownItem>
-
-                    </DropdownMenu>
-                </Dropdown>
 
 
 
