@@ -5,6 +5,7 @@
    "homepage": "",
    "dependencies": {
       "@iconify/react": "^1.1.0",
+      "antd": "^3.26.5",
       "babel-cli": "^6.26.0",
       "babel-core": "^6.26.3",
       "babel-loader": "^8.0.6",

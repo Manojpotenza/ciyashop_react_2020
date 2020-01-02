@@ -1,3 +1,154 @@
+.filter-wrapper {
+  width: 563px;
+  height: 163px;
+  background: #fff;
+  padding: 20px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .16);
+  position: absolute;
+  top: 100%;
+  margin-top: 5px;
+  z-index: 999;
+  left: 0
+  }
+  
+  .category-wrapper .category-header,
+  .coins-wrapper .coins-header,
+  .filter-wrapper .filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px
+  }
+  
+  .filter-wrapper .filter-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+  }
+  
+  .filter-wrapper .filter-body p {
+  font-size: 15px;
+  color: #93999f;
+  font-family: SF Pro Text;
+  margin-bottom: 0;
+  position: relative
+  }
+  
+  .filter-wrapper .filter-clear {
+  font-size: 14px;
+  color: #1967d2;
+  font-family: SF Pro Display
+  }
+  
+  .category-wrapper .category-title,
+  .coins-wrapper .coins-title,
+  .filter-wrapper .filter-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3c4043;
+  font-family: SF Pro Display;
+  margin-bottom: 10px;
+  position: relative
+  }
+  
+  .filter-wrapper .filter-title .close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer
+  }
+  
+  .filter-wrapper p {
+  font-weight: 300;
+  font-size: 15px;
+  margin-bottom: 10px
+  }
+  
+  .filter-wrapper p span {
+  font-family: SF Pro Display;
+  font-weight: 500;
+  color: #4285f4
+  }
+  
+  .filter-wrapper .ant-slider-track,
+  .filter-wrapper .ant-slider:hover .ant-slider-track {
+  background-color: #4285f4
+  }
+  
+  .filter-wrapper .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+  border-color: #4285f4
+  }
+  
+  .filter-wrapper .ant-slider-mark-text {
+  color: #93999f;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: SF Pro Text
+  }
+  
+  .filter-wrapper .ant-slider-mark-text:last-child {
+  padding-right: 22px;
+  white-space: nowrap
+  }
+  
+  .filter-wrapper .ant-slider-dot.ant-slider-dot-active {
+  background-color: #4285f4;
+  border: 2px solid #4285f4
+  }
+  
+  .filter-wrapper .ant-slider-dot {
+  border: 2px solid #dadce0;
+  background-color: #dadce0;
+  width: 6px;
+  height: 6px
+  }
+  
+  .filter-wrapper .ant-slider-handle {
+  border: 2px solid #4285f4;
+  background-color: #4285f4;
+  margin-top: -10px;
+  height: 20px;
+  width: 20px
+  }
+  
+  .filter-wrapper .ant-slider-rail {
+  height: 2px;
+  background-color: #dadce0
+  }
+  
+  .filter-wrapper .ant-slider-track {
+  height: 2px
+  }
+  
+  .filter-wrapper .ant-slider-mark {
+  top: 18px
+  }
+  
+  .filter-wrapper .ant-slider {
+  margin: 18px 6px 10px
+  }
+  
+  .filter-wrapper .clear-filter {
+  position: absolute;
+  right: 10px;
+  color: #1967d2;
+  font-family: SF Pro Display;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer
+  }
+  
+  .filter-wrapper .clear-filter:hover {
+  background: #e8f0fe
+  }
+  
+  .filter-wrapper .clear-filter:active,
+  .filter-wrapper .clear-filter:focus {
+  background: #d2e3fc
+  }
 .root {
   width: 50%;
   margin-bottom: 20px;
