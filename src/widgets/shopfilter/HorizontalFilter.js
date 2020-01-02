@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import 'react-input-range/lib/css/index.css';
 import { uniqueCategory, uniqueSizes, uniqueColors, uniqueMinMaxPrice } from '../../services';
 import { categoryValue, sizeValue, colorValue, priceValue } from '../../actions/filter';
+import CloseBtn from '../../assets/images/CloseBtn.svg';
 import './styles.css';
 
 var removecate = [], removecategorylist = [], removesizelist = [];
@@ -146,11 +147,25 @@ class HorizontalFilter extends Component {
         }
         this.setState({
             pricecapfilter:false,
+            priceplace:values
         });
         
         this.props.priceValue({ value })
     }
-
+    clearpricecap(pricecapval)
+    {
+        console.log('s');
+        var value={
+            min:pricecapval.min,
+            max:pricecapval.max
+        }
+        this.setState({
+            pricecapfilter:true,
+            pricefilter:false,
+            priceplace:[this.props.prices.min, this.props.prices.max]
+        })
+        this.props.priceValue({ value })
+    }
     // Color Filter 
     setColorRef(node) {
         this.ColorRef = node;
@@ -333,7 +348,7 @@ class HorizontalFilter extends Component {
         }
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
-
+    
 
     render() {
         const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist } = this.state;
@@ -370,32 +385,40 @@ class HorizontalFilter extends Component {
         }
         return (
             <div className="d-flex align-items-center filters-wrapper">
-                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
+                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter By</p>
 
                 <Button onClick={this.showfilter} className="btn-filter">
-                    <i className="fa fa-filter"> </i> Filter by
+                    <i className="fa fa-filter"> </i> Filter By
                 </Button>
-                <div className="ml-2 mr-2 ">
+                <div className="horizontal-filter-dropdown ">
                     <div className="filter-container" ref={this.setWrapperRef}>
                         {(this.state.pricecapfilter) ?
-                            <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricefilter_toggle}>Filter By Price</Button>
-                            :
-                            <Button className="btn-white dropdown-toggle" >Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button>
+                            <Button className="btn-white" onClick={this.pricefilter_toggle}>Filter By Price</Button>
+                        :
+                            <p>
+                                <Button className="btn-white" onClick={this.pricefilter_toggle}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button>
+                                <Link className="filter-close" onClick={()=>this.clearpricecap(this.props.prices)} to="#">
+                                <img src={CloseBtn} className="ml-2" />
+                                </Link>
+                            </p>
                         }
                         <div className="filter-wrapper zoomIn animated">
                             <div className="horizontal-filter-dropdown dropdown">
                                 {(this.state.pricefilter) ? <div>
-                                    <h5 className="filter-title">Filter By Price</h5>
+                                    <h5 className="filter-title">Filter By Price <Link to="#" onClick={this.pricefilter_toggle}>Close</Link></h5>
+                                    <Link className="filter-close" onClick={()=>this.clearpricecap(this.props.prices)} to="#">
+                                        <img src={CloseBtn} className="ml-2" />
+                                    </Link>
                                     <Slider
                                         range
                                         step={1}
                                         min={0}
                                         max={100}
                                         tipFormatter={this.toolformatter}
-                                        defaultValue={[0, 100]}
+                                        defaultValue={this.state.priceplace}
                                         onAfterChange={this.onChangePricePlace}
                                         marks={marks}
-                                    />
+                                    />  
                                 </div>
                                     : null}
                             </div>

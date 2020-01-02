@@ -1,7 +1,7 @@
 /**
  *  Filter Data Reducers
  */
-export default (state = {category: [],size:[],color: [], ratings:"",value: { min: 150, max: 1050 },search:"",sortOrder: ""}, action) => {
+export default (state = {category: [],size:[],color: [], ratings:"",value: { min: 0, max: 1050 },search:"",sortOrder: ""}, action) => {
     if(action.type == "GET_CATEGORY_VALUE")
     {
         return {
