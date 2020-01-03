@@ -104,16 +104,21 @@ function ProductSlider(props) {
         <Col sm={12}>
             <ToastContainer autoClose={1000} />
             <div className="products-listing-items-wrapper products-listing-carousel">
-                <div className="products" data-nav-arrow="true" data-items={4} data-md-items={3} data-sm-items={3} data-xs-items={2} data-xx-items={1} data-space={20}>
+                <div className="products" data-nav-arrow="false" data-items={4} data-md-items={3} data-sm-items={3} data-xs-items={2} data-xx-items={1} data-space={20}>
                     <Slider {...settings} className="slider-spacing-10 slider-arrow-hover">
+                            {MyProducts.map((product,index) =>
 
-                         {MyProducts.map((product, index) =>
+                            <div>
+                                { console.log('Product Here',product)}
+                                {(product.id<5) ?
+                                
                                 <div className="item">
                                     <div className="product product_tag-black product-hover-style-default product-hover-button-style-dark product_title_type-single_line product_icon_type-line-icon">
                                         <div className="product-inner element-hovered">
                                             <div className="product-thumbnail">
                                                 <div className="product-thumbnail-inner">
-                                                    <a href={`/shop/${product.category}/${product.id}`}> {product.pictures[0] ?
+                                                    <a href={`/shop/${product.category}/${product.id}`}> 
+                                                        {product.pictures[0] ?
                                                             <div className="product-thumbnail-main">
                                                                 <img src={require(`../assets/images/${product.pictures[0]}`)} className="img-fluid" />
                                                             </div>
@@ -177,12 +182,16 @@ function ProductSlider(props) {
                                         </div>
                                     </div>
                                 </div>
-
+                            : null
+                            }
+                            </div>
                         )}
+
 
                       </Slider>
                 </div>
             </div>
+            
     </Col>
 
     )
