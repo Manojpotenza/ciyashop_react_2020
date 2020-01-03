@@ -325,6 +325,9 @@ body {
   -webkit-box-shadow: 0 0 0 5px rgba(4, 211, 159, 0.2);
   box-shadow: 0 0 0 5px rgba(4, 211, 159, 0.2);
 }
+.sidebar .widget .widget-title { 
+  font-size: 14px;
+}
 .horizontal-filter-dropdown .widget-title-header {
   padding: 0 15px;
   margin-bottom: 20px;
