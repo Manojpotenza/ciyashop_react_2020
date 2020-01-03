@@ -1,3 +1,6 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
 .filter-wrapper {
   width: 563px;
   height: 163px;
@@ -29,8 +32,6 @@
   
   .filter-wrapper .filter-body p {
   font-size: 15px;
-  color: #93999f;
-  font-family: SF Pro Text;
   margin-bottom: 0;
   position: relative
   }
@@ -38,16 +39,13 @@
   .filter-wrapper .filter-clear {
   font-size: 14px;
   color: #1967d2;
-  font-family: SF Pro Display
   }
   
   .category-wrapper .category-title,
   .coins-wrapper .coins-title,
   .filter-wrapper .filter-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #3c4043;
-  font-family: SF Pro Display;
+  font-size: 14px;
+  color: #323232;
   margin-bottom: 10px;
   position: relative
   }
@@ -60,31 +58,27 @@
   }
   
   .filter-wrapper p {
-  font-weight: 300;
-  font-size: 15px;
   margin-bottom: 10px
   }
   
   .filter-wrapper p span {
-  font-family: SF Pro Display;
   font-weight: 500;
-  color: #4285f4
+  color: #04d39f
   }
   
   .filter-wrapper .ant-slider-track,
   .filter-wrapper .ant-slider:hover .ant-slider-track {
-  background-color: #4285f4
+  background-color: #04d39f
   }
   
   .filter-wrapper .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
-  border-color: #4285f4
+  border-color: #04d39f
   }
   
   .filter-wrapper .ant-slider-mark-text {
   color: #93999f;
   font-size: 13px;
   font-weight: 400;
-  font-family: SF Pro Text
   }
   
   .filter-wrapper .ant-slider-mark-text:last-child {
@@ -93,8 +87,8 @@
   }
   
   .filter-wrapper .ant-slider-dot.ant-slider-dot-active {
-  background-color: #4285f4;
-  border: 2px solid #4285f4
+  background-color: #04d39f;
+  border: 2px solid #04d39f
   }
   
   .filter-wrapper .ant-slider-dot {
@@ -105,8 +99,8 @@
   }
   
   .filter-wrapper .ant-slider-handle {
-  border: 2px solid #4285f4;
-  background-color: #4285f4;
+  border: 2px solid #04d39f;
+  background-color: #04d39f;
   margin-top: -10px;
   height: 20px;
   width: 20px
@@ -132,8 +126,7 @@
   .filter-wrapper .clear-filter {
   position: absolute;
   right: 10px;
-  color: #1967d2;
-  font-family: SF Pro Display;
+  color: #04d39f;
   font-weight: 400;
   font-size: 14px;
   padding: 3px 6px;
@@ -142,7 +135,8 @@
   }
   
   .filter-wrapper .clear-filter:hover {
-  background: #e8f0fe
+  background: rgba(4, 211, 159, 0.2);
+  color: #323232;
   }
   
   .filter-wrapper .clear-filter:active,
@@ -221,6 +215,10 @@
 ===============================================*/
 .horizontal-filter-dropdown{
   display: block;
+  position: relative;
+}
+.horizontal-filter-dropdown p{
+  margin-bottom: 0;
 }
 .horizontal-filter-dropdown .btn-secondary{
   background-color: #f8f9fa !important;
@@ -253,7 +251,7 @@
     color: rgba(0,0,0,.65);
     background-color: #fff;
     border: 1px solid #d9d9d9;
-    margin-left: 12px;
+    margin-right: 12px;
     padding: 0px 15px ;
 }
 .horizontal-filter-dropdown .btn-secondary:hover , .horizontal-filter-dropdown .btn-secondary:focus{
@@ -278,6 +276,77 @@
   font-weight: 600;
     color: #212121;
     font-size: 15px;
+} 
+.filter-title.filter-by {
+  margin-right: 12px;
+}
+.dropdown-toggle.bg-highlight::after{
+  display: none;
+}
+.horizontal-filter-dropdown .btn-secondary.bg-highlight {
+  padding-right: 30px;
+  background-color:  rgba(4, 211, 159, 0.2) !important;
+  border-color:  rgba(4, 211, 159, 0.2) !important;
+}
+.filter-close {
+  position: absolute;
+  right: 36px;
+  top: 4px;
+  display: block;
+}  
+.filter-close::after {
+  position: absolute;
+  content: "\f156";
+  font-family: pgsicon-ecommerce;
+  font-size: 10px;
+  font-weight: 800;
+  top: 5px;
+  color: #323232;
+  width: 15px;
+  text-align: center;
+}
+.btn-close::after {
+  position: absolute;
+  content: "\f156";
+  font-family: pgsicon-ecommerce;
+  font-size: 12px;
+  font-weight: 800;
+  top: 0;
+  color: #323232;
+  text-align: center;
+  right: 0;
+  width: 25px;
+}
+.btn-close:hover:after{
+  cursor: pointer;
+  color: #04d39f;
+}
+.ant-slider-handle:focus {
+  -webkit-box-shadow: 0 0 0 5px rgba(4, 211, 159, 0.2);
+  box-shadow: 0 0 0 5px rgba(4, 211, 159, 0.2);
+}
+.horizontal-filter-dropdown .widget-title-header {
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+.sidebar .widget.widget-layered-nav {
+  background: #fff;
+  padding: 20px 0;
+  border-radius: 9px;
+  box-shadow: 0 2px 20px rgba(0,0,0,.16);
+  width: 340px;
+  position: absolute;
+  z-index: 999;
+  margin-top: 5px;
+}
+.form-check {
+  margin-bottom: 15px;
+}
+.sidebar .shop-sidebar-widgets .pgs-widget-layered-nav-list-container {
+  padding: 0 0 0 15px;
+}
+.sidebar .shop-sidebar-widgets .pgs-widget-layered-nav-list-container > .pgs-widget-layered-nav-list {
+  left: 15px;
 }
 @-webkit-keyframes zoomIn {
   from {
@@ -331,7 +400,7 @@
   background-color: transparent;
 }
 .sticky-filter{
-  padding: 40px 0px 0px;
+  padding: 20px 0px 30px;
 }
 .sticky-filter.is-sticky {
   width: 100%;
