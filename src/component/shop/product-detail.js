@@ -22,6 +22,7 @@ const relatedslider = {
       settings: {
         slidesToShow: 3
       }
+
     },
     {
       breakpoint: 767,
@@ -78,8 +79,9 @@ class ProductDetail extends Component {
     }
     render() {
         const Productedit = this.state.CurrentProduct;
-
+        console.log('ProductId',Productedit)
      return (
+       
         <div>
             {Productedit !== null ?
                 <div className="site-content">
@@ -290,7 +292,7 @@ class ProductDetail extends Component {
                             <div className="related products">
                                 <h2>Related products</h2>
                                 <div className="row">
-                                    <ProductSlider settings={relatedslider} />
+                                    <ProductSlider productSub={Productedit.subcategory}  settings={relatedslider} />
                                 </div>
                             </div>
                             </div>

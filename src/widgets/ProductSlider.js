@@ -10,8 +10,20 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function ProductSlider(props) {
     const settings = props.settings;
-
-
+    const productSub = props.productSub;
+    var cloneproduct=[];
+    var cnt=0;
+    MyProducts.map((product,index) => {
+            if(product.subcategory===productSub && cnt <6 ){
+               // cloneproduct=product.push(cloneproduct); 
+                cloneproduct[cnt]= product;
+                cnt++;  
+                console.log('sub',product)
+                console.log('cnt',cnt)
+            }
+        }
+    );
+    console.log('cloneproduct',cloneproduct)
     function AddToCart(ProductID,ProductName,ProductImage,Qty,Rate,StockStatus) {
         var Cart = JSON.parse(localStorage.getItem("LocalCartItems"));
         if(Cart == null)
@@ -106,12 +118,9 @@ function ProductSlider(props) {
             <div className="products-listing-items-wrapper products-listing-carousel">
                 <div className="products" data-nav-arrow="false" data-items={4} data-md-items={3} data-sm-items={3} data-xs-items={2} data-xx-items={1} data-space={20}>
                     <Slider {...settings} className="slider-spacing-10 slider-arrow-hover">
-                            {MyProducts.map((product,index) =>
+                            {cloneproduct.map((product,index) =>
 
                             <div>
-                                { console.log('Product Here',product)}
-                                {(product.id<5) ?
-                                
                                 <div className="item">
                                     <div className="product product_tag-black product-hover-style-default product-hover-button-style-dark product_title_type-single_line product_icon_type-line-icon">
                                         <div className="product-inner element-hovered">
@@ -182,8 +191,7 @@ function ProductSlider(props) {
                                         </div>
                                     </div>
                                 </div>
-                            : null
-                            }
+                           
                             </div>
                         )}
 
