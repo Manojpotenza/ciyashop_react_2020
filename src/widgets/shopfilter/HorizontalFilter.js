@@ -19,8 +19,8 @@ class HorizontalFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pricecapfilter:true,
-            priceplace:[this.props.prices.min, this.props.prices.max],
+            pricecapfilter: true,
+            priceplace: [this.props.prices.min, this.props.prices.max],
             isOpen: false,
             pricefilter: true,
             colorfilter: true,
@@ -29,8 +29,8 @@ class HorizontalFilter extends Component {
             colordrop: false,
             categorydrop: false,
             sizedrop: false,
-          
-         
+
+
         }
         this.pricedrop = this.pricedrop.bind(this);
         this.colordrop = this.colordrop.bind(this);
@@ -60,36 +60,35 @@ class HorizontalFilter extends Component {
 
 
     }
-    setdefaultvalue()
-    {
+    setdefaultvalue() {
         console.log('okay')
         setTimeout(() => {
-            this.props.priceValue({value: {min: this.props.prices.min, max: this.props.prices.max}})
-        },1500)
+            this.props.priceValue({ value: { min: this.props.prices.min, max: this.props.prices.max } })
+        }, 1500)
     }
 
     //Price Filter
     toolformatter = value => {
-        var maximumval=this.props.prices.max/5;
-        if(value===0){
+        var maximumval = this.props.prices.max / 5;
+        if (value === 0) {
             return "0";
         }
-        else if(value > 0 &&  value <=20){
-            return this.fncl(value*(maximumval*1)/20);
+        else if (value > 0 && value <= 20) {
+            return this.fncl(value * (maximumval * 1) / 20);
         }
-        else if(value > 20 &&  value <=40){
-            return this.fncl(value*(maximumval*2)/40);
+        else if (value > 20 && value <= 40) {
+            return this.fncl(value * (maximumval * 2) / 40);
         }
-        else if(value > 40 &&  value <=60){
-            return this.fncl(value*(maximumval*3)/60);
+        else if (value > 40 && value <= 60) {
+            return this.fncl(value * (maximumval * 3) / 60);
         }
-        else if(value > 60 &&  value <=80){
-            return this.fncl(value*(maximumval*4)/80);
+        else if (value > 60 && value <= 80) {
+            return this.fncl(value * (maximumval * 4) / 80);
         }
-        else if(value > 80 &&  value <= 100){
-            return this.fncl(value*(maximumval*5)/100);
+        else if (value > 80 && value <= 100) {
+            return this.fncl(value * (maximumval * 5) / 100);
         }
-        else{
+        else {
             return false;
         }
     }
@@ -97,60 +96,60 @@ class HorizontalFilter extends Component {
         return Number.parseFloat(value).toFixed(0);
     }
     onChangePricePlace = values => {
-        var maximumval=this.props.prices.max/5;
+        var maximumval = this.props.prices.max / 5;
 
-        var value={
-            min:values['0'],
-            max:values['1']
+        var value = {
+            min: values['0'],
+            max: values['1']
         }
-        if(value.min==0){
-            value.min=0;
+        if (value.min == 0) {
+            value.min = 0;
         }
-        else if(value.min > 0 &&  value.min <=20){
-            value.min=parseInt(this.fncl(value.min*(maximumval*1)/20));
+        else if (value.min > 0 && value.min <= 20) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 1) / 20));
         }
-        else if(value.min > 20 &&  value.min <=40){
-            value.min=parseInt(this.fncl(value.min*(maximumval*2)/40));
+        else if (value.min > 20 && value.min <= 40) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 2) / 40));
         }
-        else if(value.min > 40 &&  value.min <=60){
-            value.min=parseInt(this.fncl(value.min*(maximumval*3)/60));
+        else if (value.min > 40 && value.min <= 60) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 3) / 60));
         }
-        else if(value.min > 60 &&  value.min <=80){
-            value.min=parseInt(this.fncl(value.min*(maximumval*4)/80));
+        else if (value.min > 60 && value.min <= 80) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 4) / 80));
         }
-        else if(value.min > 80 &&  value.min <= 100){
-            value.min=parseInt(this.fncl(value.min*(maximumval*5)/100));
+        else if (value.min > 80 && value.min <= 100) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 5) / 100));
         }
-        else{
-            value.min=false;
+        else {
+            value.min = false;
         }
 
-        if(value.max===0){
-            value.max=0;
+        if (value.max === 0) {
+            value.max = 0;
         }
-        else if(value.max > 0 &&  value.max <=20){
-            value.max=parseInt(this.fncl(value.max*(maximumval*1)/20));
+        else if (value.max > 0 && value.max <= 20) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 1) / 20));
         }
-        else if(value.max > 20 &&  value.max <=40){
-            value.max=parseInt(this.fncl(value.max*(maximumval*2)/40));
+        else if (value.max > 20 && value.max <= 40) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 2) / 40));
         }
-        else if(value.max > 40 &&  value.max <=60){
-            value.max=parseInt(this.fncl(value.max*(maximumval*3)/60));
+        else if (value.max > 40 && value.max <= 60) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 3) / 60));
         }
-        else if(value.max > 60 &&  value.max <=80){
-            value.max=parseInt(this.fncl(value.max*(maximumval*4)/80));
+        else if (value.max > 60 && value.max <= 80) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 4) / 80));
         }
-        else if(value.max > 80 &&  value.max <= 100){
-            value.max=parseInt(this.fncl(value.max*(maximumval*5)/100));
+        else if (value.max > 80 && value.max <= 100) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 5) / 100));
         }
-        else{
-            value.max=false;
+        else {
+            value.max = false;
         }
         this.setState({
-            pricecapfilter:false,
-            priceplace:values
+            pricecapfilter: false,
+            priceplace: values
         });
-        
+
         this.props.priceValue({ value })
     }
 
@@ -160,33 +159,31 @@ class HorizontalFilter extends Component {
         }));
     }
     closeprice(priceVal) {
-        if(priceVal.min === 0)
-        {
+        if (priceVal.min === 0) {
             this.setState({
-                pricedrop:false
+                pricedrop: false
             })
         }
-        else
-        {
+        else {
             this.setState({
-                pricecapfilter:false,
-                pricedrop:false
+                pricecapfilter: false,
+                pricedrop: false
             })
         }
     }
     clearprice(pricesval) {
-        var value={
-            min:pricesval.min,
-            max:pricesval.max
+        var value = {
+            min: pricesval.min,
+            max: pricesval.max
         }
         this.setState({
-            pricecapfilter:true,
-            pricedrop:false,
-            priceplace:[this.props.prices.min, this.props.prices.max]
+            pricecapfilter: true,
+            pricedrop: false,
+            priceplace: [this.props.prices.min, this.props.prices.max]
         })
         this.props.priceValue({ value })
     }
-    
+
 
     // Color Filter 
     setColorRef(node) {
@@ -379,23 +376,16 @@ class HorizontalFilter extends Component {
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
 
-        var max=this.props.prices.max;
-        var maxdivide=max/5;
+        var max = this.props.prices.max;
+        var maxdivide = max / 5;
         const marks = {
             0: 0,
-            20: (maxdivide*1),
-            40: (maxdivide*2),
-            60: (maxdivide*3),
-            80: (maxdivide*4),
+            20: (maxdivide * 1),
+            40: (maxdivide * 2),
+            60: (maxdivide * 3),
+            80: (maxdivide * 4),
             100: max
         };
-
-        // if (this.props.filters.value.max > 2000) {
-        //     this.props.filters.value.max = 2000;
-        // }
-        // if (this.props.filters.value.min < 20) {
-        //     this.props.filters.value.min = 20;
-        // }
         if (removecategorylist && removecategorylist.length > 0) {
             var totalremovecategory = removecategorylist.length;
         }
@@ -412,47 +402,20 @@ class HorizontalFilter extends Component {
                 <Button onClick={this.showfilter} className="btn-filter">
                     <i className="fa fa-filter"> </i> Filter by
                 </Button>
-                {/* <div className="ml-2 mr-2 ">
-                    <div className="filter-container" ref={this.setWrapperRef}>
-                        {(this.state.pricecapfilter) ?
-                            <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
-                            :
-                            <Button className="btn-white dropdown-toggle" >Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button>
-                        }
-                        <div className="filter-wrapper zoomIn animated">
-                            <div className="horizontal-filter-dropdown dropdown">
-                                {(this.state.pricefilter) ? <div>
-                                    <h5 className="filter-title">Filter By Price</h5>
-                                    <Slider
-                                        range
-                                        step={1}
-                                        min={0}
-                                        max={100}
-                                        tipFormatter={this.toolformatter}
-                                        defaultValue={[0, 100]}
-                                        onAfterChange={this.onChangePricePlace}
-                                        marks={marks}
-                                    />
-                                </div>
-                                    : null}
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
 
                 <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
                     {(this.state.pricecapfilter) ?
-                            <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
-                            :
-                            <p><Button className="btn-white dropdown-toggle" onClick={this.pricedrop}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button><a href="#" onClick={() => this.clearprice(this.props.prices)} to="">Close</a></p>
+                        <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
+                        :
+                        <p><Button className="btn-white dropdown-toggle" onClick={this.pricedrop}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button><a href="#" onClick={() => this.clearprice(this.props.prices)} to="">Close</a></p>
                     }
-                    {(this.state.pricedrop) ? 
+                    {(this.state.pricedrop) ?
                         <div className="filter-wrapper zoomIn animated">
-                             <h5 className="filter-title">Price Range <span className="btn-close" onClick={()=>this.closeprice(this.props.filters.value)}>Close</span></h5>  
+                            <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}>Close</span></h5>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
-                                <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={()=>this.clearprice(this.props.prices)}>Clear</span></p> 
+                                <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                                 :
-                                <p>Between: <span>$ {this.props.filters.value.min} - $ {this.props.filters.value.max} </span> <span className="clear-filter" onClick={()=>this.clearprice(this.props.prices)}>Clear</span></p> 
+                                <p>Between: <span>$ {this.props.filters.value.min} - $ {this.props.filters.value.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                             }
                             <Slider
                                 range
@@ -465,9 +428,9 @@ class HorizontalFilter extends Component {
                                 //defaultValue={[0, 100]}
                                 onAfterChange={this.onChangePricePlace}
                                 marks={marks}
-                            />  
+                            />
                         </div>
-                    : null}
+                        : null}
                 </div>
 
                 <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
@@ -615,10 +578,7 @@ class HorizontalFilter extends Component {
                             })}
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
 
         )
@@ -632,8 +592,8 @@ const mapDispatchToProps = state => ({
     prices: uniqueMinMaxPrice(state.data.products),
     filters: state.filters
 })
+
 export default connect(
     mapDispatchToProps,
     { categoryValue, sizeValue, colorValue, priceValue }
 )(HorizontalFilter);
-
