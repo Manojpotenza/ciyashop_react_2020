@@ -14,6 +14,7 @@ import './Vendor.js';
  
 import { IntlProvider } from 'react-intl';
 import ShopPage from './component/shop';
+import ShopPage1 from './component/shop/index1';
 import ProductDetail from './component/shop/product-detail';
 import ShopingCart from './component/shop/ShopingCart';
 import MyAccount from './component/Account/MyAccount';
@@ -85,6 +86,7 @@ class App extends React.Component {
                     <Route exact path="/index-modern" component={HomePage3} />
                     <Route exact path="/index-home-classic" component={HomePage4} />
                     <Route exact path="/shop" component={ShopPage} />
+                    <Route exact path="/shop1" component={ShopPage1} />
                     <Route exact path="/ShopingCart" component={ShopingCart} />
                     <Route exact path="/MyAccount" component={MyAccount} />
                     <Route exact path="/BlogSinglePage" component={BlogSinglePage} />
