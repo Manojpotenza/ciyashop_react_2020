@@ -220,7 +220,7 @@
         Horizontal Filter
 ===============================================*/
 .horizontal-filter-dropdown{
-  display: inline-block;
+  display: block;
 }
 .horizontal-filter-dropdown .btn-secondary{
   background-color: #f8f9fa !important;

@@ -290,8 +290,8 @@ class ProductDetail extends Component {
                             <div className="related products">
                                 <h2>Related products</h2>
                                 <div className="row">
-                                <ProductSlider settings={relatedslider} />
-                            </div>
+                                    <ProductSlider settings={relatedslider} />
+                                </div>
                             </div>
                             </div>
                     </Container>
