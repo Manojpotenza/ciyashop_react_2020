@@ -37,20 +37,33 @@ class HorizontalFilter extends Component {
         this.colordrop = this.colordrop.bind(this);
         this.categorydrop = this.categorydrop.bind(this);
         this.sizedrop = this.sizedrop.bind(this);
+        this.showfilter = this.showfilter.bind(this);
+        this.closefilter = this.closefilter.bind(this);
 
         this.setColorRef = this.setColorRef.bind(this);
         this.setCategoryRef = this.setCategoryRef.bind(this);
         this.setSizeRef = this.setSizeRef.bind(this);
+        this.setPriceRef = this.setPriceRef.bind(this);
 
         this.handleClickOutsideColor = this.handleClickOutsideColor.bind(this);
         this.handleClickOutsideCategory = this.handleClickOutsideCategory.bind(this);
         this.handleClickOutsidesize = this.handleClickOutsidesize.bind(this);
+        this.handleClickOutsideprice = this.handleClickOutsideprice.bind(this);
     }
-
+    showfilter(){
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
+        document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
+    }
+    closefilter(){
+        document.getElementById("site-header-row").setAttribute("class","site-header-row");
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
+       
+    }
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutsideColor);
         document.addEventListener('mousedown', this.handleClickOutsideCategory);
         document.addEventListener('mousedown', this.handleClickOutsidesize);
+        document.addEventListener('mousedown', this.handleClickOutsideprice);
 
     }
 
@@ -58,6 +71,7 @@ class HorizontalFilter extends Component {
         document.removeEventListener('mousedown', this.handleClickOutsideColor);
         document.removeEventListener('mousedown', this.handleClickOutsideCategory);
         document.removeEventListener('mousedown', this.handleClickOutsidesize);
+        document.removeEventListener('mousedown', this.handleClickOutsideprice);
 
 
     }
@@ -68,6 +82,17 @@ class HorizontalFilter extends Component {
     }
 
     //Price Filter
+    setPriceRef(node) {
+        this.priceRef = node;
+    }
+
+    handleClickOutsideprice(event) {
+        if (this.priceRef && !this.priceRef.contains(event.target)) {
+            this.setState({
+                pricefilter: false
+            });
+        }
+    }
     toolformatter = value => {
         var maximumval=this.props.prices.max/5;
         if(value===0){
@@ -340,7 +365,6 @@ class HorizontalFilter extends Component {
     }
 
     Capitalize(str) {
-
         var i = 0;
         for (i; i < str.length; i++) {
             str = str.replace('-', ' ');
@@ -352,11 +376,9 @@ class HorizontalFilter extends Component {
 
     render() {
         const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist } = this.state;
-
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
-
         var max=this.props.prices.max;
         var maxdivide=max/5;
         const marks = {
@@ -386,12 +408,11 @@ class HorizontalFilter extends Component {
         return (
             <div className="d-flex align-items-center filters-wrapper">
                 <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter By</p>
-
                 <Button onClick={this.showfilter} className="btn-filter">
                     <i className="fa fa-filter"> </i> Filter By
                 </Button>
-                <div className="horizontal-filter-dropdown ">
-                    <div className="filter-container" ref={this.setWrapperRef}>
+                <div className="horizontal-filter-dropdown" ref={this.setPriceRef}>
+                    <div className="filter-container">
                         {(this.state.pricecapfilter) ?
                             <Button className="btn-white" onClick={this.pricefilter_toggle}>Filter By Price</Button>
                         :
@@ -425,7 +446,6 @@ class HorizontalFilter extends Component {
                         </div>
                     </div>
                 </div>
-
                 <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
                     {(colorfilter) ?
                         <Button caret className="btn-white" onClick={this.colordrop}>
@@ -453,7 +473,6 @@ class HorizontalFilter extends Component {
                         </div>
                         : null}
                 </div>
-
                 <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
                     {(categoryfilter) ?
                         <Button caret className="btn-white" onClick={this.categorydrop}>
@@ -478,8 +497,6 @@ class HorizontalFilter extends Component {
                         </div>
                         : null}
                 </div>
-
-
                 <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
                     {(sizefilter) ?
                         <Button caret className="btn-white" onClick={this.sizedrop}>
@@ -505,9 +522,6 @@ class HorizontalFilter extends Component {
                         </div>
                         : null}
                 </div>
-
-
-
                 <div className="off-canvas-filter">
                     <div class="sidebar-widget-heading">
                         <a href="#" class="close-sidebar-widget">Close</a>
@@ -516,7 +530,6 @@ class HorizontalFilter extends Component {
                         <h4 className="widget-title">Filter by Price</h4>
                         <div classs="shop-filter shop-filter-product-price widget_price_filter">
                             <div className="shop-filter-wrapper">
-
                                 <div className="price_slider_wrapper">
                                     <InputRange
                                         maxValue={this.props.prices.max}
@@ -559,7 +572,6 @@ class HorizontalFilter extends Component {
                     <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                         <h4 className="widget-title">Filter by Size</h4>
                         <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '215px' }}>
-
                             {this.props.sizes.map((size, index) => {
                                 return (
 
@@ -571,12 +583,8 @@ class HorizontalFilter extends Component {
                             })}
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
         )
     }
 }
