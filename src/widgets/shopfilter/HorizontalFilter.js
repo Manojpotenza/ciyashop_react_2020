@@ -21,8 +21,8 @@ class HorizontalFilter extends Component {
         this.state = {
             pricecapfilter:true,
             priceplace:[this.props.prices.min, this.props.prices.max],
-            pricefilter: false,
             isOpen: false,
+            pricefilter: true,
             colorfilter: true,
             categoryfilter: true,
             sizefilter: true,
@@ -32,7 +32,7 @@ class HorizontalFilter extends Component {
           
          
         }
-        this.pricefilter_toggle = this.pricefilter_toggle.bind(this);
+        this.pricedrop = this.pricedrop.bind(this);
         this.colordrop = this.colordrop.bind(this);
         this.categorydrop = this.categorydrop.bind(this);
         this.sizedrop = this.sizedrop.bind(this);
@@ -50,7 +50,7 @@ class HorizontalFilter extends Component {
         document.addEventListener('mousedown', this.handleClickOutsideColor);
         document.addEventListener('mousedown', this.handleClickOutsideCategory);
         document.addEventListener('mousedown', this.handleClickOutsidesize);
-
+        this.setdefaultvalue();
     }
 
     componentWillUnmount() {
@@ -60,10 +60,12 @@ class HorizontalFilter extends Component {
 
 
     }
-    pricefilter_toggle() {
-        this.setState({
-            pricefilter: !this.state.pricefilter
-        });
+    setdefaultvalue()
+    {
+        console.log('okay')
+        setTimeout(() => {
+            this.props.priceValue({value: {min: this.props.prices.min, max: this.props.prices.max}})
+        },1500)
     }
 
     //Price Filter
@@ -96,7 +98,7 @@ class HorizontalFilter extends Component {
     }
     onChangePricePlace = values => {
         var maximumval=this.props.prices.max/5;
-        console.log('value',values)
+
         var value={
             min:values['0'],
             max:values['1']
@@ -146,10 +148,45 @@ class HorizontalFilter extends Component {
         }
         this.setState({
             pricecapfilter:false,
+            priceplace:values
         });
         
         this.props.priceValue({ value })
     }
+
+    pricedrop() {
+        this.setState(prevState => ({
+            pricedrop: !prevState.pricedrop
+        }));
+    }
+    closeprice(priceVal) {
+        if(priceVal.min === 0)
+        {
+            this.setState({
+                pricedrop:false
+            })
+        }
+        else
+        {
+            this.setState({
+                pricecapfilter:false,
+                pricedrop:false
+            })
+        }
+    }
+    clearprice(pricesval) {
+        var value={
+            min:pricesval.min,
+            max:pricesval.max
+        }
+        this.setState({
+            pricecapfilter:true,
+            pricedrop:false,
+            priceplace:[this.props.prices.min, this.props.prices.max]
+        })
+        this.props.priceValue({ value })
+    }
+    
 
     // Color Filter 
     setColorRef(node) {
@@ -337,7 +374,7 @@ class HorizontalFilter extends Component {
 
     render() {
         const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist } = this.state;
-
+        console.log('filter Data ', this.props.filters)
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
@@ -353,12 +390,12 @@ class HorizontalFilter extends Component {
             100: max
         };
 
-        if (this.props.filters.value.max > 2000) {
-            this.props.filters.value.max = 2000;
-        }
-        if (this.props.filters.value.min < 20) {
-            this.props.filters.value.min = 20;
-        }
+        // if (this.props.filters.value.max > 2000) {
+        //     this.props.filters.value.max = 2000;
+        // }
+        // if (this.props.filters.value.min < 20) {
+        //     this.props.filters.value.min = 20;
+        // }
         if (removecategorylist && removecategorylist.length > 0) {
             var totalremovecategory = removecategorylist.length;
         }
@@ -375,10 +412,10 @@ class HorizontalFilter extends Component {
                 <Button onClick={this.showfilter} className="btn-filter">
                     <i className="fa fa-filter"> </i> Filter by
                 </Button>
-                <div className="ml-2 mr-2 ">
+                {/* <div className="ml-2 mr-2 ">
                     <div className="filter-container" ref={this.setWrapperRef}>
                         {(this.state.pricecapfilter) ?
-                            <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricefilter_toggle}>Filter By Price</Button>
+                            <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
                             :
                             <Button className="btn-white dropdown-toggle" >Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button>
                         }
@@ -401,6 +438,36 @@ class HorizontalFilter extends Component {
                             </div>
                         </div>
                     </div>
+                </div> */}
+
+                <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
+                    {(this.state.pricecapfilter) ?
+                            <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
+                            :
+                            <p><Button className="btn-white dropdown-toggle" onClick={this.pricedrop}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button><a href="#" onClick={() => this.clearprice(this.props.prices)} to="">Close</a></p>
+                    }
+                    {(this.state.pricedrop) ? 
+                        <div className="filter-wrapper zoomIn animated">
+                             <h5 className="filter-title">Price Range <span className="btn-close" onClick={()=>this.closeprice(this.props.filters.value)}>Close</span></h5>  
+                            {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
+                                <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={()=>this.clearprice(this.props.prices)}>Clear</span></p> 
+                                :
+                                <p>Between: <span>$ {this.props.filters.value.min} - $ {this.props.filters.value.max} </span> <span className="clear-filter" onClick={()=>this.clearprice(this.props.prices)}>Clear</span></p> 
+                            }
+                            <Slider
+                                range
+                                step={1}
+                                min={0}
+                                max={100}
+                                tipFormatter={this.toolformatter}
+                                // value={this.state.marketplace}
+                                defaultValue={this.state.priceplace}
+                                //defaultValue={[0, 100]}
+                                onAfterChange={this.onChangePricePlace}
+                                marks={marks}
+                            />  
+                        </div>
+                    : null}
                 </div>
 
                 <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
