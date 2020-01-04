@@ -7,14 +7,15 @@ import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import {uniqueCategory,uniqueSizes,uniqueColors,uniqueMinMaxPrice} from '../../services';
 import {categoryValue, sizeValue,colorValue,priceValue,searchValue} from '../../actions/filter';
-
+import {Slider} from 'antd';
 
 class SideFilter extends Component {
 
     constructor(props) {
         super(props);
         this.state={
-            SearchValue:''
+            SearchValue:'',
+            priceplace: [this.props.prices.min, this.props.prices.max],
         }
     }
     componentDidMount(){
@@ -74,19 +75,29 @@ class SideFilter extends Component {
         this.props.searchValue(SearchText.target.value);
     }
 
+    onChangePricePlace = values => {
+        var value = {
+            min: values['0'],
+            max: values['1']
+        }
+        this.setState({
+            priceplace: values
+        });
+        this.props.priceValue({ value })
+    }
     render(){
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
-        
-        if(this.props.filters.value.max > 2000)
-        {
-            this.props.filters.value.max = 2000;
-        }
-        if(this.props.filters.value.min < 20)
-        {
-            this.props.filters.value.min = 20;
-        }
+        console.log('this.state.priceplace',this.state.priceplace)
+        // if(this.props.filters.value.max > 2000)
+        // {
+        //     this.props.filters.value.max = 2000;
+        // }
+        // if(this.props.filters.value.min < 20)
+        // {
+        //     this.props.filters.value.min = 20;
+        // }
        return (
            <div>
                 <div className="widget">
@@ -97,14 +108,22 @@ class SideFilter extends Component {
                     <h4 className="widget-title">Filter by Price</h4>
                     <div classs="shop-filter shop-filter-product-price widget_price_filter">
                         <div className="shop-filter-wrapper">
-
-                        <div className="price_slider_wrapper">
-                            <InputRange
-                                maxValue={this.props.prices.max}
-                                minValue={this.props.prices.min}
-                                value={this.props.filters.value}
-                                onChange={value => this.props.priceValue({ value })} />
-                        </div>
+                            <div className="price_slider_wrapper">
+                                {/* <InputRange
+                                    maxValue={this.props.prices.max}
+                                    minValue={this.props.prices.min}
+                                    value={this.props.filters.value}
+                                    onChange={value => this.props.priceValue({ value })} /> */}
+                                <Slider 
+                                    range 
+                                    step={1}
+                                    min={this.props.prices.min}
+                                    max={this.props.prices.max}
+                                    tipFormatter={this.toolformatter}
+                                    defaultValue={this.state.priceplace}
+                                    onAfterChange={this.onChangePricePlace}    
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

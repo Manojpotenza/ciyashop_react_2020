@@ -37,23 +37,28 @@ class HorizontalFilter extends Component {
         this.categorydrop = this.categorydrop.bind(this);
         this.sizedrop = this.sizedrop.bind(this);
 
+        this.setPriceRef = this.setPriceRef.bind(this);
         this.setColorRef = this.setColorRef.bind(this);
         this.setCategoryRef = this.setCategoryRef.bind(this);
         this.setSizeRef = this.setSizeRef.bind(this);
 
+        this.handleClickOutsidePrice = this.handleClickOutsidePrice.bind(this);
         this.handleClickOutsideColor = this.handleClickOutsideColor.bind(this);
         this.handleClickOutsideCategory = this.handleClickOutsideCategory.bind(this);
         this.handleClickOutsidesize = this.handleClickOutsidesize.bind(this);
     }
 
     componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutsidePrice);
         document.addEventListener('mousedown', this.handleClickOutsideColor);
         document.addEventListener('mousedown', this.handleClickOutsideCategory);
         document.addEventListener('mousedown', this.handleClickOutsidesize);
+        
         this.setdefaultvalue();
     }
 
     componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutsidePrice);
         document.removeEventListener('mousedown', this.handleClickOutsideColor);
         document.removeEventListener('mousedown', this.handleClickOutsideCategory);
         document.removeEventListener('mousedown', this.handleClickOutsidesize);
@@ -149,7 +154,6 @@ class HorizontalFilter extends Component {
             pricecapfilter: false,
             priceplace: values
         });
-
         this.props.priceValue({ value })
     }
 
@@ -183,9 +187,21 @@ class HorizontalFilter extends Component {
         })
         this.props.priceValue({ value })
     }
+    setPriceRef(node) {
+        this.PriceRef = node;
+    }
 
+    handleClickOutsidePrice(event) {
+        if (this.PriceRef && !this.PriceRef.contains(event.target)) {
+            this.setState({
+                pricedrop: false
+            });
+        }
+    }
 
     // Color Filter 
+    
+    
     setColorRef(node) {
         this.ColorRef = node;
     }
@@ -403,7 +419,7 @@ class HorizontalFilter extends Component {
                     <i className="fa fa-filter"> </i> Filter by
                 </Button>
 
-                <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
+                <div className="horizontal-filter-dropdown" ref={this.setPriceRef}>
                     {(this.state.pricecapfilter) ?
                         <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
                         :

@@ -568,7 +568,7 @@ class CheckOut extends Component {
                                                 <td class="product-name">
                                                     {CartItem.ProductName}&nbsp; <strong class="product-quantity">× {CartItem.Qty}</strong> </td>
                                                 <td class="product-total">
-                                                    <span class="woocs_special_price_code"><span class="Price-amount amount"><span class="Price-currencySymbol">$</span>  {CartItem.Rate * CartItem.Qty} </span></span>
+                                                    <span class="woocs_special_price_code"><span class="Price-amount amount"><span class="Price-currencySymbol">$</span>  {(CartItem.Rate * CartItem.Qty).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span></span>
                                                 </td>
                                                 </tr>
                                         ))}
@@ -578,7 +578,7 @@ class CheckOut extends Component {
                                     <tfoot>
                                         <tr class="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span class="woocs_special_price_code"><span class="Price-amount amount"><span class="Price-currencySymbol">$</span>{this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)}</span></span>
+                                            <td><span class="woocs_special_price_code"><span class="Price-amount amount"><span class="Price-currencySymbol">$</span>{this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</span></span>
                                             </td>
                                         </tr>
                                         <tr class="shipping-totals shipping">
@@ -604,7 +604,7 @@ class CheckOut extends Component {
                                         </tr>
                                         <tr class="order-total">
                                             <th>Total</th>
-                                            <td><strong><span class="woocs_special_price_code"><span class="Price-amount amount"><span class="Price-currencySymbol">$</span>{parseFloat(parseFloat(this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat((this.state.TotalShippingCarge != undefined) ? this.state.TotalShippingCarge.toFixed(2) : 0)).toFixed(2)}    </span></span></strong>
+                                            <td><strong><span class="woocs_special_price_code"><span class="Price-amount amount"><span class="Price-currencySymbol">$</span>{parseFloat(parseFloat(this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat((this.state.TotalShippingCarge != undefined) ? this.state.TotalShippingCarge.toFixed(2) : 0)).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}    </span></span></strong>
                                             </td>
                                         </tr>
                                     </tfoot>

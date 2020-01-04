@@ -84,7 +84,7 @@ class OrderHistory extends Component {
                                         <td>{Ordervalue.orderid}</td>
                                         <td>{Ordervalue.date}</td>
                                         <td>{Ordervalue.status}</td>
-                                        <td>${Ordervalue.price}.00</td>
+                                        <td>${Ordervalue.price.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</td>
                                         <td><Link className="action-button"  onClick={() => this.onViewOrder(Ordervalue)}  href="#">View</Link></td>
                                       </tr>
                                 )}

@@ -140,7 +140,7 @@ const date = new Date();
                         <ul className="list-unstyled mb-0">
                           <li><span>Order ID:</span> <strong>7582654455365</strong></li>
                           <li><span>Order Date:</span> <strong> { date.toLocaleString('en-us', { month: 'long' }) } {new Date(). getDay()}, {new Date().getFullYear()}</strong></li>
-                          <li><span>Order Total:</span> <strong>${parseFloat(parseFloat(this.state.CartItems.reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat((this.state.TotalShippingCarge != undefined) ? this.state.TotalShippingCarge.toFixed(2) : 0)).toFixed(2)} </strong></li>
+                          <li><span>Order Total:</span> <strong>${parseFloat(parseFloat(this.state.CartItems.reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat((this.state.TotalShippingCarge != undefined) ? this.state.TotalShippingCarge.toFixed(2) : 0)).toLocaleString(navigator.language, { minimumFractionDigits: 2 })} </strong></li>
                         </ul>
                       </Col>
                     </Row>
@@ -172,7 +172,7 @@ const date = new Date();
                             </td>
                             <td className="ordered-price">
                              <h6 className="mb-0">Price</h6>
-                             <span>${CartItem.Rate * CartItem.Qty}</span>
+                             <span>${(CartItem.Rate * CartItem.Qty).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</span>
                             </td>
                           </tr>
                          ))}
@@ -187,15 +187,15 @@ const date = new Date();
                         <tbody>
                           <tr>
                             <td>Subtotal</td>
-                            <td className="text-right">${parseFloat(parseFloat(this.state.CartItems.reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0))).toFixed(2)}</td>
+                            <td className="text-right">${parseFloat(parseFloat(this.state.CartItems.reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0))).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</td>
                           </tr>
                           <tr>
                           <td>Shipping</td>
-                            <td className="text-right">${this.state.TotalShippingCarge.toFixed(2)}</td>
+                            <td className="text-right">${this.state.TotalShippingCarge.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</td>
                           </tr>
                           <tr className="border-top">
                           <td><strong className="h5">Total</strong></td>
-                            <td className="text-right h5"><strong>${parseFloat(parseFloat(this.state.CartItems.reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat((this.state.TotalShippingCarge != undefined) ? this.state.TotalShippingCarge.toFixed(2) : 0)).toFixed(2)}</strong></td>
+                            <td className="text-right h5"><strong>${parseFloat(parseFloat(this.state.CartItems.reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat((this.state.TotalShippingCarge != undefined) ? this.state.TotalShippingCarge.toFixed(2) : 0)).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</strong></td>
                           </tr>
                         </tbody>
                       </table>

@@ -204,7 +204,7 @@ const productslider = {
                         <p  className="review-link mt-2" >(<span className="count">{rating}</span> customer
                         reviews)</p>
                     </div>
-                    <p className="price">{`$${product.salePrice * qty}`}</p>
+                    <p className="price">{`$${(product.salePrice * qty).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}`}</p>
                     <div className="product-details__short-description">
                         <div className="pdp-about-details-txt pdp-about-details-equit">
                             {product.description}

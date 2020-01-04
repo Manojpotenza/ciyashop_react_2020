@@ -162,7 +162,7 @@ rating(productrat)
                         <span className="price">
                            <ins>
                               <span className="price-amount amount">
-                                 <span className="currency-symbol">$</span>{product.salePrice}
+                                 <span className="currency-symbol">$</span>{product.salePrice.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
                               </span>
                            </ins>
                         </span>

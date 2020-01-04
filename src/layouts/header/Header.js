@@ -358,7 +358,7 @@ class Header extends React.Component {
                                                                                                         <Link to="#"><img width={60} height={76} src={require(`../../assets/images/${CartItem.ProductImage}`)} className="img-fluid" alt /></Link>
                                                                                                         <div className="media-body">
                                                                                                             <Link to="#" className="product-title">{CartItem.ProductName}</Link>
-                                                                                                            <span className="quantity">{CartItem.Qty} × <span className="woocs-special_price_code"><span className="ciya-Price-amount amount"><span className="ciya-Price-currencySymbol">$</span>{CartItem.Rate}</span></span></span>
+                                                                                                            <span className="quantity">{CartItem.Qty} × <span className="woocs-special_price_code"><span className="ciya-Price-amount amount"><span className="ciya-Price-currencySymbol">$</span>{CartItem.Rate.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</span></span></span>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </li>
@@ -366,7 +366,7 @@ class Header extends React.Component {
 
                                                                                         </ul>
                                                                                     </div>
-                                                                                    <p className="ciyashop-mini-cart__total total"><strong>Subtotal:</strong> <span className="woocs_special_price_code"><span className="ciyashop-Price-amount amount"><span className="ciyashop-Price-currencySymbol">$</span> {this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)}</span></span></p>
+                                                                                    <p className="ciyashop-mini-cart__total total"><strong>Subtotal:</strong> <span className="woocs_special_price_code"><span className="ciyashop-Price-amount amount"><span className="ciyashop-Price-currencySymbol">$</span> {this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</span></span></p>
                                                                                     <p className="ciyashop-mini-cart__buttons buttons">
                                                                                         <Link onClick={() => this.HideCart()} to="/ShopingCart" className="button wc-forward">View cart</Link>
                                                                                         <Link onClick={() => this.HideCart()}  to="/CheckOut" className="button checkout wc-forward">Checkout</Link>

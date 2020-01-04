@@ -207,7 +207,7 @@ class ShopingCart extends Component {
                                                             {CartItem.ProductName}
                                                         </td>
                                                         <td className="product-price">
-                                                            ${CartItem.Rate}
+                                                            ${CartItem.Rate.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
                                                         </td>
                                                         <td className="product-quantity">
                                                             <div className="quantity">
@@ -220,7 +220,7 @@ class ShopingCart extends Component {
                                                             </div>
                                                         </td>
                                                         <td className="product-subtotal">
-                                                            ${CartItem.Rate * CartItem.Qty}
+                                                            ${(CartItem.Rate * CartItem.Qty).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
                                                         </td>
                                                     </tr>
 
@@ -237,7 +237,7 @@ class ShopingCart extends Component {
                                             <tbody>
                                                 <tr className="cart-subtotal">
                                                     <th>Subtotal</th>
-                                                    <td data-title="Subtotal"><span className="woocs_special_price_code"><span className="Price-amount amount"><span className="Price-currencySymbol">$</span> {this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)}  </span></span>
+                                                    <td data-title="Subtotal"><span className="woocs_special_price_code"><span className="Price-amount amount"><span className="Price-currencySymbol">$</span> {this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}  </span></span>
                                                     </td>
                                                 </tr>
                                                 <tr className="shipping-totals shipping">
@@ -335,7 +335,7 @@ class ShopingCart extends Component {
                                                 </tr>
                                                 <tr className="order-total">
                                                     <th>Total</th>
-                                                    <td data-title="Total"><strong><span className="special_price_code"><span className="Price-amount amount"><span className="Price-currencySymbol">$</span> {parseFloat(parseFloat(this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat(this.state.TotalShippingCarge.toFixed(2))).toFixed(2)}    </span></span></strong>
+                                                    <td data-title="Total"><strong><span className="special_price_code"><span className="Price-amount amount"><span className="Price-currencySymbol">$</span> {parseFloat(parseFloat(this.ReadCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0)) + parseFloat(this.state.TotalShippingCarge.toFixed(2))).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}    </span></span></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>
