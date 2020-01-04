@@ -437,7 +437,9 @@ class HorizontalFilter extends Component {
                     }
                     {(this.state.pricedrop) ?
                         <div className="filter-wrapper zoomIn animated">
-                            <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
+                            <div className="widget-title-header">
+                                <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
+                            </div>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
                                 <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                                 :
@@ -555,7 +557,7 @@ class HorizontalFilter extends Component {
                     <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
                 
                         <div className="filter-wrapper zoomIn animated">
-                            <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
+                            <h5 className="filter-title">Price Range</h5>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
                                 <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                                 :
@@ -580,7 +582,7 @@ class HorizontalFilter extends Component {
                  
                         <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
                             <div className="widget-title-header">
-                                <h4 className="widget-title">Filter by Color <a href="#" className="btn-close" onClick={() => this.closecolor()}></a></h4>
+                                <h4 className="widget-title">Filter by Color </h4>
                              </div>
                             <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                                 <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
@@ -599,17 +601,9 @@ class HorizontalFilter extends Component {
                 </div>
 
                 <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
-                    {(categoryfilter) ?
-                        <Button caret className="btn-white" onClick={this.categorydrop}>
-                            <span className="mb-0">Product Categories</span>
-                        </Button>
-                        :
-                        <p><Button caret className="btn-white bg-highlight" onClick={this.categorydrop}>Category: <b>{(removecategorylist.length === 1) ? this.Capitalize(removecategorylist[0]) : this.Capitalize(removecategorylist[0]) + '+' + (totalremovecategory - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearcategory()} to=""></a></p>
-                    }
-                    {(categorydrop) ?
                         <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
                             <div className="widget-title-header">
-                                <h4 className="widget-title">Product Categories<a href="#" className="btn-close" onClick={() => this.closecategory()}></a></h4>
+                                <h4 className="widget-title">Product Categories</h4>
                             </div>
                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                                 {this.props.categorys.map((category, index) => {
@@ -622,22 +616,14 @@ class HorizontalFilter extends Component {
                                 })}
                             </div>
                         </div>
-                        : null}
+                        
                 </div>
 
 
                 <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
-                    {(sizefilter) ?
-                        <Button caret className="btn-white" onClick={this.sizedrop}>
-                            <span className="mb-0">Filter By Size</span>
-                        </Button>
-                        :
-                        <p><Button caret className="btn-white bg-highlight" onClick={this.sizedrop}>Size: <b>{(removesizelist.length === 1) ? this.Capitalize(removesizelist[0]) : this.Capitalize(removesizelist[0]) + '+' + (totalremovesize - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearsize()} ></a></p>
-                    }
-                    {(sizedrop) ?
                         <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
                             <div className="widget-title-header">
-                                <h4 className="widget-title">Filter By Size<a href="#" className="btn-close" onClick={() => this.closesize()}></a></h4>
+                                <h4 className="widget-title">Filter By Size</h4>
                             </div>
                             <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                                 {this.props.sizes.map((size, index) => {
@@ -651,7 +637,6 @@ class HorizontalFilter extends Component {
                                 })}
                             </div>
                         </div>
-                        : null}
                 </div>
                 
                 </div>
