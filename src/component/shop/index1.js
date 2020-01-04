@@ -99,16 +99,17 @@ class ShopPage1 extends Component {
                                     <div className="right-banner">
                                         <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
                                     </div>
-                                    <div className="sticky-filter" id="sticky-filter">
-
-                                        <div className="d-flex align-items-center">
-                                            <div className="sidebar desktop">
-                                                <div className="shop-sidebar-widgets">
-                                                    <HorizontalFilter />
+                                        <div className="sticky-filter" id="sticky-filter">
+                                            <Container className="px-0">
+                                                <div className="d-flex align-items-center">
+                                                    <div className="sidebar desktop">
+                                                        <div className="shop-sidebar-widgets">
+                                                            <HorizontalFilter />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </Container>
                                         </div>
-                                    </div>
                                     <div className="loop-header">
                                         <div className="loop-header-tools">
                                             <div className="loop-header-tools-wrapper">

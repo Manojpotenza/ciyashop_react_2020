@@ -36,6 +36,8 @@ class HorizontalFilter extends Component {
         this.colordrop = this.colordrop.bind(this);
         this.categorydrop = this.categorydrop.bind(this);
         this.sizedrop = this.sizedrop.bind(this);
+        this.showfilter = this.showfilter.bind(this);
+        this.closefilter = this.closefilter.bind(this);
 
         this.setColorRef = this.setColorRef.bind(this);
         this.setCategoryRef = this.setCategoryRef.bind(this);
@@ -45,7 +47,7 @@ class HorizontalFilter extends Component {
         this.handleClickOutsideCategory = this.handleClickOutsideCategory.bind(this);
         this.handleClickOutsidesize = this.handleClickOutsidesize.bind(this);
     }
-
+    
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutsideColor);
         document.addEventListener('mousedown', this.handleClickOutsideCategory);
@@ -66,7 +68,15 @@ class HorizontalFilter extends Component {
             this.props.priceValue({ value: { min: this.props.prices.min, max: this.props.prices.max } })
         }, 1500)
     }
+    showfilter(){
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
+        document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
+    }
+    closefilter(){
+        document.getElementById("site-header-row").setAttribute("class","site-header-row");
+        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
 
+    }
     //Price Filter
     toolformatter = value => {
         var maximumval = this.props.prices.max / 5;
@@ -520,70 +530,114 @@ class HorizontalFilter extends Component {
                 </div>
 
 
-
-                <div className="off-canvas-filter">
+                <div className="site-header-row" id="site-header-row"></div>
+            {/* Responsive Mobile */}
+            <div className="off-canvas-filter"  id="off-canvas-filter">
                     <div class="sidebar-widget-heading">
-                        <a href="#" class="close-sidebar-widget">Close</a>
+                        <a href="#" onClick={this.closefilter} class="close-sidebar-widget">Close</a>
                     </div>
-                    <div className="widget widget_price_filter">
-                        <h4 className="widget-title">Filter by Price</h4>
-                        <div classs="shop-filter shop-filter-product-price widget_price_filter">
-                            <div className="shop-filter-wrapper">
+                    <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
+                
+                        <div className="filter-wrapper zoomIn animated">
+                            <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
+                            {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
+                                <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                :
+                                <p>Between: <span>$ {this.props.filters.value.min} - $ {this.props.filters.value.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                            }
+                            <Slider
+                                range
+                                step={1}
+                                min={0}
+                                max={100}
+                                tipFormatter={this.toolformatter}
+                                // value={this.state.marketplace}
+                                defaultValue={this.state.priceplace}
+                                //defaultValue={[0, 100]}
+                                onAfterChange={this.onChangePricePlace}
+                                marks={marks}
+                            />
+                        </div>
+                </div>
 
-                                <div className="price_slider_wrapper">
-                                    <InputRange
-                                        maxValue={this.props.prices.max}
-                                        minValue={this.props.prices.min}
-                                        value={this.props.filters.value}
-                                        onChange={value => this.props.priceValue({ value })} />
-                                </div>
+                <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
+                 
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget-title-header">
+                                <h4 className="widget-title">Filter by Color <a href="#" className="btn-close" onClick={() => this.closecolor()}></a></h4>
+                             </div>
+                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
+                                    {this.props.colors.map((color, index) => {
+                                        return (
+                                            <div className="form-check pgs-filter-checkbox" key={index}>
+                                                <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                                <label className="form-check-label"
+                                                    htmlFor={color}>{color}</label>
+                                            </div>
+                                        )
+                                    })}
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                        <h4 className="widget-title">Filter by Color</h4>
-                        <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                            <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
-                                {this.props.colors.map((color, index) => {
+                </div>
+
+                <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
+                    {(categoryfilter) ?
+                        <Button caret className="btn-white" onClick={this.categorydrop}>
+                            <span className="mb-0">Product Categories</span>
+                        </Button>
+                        :
+                        <p><Button caret className="btn-white bg-highlight" onClick={this.categorydrop}>Category: <b>{(removecategorylist.length === 1) ? this.Capitalize(removecategorylist[0]) : this.Capitalize(removecategorylist[0]) + '+' + (totalremovecategory - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearcategory()} to=""></a></p>
+                    }
+                    {(categorydrop) ?
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget-title-header">
+                                <h4 className="widget-title">Product Categories<a href="#" className="btn-close" onClick={() => this.closecategory()}></a></h4>
+                            </div>
+                           <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                {this.props.categorys.map((category, index) => {
                                     return (
                                         <div className="form-check pgs-filter-checkbox" key={index}>
-                                            <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                            <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
                                             <label className="form-check-label"
-                                                htmlFor={color}>{color}</label>
+                                                htmlFor={category}>{category}</label>
+                                        </div>)
+                                })}
+                            </div>
+                        </div>
+                        : null}
+                </div>
+
+
+                <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
+                    {(sizefilter) ?
+                        <Button caret className="btn-white" onClick={this.sizedrop}>
+                            <span className="mb-0">Filter By Size</span>
+                        </Button>
+                        :
+                        <p><Button caret className="btn-white bg-highlight" onClick={this.sizedrop}>Size: <b>{(removesizelist.length === 1) ? this.Capitalize(removesizelist[0]) : this.Capitalize(removesizelist[0]) + '+' + (totalremovesize - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearsize()} ></a></p>
+                    }
+                    {(sizedrop) ?
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget-title-header">
+                                <h4 className="widget-title">Filter By Size<a href="#" className="btn-close" onClick={() => this.closesize()}></a></h4>
+                            </div>
+                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                {this.props.sizes.map((size, index) => {
+                                    return (
+
+                                        <div class="form-check pgs-filter-checkbox">
+                                            <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
+                                            <label class="form-check-label" htmlFor={size}>{size}</label>
                                         </div>
                                     )
                                 })}
-                            </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                        <h4 className="widget-title">Product Categories</h4>
-                        <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '215px' }}>
-                            {this.props.categorys.map((category, index) => {
-                                return (
-                                    <div className="form-check pgs-filter-checkbox" key={index}>
-                                        <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
-                                        <label className="form-check-label"
-                                            htmlFor={category}>{category}</label>
-                                    </div>)
-                            })}
-                        </div>
-                    </div>
-                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                        <h4 className="widget-title">Filter by Size</h4>
-                        <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '215px' }}>
-
-                            {this.props.sizes.map((size, index) => {
-                                return (
-
-                                    <div class="form-check pgs-filter-checkbox">
-                                        <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
-                                        <label class="form-check-label" htmlFor={size}>{size}</label>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
+                        : null}
+                </div>
+                
                 </div>
             </div>
 

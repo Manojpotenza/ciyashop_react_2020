@@ -96,6 +96,11 @@ class Header extends React.Component {
         } else {
             document.getElementById("site-header").setAttribute("class","site-header header-style-menu-center");
         }
+        if(scrollTop > 490){
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
+        }else{
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+        }
       }
 
       ShowCart() {
