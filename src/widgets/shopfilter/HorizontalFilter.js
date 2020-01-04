@@ -413,7 +413,7 @@ class HorizontalFilter extends Component {
         }
         return (
             <div className="d-flex align-items-center filters-wrapper">
-                <p class="mb-0 filter-title"><i className="fa fa-filter"></i> Filter by</p>
+                <p class="mb-0 filter-title filter-by"><i className="fa fa-filter"></i> Filter by</p>
 
                 <Button onClick={this.showfilter} className="btn-filter">
                     <i className="fa fa-filter"> </i> Filter by
@@ -423,11 +423,11 @@ class HorizontalFilter extends Component {
                     {(this.state.pricecapfilter) ?
                         <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
                         :
-                        <p><Button className="btn-white dropdown-toggle" onClick={this.pricedrop}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button><a href="#" onClick={() => this.clearprice(this.props.prices)} to="">Close</a></p>
+                        <p><Button className="btn-white dropdown-toggle bg-highlight" onClick={this.pricedrop}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button><a className="filter-close" href="#" onClick={() => this.clearprice(this.props.prices)} to=""></a></p>
                     }
                     {(this.state.pricedrop) ?
                         <div className="filter-wrapper zoomIn animated">
-                            <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}>Close</span></h5>
+                            <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
                                 <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                                 :
@@ -455,11 +455,13 @@ class HorizontalFilter extends Component {
                             <span className="mb-0">Filter by Color</span>
                         </Button>
                         :
-                        <p><Button caret className="btn-white" onClick={this.colordrop}>Color: <b>{(removecolorlist.length === 1) ? this.Capitalize(removecolorlist[0]) : this.Capitalize(removecolorlist[0]) + '+' + (totalremovecolor - 1)}</b></Button><a href="#" onClick={() => this.clearcolor()} to="">Close</a></p>
+                        <p><Button caret className="btn-white bg-highlight" onClick={this.colordrop}>Color: <b>{(removecolorlist.length === 1) ? this.Capitalize(removecolorlist[0]) : this.Capitalize(removecolorlist[0]) + '+' + (totalremovecolor - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearcolor()} to=""></a></p>
                     }
                     {(colordrop) ?
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                            <h4 className="widget-title">Filter by Color <a href="#" onClick={() => this.closecolor()}>Close</a></h4>
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget-title-header">
+                                <h4 className="widget-title">Filter by Color <a href="#" className="btn-close" onClick={() => this.closecolor()}></a></h4>
+                             </div>
                             <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                                 <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
                                     {this.props.colors.map((color, index) => {
@@ -483,12 +485,14 @@ class HorizontalFilter extends Component {
                             <span className="mb-0">Product Categories</span>
                         </Button>
                         :
-                        <p><Button caret className="btn-white" onClick={this.categorydrop}>Category: <b>{(removecategorylist.length === 1) ? this.Capitalize(removecategorylist[0]) : this.Capitalize(removecategorylist[0]) + '+' + (totalremovecategory - 1)}</b></Button><a href="#" onClick={() => this.clearcategory()} to="">Close</a></p>
+                        <p><Button caret className="btn-white bg-highlight" onClick={this.categorydrop}>Category: <b>{(removecategorylist.length === 1) ? this.Capitalize(removecategorylist[0]) : this.Capitalize(removecategorylist[0]) + '+' + (totalremovecategory - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearcategory()} to=""></a></p>
                     }
                     {(categorydrop) ?
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                            <h4 className="widget-title">Product Categories<a href="#" onClick={() => this.closecategory()}>Close</a></h4>
-                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget-title-header">
+                                <h4 className="widget-title">Product Categories<a href="#" className="btn-close" onClick={() => this.closecategory()}></a></h4>
+                            </div>
+                           <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                                 {this.props.categorys.map((category, index) => {
                                     return (
                                         <div className="form-check pgs-filter-checkbox" key={index}>
@@ -509,11 +513,13 @@ class HorizontalFilter extends Component {
                             <span className="mb-0">Filter By Size</span>
                         </Button>
                         :
-                        <p><Button caret className="btn-white" onClick={this.sizedrop}>Size: <b>{(removesizelist.length === 1) ? this.Capitalize(removesizelist[0]) : this.Capitalize(removesizelist[0]) + '+' + (totalremovesize - 1)}</b></Button><a href="#" onClick={() => this.clearsize()} >Close</a></p>
+                        <p><Button caret className="btn-white bg-highlight" onClick={this.sizedrop}>Size: <b>{(removesizelist.length === 1) ? this.Capitalize(removesizelist[0]) : this.Capitalize(removesizelist[0]) + '+' + (totalremovesize - 1)}</b></Button><a href="#" className="filter-close" onClick={() => this.clearsize()} ></a></p>
                     }
                     {(sizedrop) ?
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                            <h4 className="widget-title">Filter By Size<a href="#" onClick={() => this.closesize()}>Close</a></h4>
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget-title-header">
+                                <h4 className="widget-title">Filter By Size<a href="#" className="btn-close" onClick={() => this.closesize()}></a></h4>
+                            </div>
                             <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                                 {this.props.sizes.map((size, index) => {
                                     return (

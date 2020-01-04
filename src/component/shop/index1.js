@@ -2,15 +2,15 @@
 /**
  *  Shop Main Page
  */
-import React , {Component , useState }from 'react';
+import React, { Component, useState } from 'react';
 import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
 import SocialFilter from '../../widgets/shopfilter/SocialInfo';
 import ShopBanner from '../../widgets/shopfilter/ShopBanner';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container,Form,Nav,Dropdown,DropdownItem,DropdownToggle,DropdownMenu } from 'reactstrap';
+import { Row, Col, Container, Form, Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import AllProduct from '../../api/product';
 import ProductList from '../../widgets/ProductList';
-import {getFilterProductsdata} from '../../services';
+import { getFilterProductsdata } from '../../services';
 import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -20,14 +20,14 @@ class ShopPage1 extends Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
-          limit: 5,
-          hasMoreProduct: true,
-          getproduct:AllProduct,
+            limit: 5,
+            hasMoreProduct: true,
+            getproduct: AllProduct,
         }
     }
 
 
-    componentWillMount(){
+    componentWillMount() {
         if (this.state.limit < this.state.getproduct.length) {
             setTimeout(() => {
                 this.setState({
@@ -39,8 +39,7 @@ class ShopPage1 extends Component {
     componentDidMount() {
         window.scrollTo(0, 0)
     }
-    componentDidUpdate(prevProps)
-    {
+    componentDidUpdate(prevProps) {
         if (this.state.limit < prevProps.products.length) {
             setTimeout(() => {
                 this.setState({
@@ -61,60 +60,59 @@ class ShopPage1 extends Component {
         }, 2500);
     }
     render() {
-        let {products} = this.props;
-        let layoutstyle=localStorage.getItem('setLayoutStyle')
+        let { products } = this.props;
+        let layoutstyle = localStorage.getItem('setLayoutStyle')
 
-        if(layoutstyle == null)
-        {
-            layoutstyle=localStorage.setItem('setLayoutStyle','col-sm-6 col-md-4')
+        if (layoutstyle == null) {
+            layoutstyle = localStorage.setItem('setLayoutStyle', 'col-sm-6 col-md-4')
         }
 
-     return (
+        return (
             <div className="site-content">
                 <div className="inner-intro">
-                <Container>
-                    <Row className="intro-title align-items-center">
-                        <Col md={6} className="text-left">
-                            <div className="intro-title-inner">
-                            <h1>Shop</h1>
-                            </div>
-                        </Col>
-                        <Col md={6}  className="text-right">
-                            <ul className="ciyashop_breadcrumbs page-breadcrumb breadcrumbs">
-                            <li className="home">
-                                <span>
-                                <Link className="bread-link bread-home" to="/">Home</Link>
-                                </span>
-                            </li>
-                            <li><span>Products</span></li>
-                            </ul>
-                        </Col>
-                    </Row>
-                </Container>
+                    <Container>
+                        <Row className="intro-title align-items-center">
+                            <Col md={6} className="text-left">
+                                <div className="intro-title-inner">
+                                    <h1>Shop</h1>
+                                </div>
+                            </Col>
+                            <Col md={6} className="text-right">
+                                <ul className="ciyashop_breadcrumbs page-breadcrumb breadcrumbs">
+                                    <li className="home">
+                                        <span>
+                                            <Link className="bread-link bread-home" to="/">Home</Link>
+                                        </span>
+                                    </li>
+                                    <li><span>Products</span></li>
+                                </ul>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
-                <div className="sticky-filter" id="sticky-filter">
-                <Container>
-                    <Row className="d-flex align-items-center">
-                    <Col md={12} className="sidebar desktop">
-                        <div className="shop-sidebar-widgets">
-                            <HorizontalFilter />
-                        </div> 
-                    </Col>
-                    </Row>
-                </Container>
-                </div>
+
                 <div className="content-wrapper section-pt mb-3 mb-md-5">
-                  <Container>
+                    <Container>
                         <Row>
                             <div className="content col-xl-12 col-lg-12">
                                 <div className="products-header">
                                     <div className="right-banner">
-                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)}  className="img-fluid" />
+                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
+                                    </div>
+                                    <div className="sticky-filter" id="sticky-filter">
+
+                                        <div className="d-flex align-items-center">
+                                            <div className="sidebar desktop">
+                                                <div className="shop-sidebar-widgets">
+                                                    <HorizontalFilter />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="loop-header">
                                         <div className="loop-header-tools">
                                             <div className="loop-header-tools-wrapper">
-                                                <TopFilter productlength={products.length}  />
+                                                <TopFilter productlength={products.length} />
                                             </div>
                                         </div>
                                     </div>
@@ -127,34 +125,34 @@ class ShopPage1 extends Component {
                                         loader={<div className="lazyload-img"></div>}
                                     >
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
-                                            {products.slice(0,this.state.limit).map((product, index) =>
-                                                        <ProductList product={product} key={index} layoutstyle={layoutstyle} />
-                                                )
+                                            {products.slice(0, this.state.limit).map((product, index) =>
+                                                <ProductList product={product} key={index} layoutstyle={layoutstyle} />
+                                            )
                                             }
                                         </Row>
                                     </InfiniteScroll>
-                                :
-                                      <Row className="products products-loop grid ciyashop-products-shortcode">
+                                    :
+                                    <Row className="products products-loop grid ciyashop-products-shortcode">
                                         <div className="col-sm-12 text-center  mt-5" >
                                             <img src={require(`../../assets/images/empty-search.jpg`)} className="img-fluid mb-4" />
                                             <h3>Sorry! No products were found matching your selection!    </h3>
                                             <p>Please try to other words.</p>
-                                             <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
+                                            <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
                                         </div>
-                                      </Row>
+                                    </Row>
                                 }
                             </div>
 
                         </Row>
-                  </Container>
+                    </Container>
                 </div>
-        </div>
-      )
+            </div>
+        )
     }
 }
-const mapDispatchToProps  = (state) => ({
+const mapDispatchToProps = (state) => ({
     products: getFilterProductsdata(state.data, state.filters)
 })
 export default connect(
-    mapDispatchToProps , {}
+    mapDispatchToProps, {}
 )(ShopPage1)
