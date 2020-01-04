@@ -43,7 +43,25 @@ export default [
       "child_routes": [
          {
             "path": "/shop",
-            "menu_title": "Products",
+            "menu_title": "Sidebar With Lazyload",
+            "icon": "arrow_right_alt",
+            "child_routes": null
+         },
+         {
+            "path": "/shop1",
+            "menu_title": "Topbar  With Lazyload",
+            "icon": "arrow_right_alt",
+            "child_routes": null
+         },
+         {
+            "path": "/shop2",
+            "menu_title": "Sidebar Without Lazyload",
+            "icon": "arrow_right_alt",
+            "child_routes": null
+         },
+         {
+            "path": "/shop3",
+            "menu_title": "Topbar Without Lazyload",
             "icon": "arrow_right_alt",
             "child_routes": null
          },

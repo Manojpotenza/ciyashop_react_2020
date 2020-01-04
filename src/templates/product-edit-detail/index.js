@@ -125,7 +125,7 @@ class ProductEditDetail extends Component {
                                             <Input type="text" className="form-control product_title" placeholder="Product Name" defaultValue={product.name} />
                                         </FormGroup>
                                         <FormGroup className="edit-icon">
-                                            <Input type="text" className="form-control price" placeholder="Product Price" defaultValue={`$${product.salePrice}`} />
+                                            <Input type="text" className="form-control price" placeholder="Product Price" defaultValue={`$${product.salePrice.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}`} />
                                         </FormGroup>
                                         <FormGroup className="edit-icon">
                                             <Input  type="textarea" className="form-control" rows="3" placeholder="Product Description" defaultValue={product.description} />
