@@ -80,8 +80,7 @@ class App extends React.Component {
                 </Switch>
               :
               <div>
-                
-                <Headers />
+               <Headers />
                   <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/index-new-fashion" component={HomePage2} />
@@ -114,7 +113,6 @@ class App extends React.Component {
                     <Route exact path="/Invoices" component={Invoices} />
                     <Route path={`/shop/:category/:id`} component={ProductDetail} /> 
                     <Route exact  component={PageNotFound} />
-
                   </Switch>
                 <Footer />
               </div>
