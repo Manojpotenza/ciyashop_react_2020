@@ -55,6 +55,7 @@ class HorizontalFilter extends Component {
         document.addEventListener('mousedown', this.handleClickOutsideColor);
         document.addEventListener('mousedown', this.handleClickOutsideCategory);
         document.addEventListener('mousedown', this.handleClickOutsidesize);
+        window.addEventListener('scroll', this.handleScroll); 
         
         this.setdefaultvalue();
     }
@@ -64,9 +65,19 @@ class HorizontalFilter extends Component {
         document.removeEventListener('mousedown', this.handleClickOutsideColor);
         document.removeEventListener('mousedown', this.handleClickOutsideCategory);
         document.removeEventListener('mousedown', this.handleClickOutsidesize);
+        window.removeEventListener('scroll', this.handleScroll);
 
 
     }
+    handleScroll(event) {
+        var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
+        document.body.scrollTop;
+        if(scrollTop > 490){
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
+        }else{
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+        }
+      }
     setdefaultvalue() {
         console.log('okay')
         setTimeout(() => {
@@ -463,7 +474,7 @@ class HorizontalFilter extends Component {
 
                 <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
                     {(colorfilter) ?
-                        <Button caret className="btn-white" onClick={this.colordrop}>
+                        <Button caret className="btn-white dropdown-toggle" onClick={this.colordrop}>
                             <span className="mb-0">Filter by Color</span>
                         </Button>
                         :
@@ -493,7 +504,7 @@ class HorizontalFilter extends Component {
 
                 <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
                     {(categoryfilter) ?
-                        <Button caret className="btn-white" onClick={this.categorydrop}>
+                        <Button caret className="btn-white dropdown-toggle" onClick={this.categorydrop}>
                             <span className="mb-0">Product Categories</span>
                         </Button>
                         :
@@ -521,7 +532,7 @@ class HorizontalFilter extends Component {
 
                 <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
                     {(sizefilter) ?
-                        <Button caret className="btn-white" onClick={this.sizedrop}>
+                        <Button caret className="btn-white dropdown-toggle" onClick={this.sizedrop}>
                             <span className="mb-0">Filter By Size</span>
                         </Button>
                         :

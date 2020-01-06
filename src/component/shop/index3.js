@@ -65,17 +65,6 @@ class ShopPage3 extends Component {
                     </Row>
                 </Container>
                 </div>
-                <div className="sticky-filter" id="sticky-filter">
-                <Container>
-                    <Row className="d-flex align-items-center">
-                    <Col md={12} className="sidebar desktop">
-                        <div className="shop-sidebar-widgets">
-                            <HorizontalFilter />
-                        </div> 
-                    </Col>
-                    </Row>
-                </Container>
-                </div>
                 <div className="content-wrapper section-pt mb-3 mb-md-5">
                   <Container>
                         <Row>
@@ -83,6 +72,17 @@ class ShopPage3 extends Component {
                                 <div className="products-header">
                                     <div className="right-banner">
                                         <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)}  className="img-fluid" />
+                                    </div>
+                                    <div className="sticky-filter" id="sticky-filter">
+                                        <Container className="px-0">
+                                            <div className="d-flex align-items-center">
+                                                <div className="horizontal-sidebar sidebar desktop">
+                                                    <div className="shop-sidebar-widgets">
+                                                        <HorizontalFilter />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Container>
                                     </div>
                                     <div className="loop-header">
                                         <div className="loop-header-tools">
