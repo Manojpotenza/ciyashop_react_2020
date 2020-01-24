@@ -538,7 +538,7 @@ body {
 }
 @media screen and (max-width:767px) {
   .sticky-filter.is-sticky {
-    top: 61px;
+    top: 57px;
   }
   .btn-filter{
     font-weight: 600;
@@ -607,7 +607,7 @@ body {
     right: 0;
   }
 .off-canvas-filter-show .sidebar-widget-heading {
-  padding: 15px 25px 15px 0px;
+  padding: 15px 0px 15px 0px;
   margin-bottom: 30px;
   margin-top: 20px;
   background: #fff;
@@ -615,6 +615,8 @@ body {
 }
 .close-sidebar-widget{
   color: #323232;
+  display: block;
+  width: 100%;
 }
 .sidebar-widget-heading{
   position: relative;
@@ -649,8 +651,11 @@ body {
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+  z-index: 0;
 }
-
+.is-sticky .off-canvas-filter-show{
+  height: 100vh;
+}
 
 
 }
