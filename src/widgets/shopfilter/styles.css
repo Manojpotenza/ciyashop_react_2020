@@ -540,6 +540,11 @@ body {
   .sticky-filter.is-sticky {
     top: 57px;
   }
+  .sticky-filter.is-sticky.open {
+    top: 0;
+    z-index: 1000;
+  }
+
   .btn-filter{
     font-weight: 600;
     color: #212121;
@@ -608,8 +613,8 @@ body {
   }
 .off-canvas-filter-show .sidebar-widget-heading {
   padding: 15px 0px 15px 0px;
-  margin-bottom: 30px;
-  margin-top: 20px;
+  margin-bottom: 24px;
+  margin-top: 5px;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
 }
@@ -617,6 +622,7 @@ body {
   color: #323232;
   display: block;
   width: 100%;
+  min-height: 25px;
 }
 .sidebar-widget-heading{
   position: relative;
