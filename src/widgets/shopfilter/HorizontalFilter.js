@@ -74,6 +74,7 @@ class HorizontalFilter extends Component {
         document.body.scrollTop;
         if(scrollTop > 490){
             document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
+
         }else{
             document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
         }
@@ -87,10 +88,12 @@ class HorizontalFilter extends Component {
     showfilter(){
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
         document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
+        document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky open");
     }
     closefilter(){
         document.getElementById("site-header-row").setAttribute("class","site-header-row");
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
+        document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
 
     }
     //Price Filter
@@ -563,7 +566,7 @@ class HorizontalFilter extends Component {
             {/* Responsive Mobile */}
             <div className="off-canvas-filter"  id="off-canvas-filter">
                     <div class="sidebar-widget-heading">
-                        <a href="#" onClick={this.closefilter} class="close-sidebar-widget">Close</a>
+                        <a href="#" onClick={this.closefilter} class="close-sidebar-widget"></a>
                     </div>
                     <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
                 
