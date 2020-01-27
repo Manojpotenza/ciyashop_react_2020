@@ -43,6 +43,7 @@ export const getFilterProductsdata = (data, { category, size, color,value, sortO
    
 
         let sizeMatchValue;
+        console.log('product.size',product.size)
         if(product.size)
              sizeMatchValue = product.size.some(size => sizes.includes(size))
         else

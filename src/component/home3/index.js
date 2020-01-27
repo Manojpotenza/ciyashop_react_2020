@@ -134,7 +134,7 @@ class HomePage3 extends Component {
                                                     </Col>
                                                     <Col lg={6}>
                                                         <div className="products products-loop grid ciyashop-products-shortcode row">
-                                                            <ProductSlider settings={saleslider} />
+                                                            <ProductSlider settings={saleslider} productSub="dresswear" />
                                                         </div>
                                                     </Col>
                                                 </Row>
