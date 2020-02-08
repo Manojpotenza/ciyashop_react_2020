@@ -14547,8 +14547,8 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 
 .products.list .product-thumbnail {
   position: relative;
-  -ms-flex: 0 0 280px;
-  flex: 0 0 280px;
+  -ms-flex: 0 0 140px;
+  flex: 0 0 140px;
 }
 
 .products.list .product-thumbnail img {
@@ -14566,7 +14566,9 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   padding: 0px;
   margin-left: 30px;
 }
-
+.products.list .product-actions {
+  display: none;
+}
 .products.list .product-info .gridlist-buttonwrap {
   display: none;
 }
