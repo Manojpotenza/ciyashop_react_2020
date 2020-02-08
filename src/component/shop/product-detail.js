@@ -79,7 +79,6 @@ class ProductDetail extends Component {
     }
     render() {
         const Productedit = this.state.CurrentProduct;
-        console.log('ProductId',Productedit)
      return (
        
         <div>

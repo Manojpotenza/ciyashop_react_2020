@@ -89,7 +89,6 @@ class SideFilter extends Component {
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
-        console.log('this.state.priceplace',this.state.priceplace)
         // if(this.props.filters.value.max > 2000)
         // {
         //     this.props.filters.value.max = 2000;

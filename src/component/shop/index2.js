@@ -80,6 +80,7 @@ class ShopPage2 extends Component {
                                     <div className="right-banner">
                                         <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
                                     </div>
+                                   
                                     <div className="loop-header">
                                         <div className="loop-header-tools">
                                             <div className="loop-header-tools-wrapper">

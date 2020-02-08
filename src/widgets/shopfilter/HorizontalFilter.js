@@ -80,7 +80,6 @@ class HorizontalFilter extends Component {
         }
       }
     setdefaultvalue() {
-        console.log('okay')
         setTimeout(() => {
             this.props.priceValue({ value: { min: this.props.prices.min, max: this.props.prices.max } })
         }, 1500)
@@ -88,38 +87,43 @@ class HorizontalFilter extends Component {
     showfilter(){
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
         document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
-        document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky open");
+        document.getElementById("sticky-filter").setAttribute("class","sticky-filter  open");
     }
     closefilter(){
         document.getElementById("site-header-row").setAttribute("class","site-header-row");
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
-        document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
+        document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
 
+    }
+    convertValue = (labelValue) => {
+        return labelValue.toLocaleString("en", {   
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        })
+        
     }
     //Price Filter
     toolformatter = value => {
         var maximumval = this.props.prices.max / 5;
         if (value === 0) {
-            return "0";
+            value="0";
         }
         else if (value > 0 && value <= 20) {
-            return this.fncl(value * (maximumval * 1) / 20);
+            value=value * (maximumval * 1) / 20;
         }
         else if (value > 20 && value <= 40) {
-            return this.fncl(value * (maximumval * 2) / 40);
+            value=value * (maximumval * 2) / 40;
         }
         else if (value > 40 && value <= 60) {
-            return this.fncl(value * (maximumval * 3) / 60);
+            value=value * (maximumval * 3) / 60;
         }
         else if (value > 60 && value <= 80) {
-            return this.fncl(value * (maximumval * 4) / 80);
+            value=value * (maximumval * 4) / 80;
         }
         else if (value > 80 && value <= 100) {
-            return this.fncl(value * (maximumval * 5) / 100);
+            value=value * (maximumval * 5) / 100;
         }
-        else {
-            return false;
-        }
+        return this.convertValue(value);
     }
     fncl = (value) => {
         return Number.parseFloat(value).toFixed(0);
@@ -411,7 +415,6 @@ class HorizontalFilter extends Component {
 
     render() {
         const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist } = this.state;
-        console.log('filter Data ', this.props.filters)
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
@@ -447,7 +450,7 @@ class HorizontalFilter extends Component {
                     {(this.state.pricecapfilter) ?
                         <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
                         :
-                        <p><Button className="btn-white dropdown-toggle bg-highlight" onClick={this.pricedrop}>Filter By Price : {this.props.filters.value.min} - {this.props.filters.value.max}</Button><a className="filter-close" href="#" onClick={() => this.clearprice(this.props.prices)} to=""></a></p>
+                        <p><Button className="btn-white dropdown-toggle bg-highlight" onClick={this.pricedrop}>Filter By Price : {(this.props.filters.value.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - {(this.props.filters.value.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</Button><a className="filter-close" href="#" onClick={() => this.clearprice(this.props.prices)} to=""></a></p>
                     }
                     {(this.state.pricedrop) ?
                         <div className="filter-wrapper zoomIn animated">
@@ -455,9 +458,9 @@ class HorizontalFilter extends Component {
                                 <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
                             </div>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
-                                <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                <p>Between: <span>$ {(this.props.prices.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {(this.props.prices.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                                 :
-                                <p>Between: <span>$ {this.props.filters.value.min} - $ {this.props.filters.value.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                <p>Between: <span>$ {(this.props.filters.value.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {(this.props.filters.value.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                             }
                             <Slider
                                 range
@@ -563,8 +566,9 @@ class HorizontalFilter extends Component {
 
 
                 <div className="site-header-row" id="site-header-row"></div>
-            {/* Responsive Mobile */}
-            <div className="off-canvas-filter"  id="off-canvas-filter">
+                
+                {/* Responsive Mobile */}
+                <div className="off-canvas-filter"  id="off-canvas-filter">
                     <div class="sidebar-widget-heading">
                         <a href="#" onClick={this.closefilter} class="close-sidebar-widget"></a>
                     </div>
@@ -591,50 +595,46 @@ class HorizontalFilter extends Component {
                             />
                         </div>
                 </div>
-
-                <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
-                 
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
-                            <div className="widget-title-header">
-                                <h4 className="widget-title">Filter by Color </h4>
-                             </div>
+                    <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
+                    
+                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                                <div className="widget-title-header">
+                                    <h4 className="widget-title">Filter by Color </h4>
+                                </div>
+                                <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                    <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
+                                        {this.props.colors.map((color, index) => {
+                                            return (
+                                                <div className="form-check pgs-filter-checkbox" key={index}>
+                                                    <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                                    <label className="form-check-label"
+                                                        htmlFor={color}>{color}</label>
+                                                </div>
+                                            )
+                                        })}
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+                    <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
+                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                                <div className="widget-title-header">
+                                    <h4 className="widget-title">Product Categories</h4>
+                                </div>
                             <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
-                                    {this.props.colors.map((color, index) => {
+                                    {this.props.categorys.map((category, index) => {
                                         return (
                                             <div className="form-check pgs-filter-checkbox" key={index}>
-                                                <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                                <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
                                                 <label className="form-check-label"
-                                                    htmlFor={color}>{color}</label>
-                                            </div>
-                                        )
+                                                    htmlFor={category}>{category}</label>
+                                            </div>)
                                     })}
-                                </ul>
+                                </div>
                             </div>
-                        </div>
-                </div>
-
-                <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
-                            <div className="widget-title-header">
-                                <h4 className="widget-title">Product Categories</h4>
-                            </div>
-                           <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                {this.props.categorys.map((category, index) => {
-                                    return (
-                                        <div className="form-check pgs-filter-checkbox" key={index}>
-                                            <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
-                                            <label className="form-check-label"
-                                                htmlFor={category}>{category}</label>
-                                        </div>)
-                                })}
-                            </div>
-                        </div>
-                        
-                </div>
-
-
-                <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
+                            
+                    </div>
+                    <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
                         <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
                             <div className="widget-title-header">
                                 <h4 className="widget-title">Filter By Size</h4>
@@ -651,9 +651,9 @@ class HorizontalFilter extends Component {
                                 })}
                             </div>
                         </div>
+                    </div>
                 </div>
-                
-                </div>
+           
             </div>
 
         )

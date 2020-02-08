@@ -662,7 +662,7 @@ body {
   z-index: 0;
 }
 
-.is-sticky .off-canvas-filter-show{
+.open .off-canvas-filter-show{
 
 
   -webkit-transform: translateX(0%);

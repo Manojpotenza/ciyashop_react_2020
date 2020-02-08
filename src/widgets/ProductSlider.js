@@ -11,7 +11,6 @@ import { ToastContainer, toast } from 'react-toastify';
 function ProductSlider(props) {
     const settings = props.settings;
     const productSub = props.productSub;
-    console.log('productSub',productSub)
     var cloneproduct=[];
     var cnt=0;
     MyProducts.map((product,index) => {
@@ -19,12 +18,9 @@ function ProductSlider(props) {
                // cloneproduct=product.push(cloneproduct); 
                 cloneproduct[cnt]= product;
                 cnt++;  
-                console.log('sub',product)
-                console.log('cnt',cnt)
             }
         }
     );
-    console.log('cloneproduct',cloneproduct)
     function AddToCart(ProductID,ProductName,ProductImage,Qty,Rate,StockStatus) {
         var Cart = JSON.parse(localStorage.getItem("LocalCartItems"));
         if(Cart == null)

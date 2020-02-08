@@ -14,6 +14,7 @@ import { getFilterProductsdata } from '../../services';
 import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import MobileSideFilter from '../../widgets/shopfilter/MobileSideFilter';
 
 class ShopPage1 extends Component {
 
@@ -99,6 +100,9 @@ class ShopPage1 extends Component {
                                     <div className="right-banner">
                                         <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
                                     </div>
+                                    {/* <div className="mobile-side-filter">
+                                        <MobileSideFilter />
+                                    </div> */}
                                     <div className="sticky-filter" id="sticky-filter">
                                         <Container className="px-0">
                                             <div className="d-flex align-items-center">

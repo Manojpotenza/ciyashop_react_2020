@@ -40,7 +40,6 @@ class Invoices extends Component {
     }
 
     onSearchProduct(searchText){
-      console.log(searchText)
       if(searchText === '')
       {
         this.setState({
