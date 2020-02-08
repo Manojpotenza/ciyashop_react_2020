@@ -568,7 +568,7 @@ class HorizontalFilter extends Component {
                 <div className="site-header-row" id="site-header-row"></div>
                 
                 {/* Responsive Mobile */}
-                <div className="off-canvas-filter"  id="off-canvas-filter">
+                <div className="off-canvas-filter horizontal-mobile-filter"  id="off-canvas-filter">
                     <div class="sidebar-widget-heading">
                         <a href="#" onClick={this.closefilter} class="close-sidebar-widget"></a>
                     </div>

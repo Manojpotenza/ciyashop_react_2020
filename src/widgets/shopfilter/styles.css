@@ -360,6 +360,10 @@ body {
 .horizontal-sidebar.sidebar .shop-sidebar-widgets .pgs-widget-layered-nav-list-container > .pgs-widget-layered-nav-list {
   left: 15px;
 }
+
+.horizontal-mobile-filter .horizontal-filter-dropdown{
+  display: none;
+}
 @-webkit-keyframes zoomIn {
   from {
     opacity: 0;
@@ -537,6 +541,9 @@ body {
   }
 }
 @media screen and (max-width:767px) {
+  .horizontal-mobile-filter .horizontal-filter-dropdown{
+    display:block;
+  }
   .sticky-filter.is-sticky {
     top: 57px;
   }
