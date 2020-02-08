@@ -87,12 +87,12 @@ class HorizontalFilter extends Component {
     showfilter(){
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
         document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
-        document.getElementById("sticky-filter").setAttribute("class","sticky-filter  open");
+        document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky open");
     }
     closefilter(){
         document.getElementById("site-header-row").setAttribute("class","site-header-row");
         document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
-        document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+        document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
 
     }
     convertValue = (labelValue) => {
@@ -125,9 +125,11 @@ class HorizontalFilter extends Component {
         }
         return this.convertValue(value);
     }
+
     fncl = (value) => {
         return Number.parseFloat(value).toFixed(0);
     }
+
     onChangePricePlace = values => {
         var maximumval = this.props.prices.max / 5;
 
@@ -190,6 +192,7 @@ class HorizontalFilter extends Component {
             pricedrop: !prevState.pricedrop
         }));
     }
+
     closeprice(priceVal) {
         if (priceVal.min === 0) {
             this.setState({
@@ -203,6 +206,7 @@ class HorizontalFilter extends Component {
             })
         }
     }
+    
     clearprice(pricesval) {
         var value = {
             min: pricesval.min,
@@ -423,11 +427,11 @@ class HorizontalFilter extends Component {
         var maxdivide = max / 5;
         const marks = {
             0: 0,
-            20: (maxdivide * 1),
-            40: (maxdivide * 2),
-            60: (maxdivide * 3),
-            80: (maxdivide * 4),
-            100: max
+            20: ((maxdivide * 1).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            40: ((maxdivide * 2).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            60: ((maxdivide * 3).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            80: ((maxdivide * 4).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            100: max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })
         };
         if (removecategorylist && removecategorylist.length > 0) {
             var totalremovecategory = removecategorylist.length;
@@ -577,9 +581,9 @@ class HorizontalFilter extends Component {
                         <div className="filter-wrapper zoomIn animated">
                             <h5 className="filter-title">Price Range</h5>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
-                                <p>Between: <span>$ {this.props.prices.min} - $ {this.props.prices.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                <p>Between: <span>$ {this.props.prices.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.prices.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                                 :
-                                <p>Between: <span>$ {this.props.filters.value.min} - $ {this.props.filters.value.max} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                <p>Between: <span>$ {this.props.filters.value.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.filters.value.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                             }
                             <Slider
                                 range
