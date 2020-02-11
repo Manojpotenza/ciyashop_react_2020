@@ -1058,6 +1058,9 @@
 }
 
 @media (max-width:767px) {
+  .content .products-header {
+    margin-top:0;
+  }
   .slider-01 .slide-content .slide-title h1 {
     font-size: 40px;
     line-height: 50px;

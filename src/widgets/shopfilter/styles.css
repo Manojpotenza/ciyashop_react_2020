@@ -626,12 +626,14 @@ body {
   margin-top: 5px;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
+  text-align: right;
 }
 .close-sidebar-widget{
   color: #323232;
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 25px;
   min-height: 25px;
+  position: relative;
 }
 .sidebar-widget-heading{
   position: relative;
@@ -642,17 +644,17 @@ body {
   letter-spacing: 0;
   color: #323232;
 }
-.sidebar-widget-heading:before {
+.sidebar-widget-heading a:before {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.sidebar-widget-heading:after {
+.sidebar-widget-heading a:after {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-.sidebar-widget-heading:before , .sidebar-widget-heading:after {
+.sidebar-widget-heading a:before , .sidebar-widget-heading a:after {
   content: "";
   width: 25px;
   height: 2px;
