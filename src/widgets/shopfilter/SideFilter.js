@@ -3,8 +3,6 @@
  */
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
 import {uniqueCategory,uniqueSizes,uniqueColors,uniqueMinMaxPrice} from '../../services';
 import {categoryValue, sizeValue,colorValue,priceValue,searchValue} from '../../actions/filter';
 import {Slider} from 'antd';
@@ -108,11 +106,6 @@ class SideFilter extends Component {
                     <div classs="shop-filter shop-filter-product-price widget_price_filter">
                         <div className="shop-filter-wrapper">
                             <div className="price_slider_wrapper">
-                                {/* <InputRange
-                                    maxValue={this.props.prices.max}
-                                    minValue={this.props.prices.min}
-                                    value={this.props.filters.value}
-                                    onChange={value => this.props.priceValue({ value })} /> */}
                                 <Slider 
                                     range 
                                     step={1}

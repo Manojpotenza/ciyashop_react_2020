@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 import { Row, Col, Container, Form, Nav, Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { Slider } from 'antd';
 import "antd/dist/antd.css"
-import InputRange from 'react-input-range';
-import { Link } from "react-router-dom";
-import 'react-input-range/lib/css/index.css';
 import { uniqueCategory, uniqueSizes, uniqueColors, uniqueMinMaxPrice } from '../../services';
 import { categoryValue, sizeValue, colorValue, priceValue } from '../../actions/filter';
 import './styles.css';
@@ -472,9 +469,7 @@ class HorizontalFilter extends Component {
                                 min={0}
                                 max={100}
                                 tipFormatter={this.toolformatter}
-                                // value={this.state.marketplace}
                                 defaultValue={this.state.priceplace}
-                                //defaultValue={[0, 100]}
                                 onAfterChange={this.onChangePricePlace}
                                 marks={marks}
                             />
@@ -591,9 +586,7 @@ class HorizontalFilter extends Component {
                                 min={0}
                                 max={100}
                                 tipFormatter={this.toolformatter}
-                                // value={this.state.marketplace}
                                 defaultValue={this.state.priceplace}
-                                //defaultValue={[0, 100]}
                                 onAfterChange={this.onChangePricePlace}
                                 marks={marks}
                             />

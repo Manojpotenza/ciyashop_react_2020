@@ -13,42 +13,13 @@ import ProductList from '../../widgets/ProductList';
 import {getFilterProductsdata} from '../../services';
 import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
-// const shopitemslider = {
-//     dots: false,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 4,
-//     slidesToScroll: 1,
-//     responsive: [
-//     {
-//       breakpoint: 991,
-//       settings: {
-//         slidesToShow: 3
-//       }
-//     },
-//     {
-//       breakpoint: 767,
-//       settings: {
-//         slidesToShow: 2
-//       }
-//     },
-//     {
-//       breakpoint: 575,
-//       settings: {
-//         slidesToShow: 1
-//     }
-//     }
-//   ]
-
-// };
 class ShopPage extends Component {
 
     constructor(props, context) {
         super(props, context)
         this.state = {
-          limit: 5,
+          limit: 8,
           hasMoreProduct: true,
           getproduct:AllProduct
         }
@@ -57,43 +28,24 @@ class ShopPage extends Component {
         if (this.state.limit < this.state.getproduct.length) {
             setTimeout(() => {
                 this.setState({
-                    limit: this.state.limit + 5
+                    limit: this.state.limit + 8
                 });
             }, 2500);
         }
     }
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-    componentDidUpdate(prevProps)
-    {
-        if (this.state.limit < prevProps.products.length) {
-            setTimeout(() => {
-                this.setState({
-                    limit: this.state.limit + 5
-                });
-            }, 2500);
-        }
-    }
-    fetchProduct = () => {
-        if (this.state.limit >= this.props.products.length) {
-            this.setState({ hasMoreProduct: false });
-            return;
-        }
-        setTimeout(() => {
-            this.setState({
-                limit: this.state.limit + 5
-            });
-        }, 2500);
+    onLoadMore = () => {
+        this.setState({
+            limit: this.state.limit + 8
+        });
     }
     render() {
-        let {products} = this.props;
-        let layoutstyle=localStorage.getItem('setLayoutStyle')
+    let {products} = this.props;
+    let layoutstyle=localStorage.getItem('setLayoutStyle')
 
-        if(layoutstyle == null)
-        {
-            layoutstyle=localStorage.setItem('setLayoutStyle','col-sm-6 col-md-4')
-        }
+    if(layoutstyle == null)
+    {
+        layoutstyle=localStorage.setItem('setLayoutStyle','col-sm-6 col-md-4')
+    }
 
      return (
             <div className="site-content">
@@ -142,19 +94,15 @@ class ShopPage extends Component {
                                     </div>
                                 </div>
                                 {products.length > 0 ?
-                                    <InfiniteScroll
-                                        dataLength={this.state.limit}
-                                        next={this.fetchProduct}
-                                        hasMore={this.state.hasMoreProduct}
-                                        loader={<div className="lazyload-img"></div>}
-                                    >
+                                    <div>
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
                                             {products.slice(0,this.state.limit).map((product, index) =>
                                                         <ProductList product={product} key={index} layoutstyle={layoutstyle} />
                                                 )
                                             }
                                         </Row>
-                                    </InfiniteScroll>
+                                        <a onClick={this.onLoadMore}>Load</a>
+                                    </div>
                                 :
                                       <Row className="products products-loop grid ciyashop-products-shortcode">
                                         <div className="col-sm-12 text-center  mt-5" >
