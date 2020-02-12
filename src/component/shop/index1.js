@@ -103,7 +103,9 @@ class ShopPage1 extends Component {
                                             )
                                             }
                                         </Row>
-                                        <a onClick={this.onLoadMore}>Load</a>
+                                        <div className="text-center">
+                                            <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>
+                                        </div>
                                     </div>
                                     :
                                     <Row className="products products-loop grid ciyashop-products-shortcode">

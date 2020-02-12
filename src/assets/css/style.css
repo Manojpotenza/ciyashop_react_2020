@@ -19193,3 +19193,16 @@ button:focus {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.loadmore-btn {
+  font-size: 16px;
+  color: #fff !important;
+  background: #04d39f;
+  font-weight: 600;
+  padding: 10px 24px;
+  margin-top: 0px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.loadmore-btn:hover {
+  background: #323232;
+}

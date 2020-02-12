@@ -49,7 +49,7 @@ class ProductList extends Component {
         if(Cart == null)
            Cart = new Array();
 
-           let selectedProduct = Cart.find(product => product.ProductName === ProductName);
+           let selectedProduct = Cart.find(product => product.ProductID === ProductID);
            if(selectedProduct == null)
            {
 
@@ -159,7 +159,7 @@ class ProductList extends Component {
                             {product.tags ?
                                    <span className="ciyashop-product-category">
                                     {product.tags.map((tag,index) =>
-                                          <span>{tag}{index === product.tags.length-1 ?'':','}</span>
+                                          <span>{tag}{index === product.tags.length-1 ?'':', '}</span>
                                      )}
                                 </span>
                             : null } 

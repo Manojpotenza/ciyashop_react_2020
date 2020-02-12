@@ -50,22 +50,22 @@ class AdminDashboard extends Component {
 
             <div>
             <AdminHeader />
-            <Route path={`${match.url}/Reports`} component={Reports} />
-            <Route path={`${match.url}/Invoices`} component={Invoices} />
-            <Route path={`${match.url}/Profile`} component={Profile} />
-            <Route path={`${match.url}/Product`} component={AdminProductList} />
-            <Route path={`${match.url}/Profileedit`} component={Profileedit} />
-            <Route path={`${match.url}/Collaboration`}  component={Collaboration} />
-            <Route path={`${match.url}/Settings`} component={Settings} />
-            <Route path={`${match.url}/product-add`} component={Productadd} /> 
-            <Route path={`${match.url}/Product-edit/:category/:id`} component={Productedit} /> 
+              <Route path={`${match.url}/Reports`} component={Reports} />
+              <Route path={`${match.url}/Invoices`} component={Invoices} />
+              <Route path={`${match.url}/Profile`} component={Profile} />
+              <Route path={`${match.url}/Product`} component={AdminProductList} />
+              <Route path={`${match.url}/Profileedit`} component={Profileedit} />
+              <Route path={`${match.url}/Collaboration`}  component={Collaboration} />
+              <Route path={`${match.url}/Settings`} component={Settings} />
+              <Route path={`${match.url}/product-add`} component={Productadd} /> 
+              <Route path={`${match.url}/Product-edit/:category/:id`} component={Productedit} /> 
             </div>
 
             :
 
             <div>
               <Headers />
-              <Route exact  component={PageNotFound} />
+                <Route exact  component={PageNotFound} />
               <Footer />
             </div>
 

@@ -43,7 +43,7 @@ AddToWishList(ProductID,ProductName,ProductImage,Qty,Rate,StockStatus) {
    if(Cart == null)
       Cart = new Array();
 
-      let selectedProduct = Cart.find(product => product.ProductName === ProductName);
+      let selectedProduct = Cart.find(product => product.ProductID === ProductID);
       if(selectedProduct == null)
       {
 
