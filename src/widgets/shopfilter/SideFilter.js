@@ -14,6 +14,7 @@ class SideFilter extends Component {
         this.state={
             SearchValue:'',
             priceplace: [this.props.prices.min, this.props.prices.max],
+            setfistprice: [this.props.prices.min, this.props.prices.max]
         }
     }
     componentDidMount(){
@@ -74,27 +75,117 @@ class SideFilter extends Component {
     }
 
     onChangePricePlace = values => {
+        var maximumval = this.props.prices.max / 5;
+
         var value = {
             min: values['0'],
             max: values['1']
+        }
+        if (value.min == 0) {
+            value.min = 0;
+        }
+        else if (value.min > 0 && value.min <= 20) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 1) / 20));
+        }
+        else if (value.min > 20 && value.min <= 40) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 2) / 40));
+        }
+        else if (value.min > 40 && value.min <= 60) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 3) / 60));
+        }
+        else if (value.min > 60 && value.min <= 80) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 4) / 80));
+        }
+        else if (value.min > 80 && value.min <= 100) {
+            value.min = parseInt(this.fncl(value.min * (maximumval * 5) / 100));
+        }
+        else {
+            value.min = false;
+        }
+
+        if (value.max === 0) {
+            value.max = 0;
+        }
+        else if (value.max > 0 && value.max <= 20) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 1) / 20));
+        }
+        else if (value.max > 20 && value.max <= 40) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 2) / 40));
+        }
+        else if (value.max > 40 && value.max <= 60) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 3) / 60));
+        }
+        else if (value.max > 60 && value.max <= 80) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 4) / 80));
+        }
+        else if (value.max > 80 && value.max <= 100) {
+            value.max = parseInt(this.fncl(value.max * (maximumval * 5) / 100));
+        }
+        else {
+            value.max = false;
         }
         this.setState({
             priceplace: values
         });
         this.props.priceValue({ value })
     }
+    fncl = (value) => {
+        return Number.parseFloat(value).toFixed(0);
+    }
+    convertValue = (labelValue) => {
+        return labelValue.toLocaleString("en", {   
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        })
+    }
+    
+    toolformatter = value => {
+        var maximumval = this.props.prices.max / 5;
+        if (value === 0) {
+            value="0";
+        }
+        else if (value > 0 && value <= 20) {
+            value=value * (maximumval * 1) / 20;
+        }
+        else if (value > 20 && value <= 40) {
+            value=value * (maximumval * 2) / 40;
+        }
+        else if (value > 40 && value <= 60) {
+            value=value * (maximumval * 3) / 60;
+        }
+        else if (value > 60 && value <= 80) {
+            value=value * (maximumval * 4) / 80;
+        }
+        else if (value > 80 && value <= 100) {
+            value=value * (maximumval * 5) / 100;
+        }
+        return this.convertValue(value);
+    }
+
+    clearprice(pricesval) {
+        var value = {
+            min: pricesval.min,
+            max: pricesval.max
+        }
+        this.setState({
+            priceplace: [this.props.prices.min, this.props.prices.max]
+        })
+        this.props.priceValue({ value })
+    }
     render(){
+        var max = this.props.prices.max;
+        var maxdivide = max / 5;
+        const marks = {
+            0: 0,
+            20: ((maxdivide * 1).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            40: ((maxdivide * 2).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            60: ((maxdivide * 3).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            80: ((maxdivide * 4).toLocaleString(navigator.language, { minimumFractionDigits: 0 })),
+            100: max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })
+        };
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
-        // if(this.props.filters.value.max > 2000)
-        // {
-        //     this.props.filters.value.max = 2000;
-        // }
-        // if(this.props.filters.value.min < 20)
-        // {
-        //     this.props.filters.value.min = 20;
-        // }
        return (
            <div>
                 <div className="widget">
@@ -102,19 +193,22 @@ class SideFilter extends Component {
                     <input type="text" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
                 </div>
                 <div className="widget widget_price_filter">
+                    <p><a  onClick={() => this.clearprice(this.props.prices)}>Clear</a></p>
                     <h4 className="widget-title">Filter by Price</h4>
+                   
                     <div classs="shop-filter shop-filter-product-price widget_price_filter">
                         <div className="shop-filter-wrapper">
                             <div className="price_slider_wrapper">
-                                <Slider 
-                                    range 
-                                    step={1}
-                                    min={this.props.prices.min}
-                                    max={this.props.prices.max}
-                                    tipFormatter={this.toolformatter}
-                                    defaultValue={this.state.priceplace}
-                                    onAfterChange={this.onChangePricePlace}    
-                                />
+                            <Slider
+                                range
+                                step={1}
+                                min={0}
+                                max={100}
+                                tipFormatter={this.toolformatter}
+                                value={this.state.priceplace}
+                                onChange={this.onChangePricePlace}
+                                marks={marks}
+                            />
                             </div>
                         </div>
                     </div>
