@@ -26,6 +26,7 @@ class HorizontalFilter extends Component {
             colordrop: false,
             categorydrop: false,
             sizedrop: false,
+            sidedrop:false
 
 
         }
@@ -73,7 +74,7 @@ class HorizontalFilter extends Component {
             document.getElementById("sticky-filter").setAttribute("class","sticky-filter is-sticky");
 
         }else{
-            document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+            document.getElementById("sticky-filter").setAttribute("class","sticky-filter ");
         }
       }
     setdefaultvalue() {
@@ -82,14 +83,21 @@ class HorizontalFilter extends Component {
         }, 1500)
     }
     showfilter(){
-        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
-        document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
-        document.getElementById("sticky-filter").setAttribute("class","sticky-filter open");
+        this.setState(prevState => ({
+            sidedrop: !prevState.sidedrop
+        }));
+        // document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
+        // document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
+        // document.getElementById("sticky-filter").setAttribute("class","sticky-filter open");
+        
     }
     closefilter(){
-        document.getElementById("site-header-row").setAttribute("class","site-header-row");
-        document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
-        document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
+        this.setState({
+            sidedrop: false
+        });
+        // document.getElementById("site-header-row").setAttribute("class","site-header-row");
+        // document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
+        // document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
 
     }
     convertValue = (labelValue) => {
@@ -415,7 +423,7 @@ class HorizontalFilter extends Component {
 
 
     render() {
-        const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist } = this.state;
+        const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist,sidedrop } = this.state;
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
@@ -567,13 +575,13 @@ class HorizontalFilter extends Component {
                 <div className="site-header-row" id="site-header-row"></div>
                 
                 {/* Responsive Mobile */}
-                <div className="off-canvas-filter horizontal-mobile-filter"  id="off-canvas-filter">
+                <div className={"off-canvas-filter horizontal-mobile-filter"+ (sidedrop ? " filter-open" : " ")}   id="off-canvas-filter">
                     <div class="sidebar-widget-heading">
                         <a  onClick={this.closefilter} class="close-sidebar-widget"></a>
                     </div>
                     <div className="horizontal-filter-dropdown" >
                 
-                        <div className="filter-wrapper zoomIn animated">
+                        <div className="filter-wrapper">
                             <h5 className="filter-title">Price Range</h5>
                             {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
                                 <p>Between: <span>$ {this.props.prices.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.prices.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
@@ -594,7 +602,7 @@ class HorizontalFilter extends Component {
                 </div>
                     <div className="horizontal-filter-dropdown" >
                     
-                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                                 <div className="widget-title-header">
                                     <h4 className="widget-title">Filter by Color </h4>
                                 </div>
@@ -614,7 +622,7 @@ class HorizontalFilter extends Component {
                             </div>
                     </div>
                     <div className="horizontal-filter-dropdown" >
-                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                                 <div className="widget-title-header">
                                     <h4 className="widget-title">Product Categories</h4>
                                 </div>
@@ -632,7 +640,7 @@ class HorizontalFilter extends Component {
                             
                     </div>
                     <div className="horizontal-filter-dropdown">
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                             <div className="widget-title-header">
                                 <h4 className="widget-title">Filter By Size</h4>
                             </div>

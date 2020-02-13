@@ -98,12 +98,15 @@ class ShopPage3 extends Component {
                                             {products.slice(this.state.minValue, this.state.maxValue).map((product,index) => (
                                                     <ProductList product={product} key={index} layoutstyle={layoutstyle} />
                                             ))}
+                                        <div className="text-center col-12">
                                             <Pagination
                                                 defaultCurrent={1}
                                                 defaultPageSize={numEachPage} //default size of page
                                                 onChange={this.handleChange}
                                                 total={products.length} //total number of card data available
                                             />
+                                        </div>
+
                                         </Row>
                                 :
                                       <Row className="products products-loop grid ciyashop-products-shortcode">

@@ -4994,6 +4994,12 @@ header.site-header.is-sticky .mega-menu .menu-links > li .drop-down.grid-col-12 
     text-align: left;
     margin-top: -1px;
   }
+  .navbar.navbar-light .navbar-toggler {
+    top: -41px !important;
+  }
+  /* header.site-header.is-sticky  .navbar.navbar-light .navbar-toggler {
+    top: -38px !important;
+  } */
 
 }
 
@@ -11664,11 +11670,12 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 
 .products .product .product-actions a:before {
   content: "";
-  position: relative;
-  left: 0;
+  position: absolute;
+  left: 50%;
   top: 6px;
   font-family: FontAwesome;
   font-size: 16px;
+  transform: translateX(-50%);
 }
 
 .products .product .product-actions .product-action-wishlist a:before {
@@ -12009,7 +12016,7 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 .products .product-hover-style-default .product-actions {
   padding-left: 15px;
   padding-right: 15px;
-  bottom: 10px;
+  bottom: 15px;
   opacity: 0;
 }
 
@@ -14565,12 +14572,50 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   top: 0;
   padding: 0px;
   margin-left: 30px;
+  margin-top: 0;
 }
 .products.list .product-actions {
   display: none;
 }
+.products .product-actions.product-actions-list {
+  display: none;
+}
+.products.list .product-actions.product-actions-list {
+  display: block;
+  padding: 0;
+  margin-top: 15px;
+}
+.products.list .product-hover-style-default .product-actions {
+  opacity: 1;
+}
+
 .products.list .product-info .gridlist-buttonwrap {
   display: none;
+}
+.products.list .product-hover-style-default.product-hover-button-style-light .product-actions-list .product-actions-inner {
+  background: transparent;
+  box-shadow: none;
+}
+.products.list .product-action.product-action-add-to-cart {
+  border: 0px !important;
+  width: 140px !important;
+  margin-left: 10px;
+}
+.products.list .product-action.product-action-add-to-cart a {
+  color: #fff !important;
+  background: #04d39f;
+}
+.products.list .product-action.product-action-add-to-cart a:hover {
+  background: #323232;
+}
+.products.list .product-hover-style-default .product-rating-price {
+  display: inherit;
+}
+.products.list .product-action.product-action-wishlist {
+  background: #dddddd;
+}
+.products.list .product-hover-style-default .product-rating-price .product-rating {
+  margin-top: 5px;
 }
 
 .products.list .product-hover-style-image-center .product-info .product-actions,
