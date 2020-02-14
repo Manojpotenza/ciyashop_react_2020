@@ -19252,3 +19252,7 @@ button:focus {
 .loadmore-btn:hover {
   background: #323232;
 }
+.navbar-nav .dropdown-item.active, .navbar-nav .dropdown-item:active {
+  color: #04d39f;
+  background-color: transparent;
+}
