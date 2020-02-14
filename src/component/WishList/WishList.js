@@ -85,7 +85,7 @@ class WishList extends Component {
                         <Row>
                             <Col sm={12}>
                                 {(this.ReadWishListItems() != null && this.ReadWishListItems().length > 0) ?
-                                    <div className="table-responsive-md">
+                                    <div className="table-responsive">
                                         <Table className="table wishlist-table cart-table">
                                             <thead>
                                                 <tr>
