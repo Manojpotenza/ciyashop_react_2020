@@ -13,6 +13,7 @@ import ProductList from '../../widgets/ProductList';
 import {getFilterProductsdata} from '../../services';
 import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
+import { Button } from 'antd';
 
 class ShopPage extends Component {
 
@@ -37,6 +38,9 @@ class ShopPage extends Component {
         this.setState({
             limit: this.state.limit + 8
         });
+    }
+    refreshPage = () => {
+        window.location.reload(false);
     }
     render() {
     let {products} = this.props;
@@ -111,7 +115,7 @@ class ShopPage extends Component {
                                             <img src={require(`../../assets/images/empty-search.jpg`)} className="img-fluid mb-4" />
                                             <h3>Sorry! No products were found matching your selection!    </h3>
                                             <p>Please try to other words.</p>
-                                             <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
+                                             <button onClick={this.refreshPage} className="btn btn-solid">Continue Shopping</button>
                                         </div>
                                       </Row>
                                 }

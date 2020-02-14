@@ -172,6 +172,7 @@ class Header extends React.Component {
         let pathnames = document.location.href;
         let pathArray = pathnames.split('/');
         let pageName = '/'+pathArray[pathArray.length -1];
+        console.log('pageName',pageName)
         if (this.state.timeout == true) {
             setTimeout(function () {
                 this.setState({ timeout: false });
@@ -280,31 +281,36 @@ class Header extends React.Component {
                                                                                      <Navbar light expand="md" class="front_menu" >
                                                                                         <NavbarToggler onClick={this.toggle} />
                                                                                         <Collapse isOpen={this.state.isOpen} navbar>
-                                                                                        {navLinks.map((navLink, index) => (
-                                                                                            <Nav className="ml-auto" navbar>
-                                                                                                {(navLink.type && navLink.type === 'subMenu') ?
-                                                                                                <Fragment>
-                                                                                                    <UncontrolledDropdown nav inNavbar onMouseEnter={()=>this.OpenSubmenuOpen(`submenu_${index}`)} onMouseLeave={()=>this.OpenSubmenuClose(`submenu_${index}`)}>
-                                                                                                    <Link aria-haspopup="true" to={navLink.path} className="dropdown-toggle nav-link" aria-expanded="true"> {navLink.menu_title}</Link>
-                                                                                                    <DropdownMenu right id={`submenu_${index}`}>
+                                                                                            {navLinks.map((navLink, index) => (
+                                                                                                <Nav className="ml-auto" navbar>
+                                                                                                    {(navLink.type && navLink.type === 'subMenu') ?
+                                                                                                        <Fragment>
+                                                                                                             {
+                                                                                                                console.log('navLink.path',navLink.path)
+                                                                                                            }
+                                                                                                            <UncontrolledDropdown nav inNavbar onMouseEnter={()=>this.OpenSubmenuOpen(`submenu_${index}`)} onMouseLeave={()=>this.OpenSubmenuClose(`submenu_${index}`)}>
+                                                                                                                <Link aria-haspopup="true" to={navLink.path} className="dropdown-toggle nav-link" aria-expanded="true"> {navLink.menu_title}</Link>
+                                                                                                                <DropdownMenu right id={`submenu_${index}`}>
 
-                                                                                                        {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
-                                                                                                      <DropdownItem tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
-                                                                                                        ))}
-                                                                                                    </DropdownMenu>
-                                                                                                </UncontrolledDropdown>
+                                                                                                                    {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
+                                                                                                                        <DropdownItem tag={Link}  className={`nav-item  ${(pageName == subNavLink.path) ? 'active' : '' }`} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
+                                                                                                                    ))}
+                                                                                                                </DropdownMenu>
+                                                                                                            </UncontrolledDropdown>
+                                                                                                    </Fragment>
+                                                                                                    :
+                                                                                                    <Fragment>
+                                                                                                        <NavItem>
+                                                                                                            {
+                                                                                                                console.log('navLink.path',navLink.menu_title)
+                                                                                                            }
+                                                                                                            <NavLink href={navLink.path}>{navLink.menu_title}</NavLink>
+                                                                                                        </NavItem>
 
-                                                                                                </Fragment>
-                                                                                                :
-                                                                                                <Fragment>
-                                                                                                     <NavItem>
-                                                                                                    <NavLink href={navLink.path}>{navLink.menu_title}</NavLink>
-                                                                                                </NavItem>
-
-                                                                                                </Fragment>
-                                                                                                }
-                                                                                            </Nav>
-                                                                                            ))}
+                                                                                                    </Fragment>
+                                                                                                    }
+                                                                                                </Nav>
+                                                                                             ))}
                                                                                         </Collapse>
                                                                                     </Navbar>
                                                                                 </div>

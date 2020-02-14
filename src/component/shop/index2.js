@@ -34,6 +34,9 @@ class ShopPage2 extends Component {
           maxValue: value * numEachPage
         });
     };
+    refreshPage = () => {
+        window.location.reload(false);
+    }
     render() {
         let { products } = this.props;
         let layoutstyle = localStorage.getItem('setLayoutStyle')
@@ -109,7 +112,7 @@ class ShopPage2 extends Component {
                                             <img src={require(`../../assets/images/empty-search.jpg`)} className="img-fluid mb-4" />
                                             <h3>Sorry! No products were found matching your selection!    </h3>
                                             <p>Please try to other words.</p>
-                                            <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
+                                            <button onClick={this.refreshPage} className="btn btn-solid">Continue Shopping</button>
                                         </div>
                                     </Row>
                                 }
