@@ -172,7 +172,6 @@ class Header extends React.Component {
         let pathnames = document.location.href;
         let pathArray = pathnames.split('/');
         let pageName = '/'+pathArray[pathArray.length -1];
-        console.log('pageName',pageName)
         if (this.state.timeout == true) {
             setTimeout(function () {
                 this.setState({ timeout: false });
@@ -285,9 +284,6 @@ class Header extends React.Component {
                                                                                                 <Nav className="ml-auto" navbar>
                                                                                                     {(navLink.type && navLink.type === 'subMenu') ?
                                                                                                         <Fragment>
-                                                                                                             {
-                                                                                                                console.log('navLink.path',navLink.path)
-                                                                                                            }
                                                                                                             <UncontrolledDropdown nav inNavbar onMouseEnter={()=>this.OpenSubmenuOpen(`submenu_${index}`)} onMouseLeave={()=>this.OpenSubmenuClose(`submenu_${index}`)}>
                                                                                                                 <Link aria-haspopup="true" to={navLink.path} className="dropdown-toggle nav-link" aria-expanded="true"> {navLink.menu_title}</Link>
                                                                                                                 <DropdownMenu right id={`submenu_${index}`}>
@@ -301,9 +297,6 @@ class Header extends React.Component {
                                                                                                     :
                                                                                                     <Fragment>
                                                                                                         <NavItem>
-                                                                                                            {
-                                                                                                                console.log('navLink.path',navLink.menu_title)
-                                                                                                            }
                                                                                                             <NavLink href={navLink.path}>{navLink.menu_title}</NavLink>
                                                                                                         </NavItem>
 
