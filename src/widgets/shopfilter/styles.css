@@ -737,7 +737,7 @@ body {
     padding: 20px 20px 0;
   }
 }
-@media screen and (max-width:360px) {
+@media screen and (max-width:479px) {
   .products .ant-pagination-prev, .products .ant-pagination-next, .products .ant-pagination-jump-prev, .products .ant-pagination-jump-next {
     min-width: 30px;
     height: 30px;
