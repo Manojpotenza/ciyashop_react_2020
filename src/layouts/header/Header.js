@@ -293,7 +293,7 @@ class Header extends React.Component {
                                                                                                                 <DropdownMenu right id={`submenu_${index}`}>
 
                                                                                                                     {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
-                                                                                                                        <DropdownItem tag={Link}  className={`nav-item  ${(pageName == subNavLink.path) ? 'active' : '' }`} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
+                                                                                                                        <DropdownItem tag={Link}  className={`nav-item  ${(pageName == subNavLink.path || (subNavLink.path == "/shop/clothing/29" && pageName == "/29")) ? 'active' : '' }`} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
                                                                                                                     ))}
                                                                                                                 </DropdownMenu>
                                                                                                             </UncontrolledDropdown>
