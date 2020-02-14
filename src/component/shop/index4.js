@@ -13,7 +13,6 @@ import ProductList from '../../widgets/ProductList';
 import {getFilterProductsdata} from '../../services';
 import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
-import request from "superagent";
 import debounce from "lodash.debounce";
 
 class ShopPage4 extends Component {
