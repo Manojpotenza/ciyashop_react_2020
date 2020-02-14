@@ -590,7 +590,7 @@ body {
     left: 0;
     top: 0;
     background: #fff;
-    padding: 25px 25px 0;
+    padding: 20px 30px 0;
     width: 100%;
     height: 100vh;
     z-index: 1021;
@@ -716,7 +716,11 @@ body {
 }
 
 }
-
+@media screen and (max-width:576px) { 
+  .off-canvas-filter{
+    padding: 20px 15px 0;
+  }
+}
 @media screen and (max-width:360px) {
   .products .ant-pagination-prev, .products .ant-pagination-next, .products .ant-pagination-jump-prev, .products .ant-pagination-jump-next {
     min-width: 30px;
@@ -728,11 +732,16 @@ body {
     min-width: 30px;
     height: 30px;
     line-height: 28px;
+    margin-right: 4px;
   }
   .products .ant-pagination-item a {
     font-size: 12px;
+    padding: 0 2px;
   }
-}
+  .products .ant-pagination-prev, .products .ant-pagination-jump-prev, .products .ant-pagination-jump-next {
+    margin-right: 4px;
+  }
+}  
 
 @media screen and (max-width:320px) {
 
