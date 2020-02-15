@@ -4995,12 +4995,13 @@ header.site-header.is-sticky .mega-menu .menu-links > li .drop-down.grid-col-12 
     margin-top: -1px;
   }
   nav.navbar.navbar-light.bg-faded {
-    top: 69px;
-  }
-  .site-header.is-sticky nav.navbar.navbar-light.bg-faded {
-    top: 60px;
+    top: 0 !important;
+    position: relative !important;
 }
-  
+  .site-header.is-sticky nav.navbar.navbar-light.bg-faded {
+    top: 0px !important;
+}
+
 
 }
 
