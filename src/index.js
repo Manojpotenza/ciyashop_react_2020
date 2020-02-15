@@ -7,12 +7,9 @@ import ReactDOM from 'react-dom';
 //Component
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-import { ProductsData } from './actions';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-//import servicesstore from "./services/store";
 import {rootReducer} from './reducers';
 import thunk from 'redux-thunk';
 import {createStore,applyMiddleware,compose } from 'redux';

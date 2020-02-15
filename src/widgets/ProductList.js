@@ -58,10 +58,10 @@ class ProductList extends Component {
             localStorage.removeItem("LocalWishListItems");
             localStorage.setItem("LocalWishListItems", JSON.stringify(Cart));
 
-            toast("Item Added to WishList");
+            toast.success("Item Added to WishList");
         }
         else {
-            toast("Item is already in WishList");
+            toast.warning("Item is already in WishList");
         }
 
 
@@ -143,7 +143,7 @@ class ProductList extends Component {
                                     </div>
                                     <div className="product-action product-action-wishlist">
                                         {!this.CheckWishList(product.id) ?
-                                            <Link onClick={() => this.c(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="add_to_wishlist" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top"> Add to
+                                            <Link onClick={() => this.AddToWishList(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="add_to_wishlist" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top"> Add to
                                     Wishlist</Link>
                                             :
                                             <Link to="/wishlist" className="add_to_wishlist_fill" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top">View Wishlist</Link>

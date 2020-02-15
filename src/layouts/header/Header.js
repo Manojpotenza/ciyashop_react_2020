@@ -410,7 +410,7 @@ class Header extends React.Component {
                                                                     }
                                                                 </li>
                                                                  <li className="ciya-tools-action ciya-tools-wishlist"> <Link to="/wishlist"><i className="glyph-icon pgsicon-ecommerce-like" /> <span className="wishlist ciyashop-wishlist-count"> {this.ReadWishListItems() == null ? 0 : this.ReadWishListItems().length} </span> </Link></li>
-                                                                 <li className="ciya-tools-action ciya-tools-search"><Link to={searchName}><i className="glyph-icon pgsicon-ecommerce-magnifying-glass"  /></Link></li>
+                                                                 <li className="ciya-tools-action ciya-tools-search"><Link to={searchName} ><i className="glyph-icon pgsicon-ecommerce-magnifying-glass"  /></Link></li>
                                                             </ul>
                                                         </div>
                                                     </div>

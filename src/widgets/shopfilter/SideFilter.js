@@ -189,8 +189,8 @@ class SideFilter extends Component {
        return (
            <div>
                 <div className="widget">
-                <h4 className="widget-title">Search</h4>
-                    <input type="text" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
+                    <h4 className="widget-title">Search</h4>
+                    <input type="text" id="btn-search" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
                 </div>
                 <div className="widget widget_price_filter">
                     <div className="d-flex align-items-center justify-content-between">
