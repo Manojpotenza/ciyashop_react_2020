@@ -577,6 +577,7 @@ class HorizontalFilter extends Component {
                 {/* Responsive Mobile */}
                 <div className={"off-canvas-filter horizontal-mobile-filter"+ (sidedrop ? " filter-open" : " ")}   id="off-canvas-filter">
                     <div class="sidebar-widget-heading">
+                        <button className="apply-filter-btn" onClick={this.closefilter} >Apply Filter</button>
                         <a  onClick={this.closefilter} class="close-sidebar-widget"></a>
                     </div>
                     <div className="horizontal-filter-dropdown" >
@@ -656,9 +657,6 @@ class HorizontalFilter extends Component {
                                 })}
                             </div>
                         </div>
-                    </div>
-                    <div class="sidebar-widget-heading">
-                        <button  onClick={this.closefilter} >Apple Filter</button>
                     </div>
                 </div>
            
