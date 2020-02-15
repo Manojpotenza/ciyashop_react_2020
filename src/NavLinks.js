@@ -49,7 +49,7 @@ export default [
          },
          {
             "path": "/shop1",
-            "menu_title": "Topbar  With Lazyload",
+            "menu_title": "Topbar  With load More",
             "icon": "arrow_right_alt",
             "child_routes": null
          },

@@ -172,6 +172,27 @@ class Header extends React.Component {
         let pathnames = document.location.href;
         let pathArray = pathnames.split('/');
         let pageName = '/'+pathArray[pathArray.length -1];
+        var searchName;
+        if(pageName== '/shop1')
+        {
+            searchName="/shop1"
+        }
+        else if(pageName== '/shop2')
+        {
+            searchName="/shop2"
+        }
+        else if(pageName== '/shop3')
+        {
+            searchName="/shop3"
+        }
+        else if(pageName== '/shop4')
+        {
+            searchName="/shop4"
+        }
+        else
+        {
+            searchName="/shop"
+        }
         if (this.state.timeout == true) {
             setTimeout(function () {
                 this.setState({ timeout: false });
@@ -389,7 +410,7 @@ class Header extends React.Component {
                                                                     }
                                                                 </li>
                                                                  <li className="ciya-tools-action ciya-tools-wishlist"> <Link to="/wishlist"><i className="glyph-icon pgsicon-ecommerce-like" /> <span className="wishlist ciyashop-wishlist-count"> {this.ReadWishListItems() == null ? 0 : this.ReadWishListItems().length} </span> </Link></li>
-                                                                 <li className="ciya-tools-action ciya-tools-search"><Link to="/shop"><i className="glyph-icon pgsicon-ecommerce-magnifying-glass"  /></Link></li>
+                                                                 <li className="ciya-tools-action ciya-tools-search"><Link to={searchName}><i className="glyph-icon pgsicon-ecommerce-magnifying-glass"  /></Link></li>
                                                             </ul>
                                                         </div>
                                                     </div>

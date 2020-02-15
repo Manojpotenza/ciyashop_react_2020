@@ -589,14 +589,14 @@ class HorizontalFilter extends Component {
                                 <p>Between: <span>$ {this.props.filters.value.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.filters.value.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
                             }
                             <Slider
-                                range
-                                step={1}
-                                min={0}
-                                max={100}
-                                tipFormatter={this.toolformatter}
-                                defaultValue={this.state.priceplace}
-                                onAfterChange={this.onChangePricePlace}
-                                marks={marks}
+                                 range
+                                 step={1}
+                                 min={0}
+                                 max={100}
+                                 tipFormatter={this.toolformatter}
+                                 value={this.state.priceplace}
+                                 onChange={this.onChangePricePlace}
+                                 marks={marks}
                             />
                         </div>
                 </div>
@@ -656,6 +656,9 @@ class HorizontalFilter extends Component {
                                 })}
                             </div>
                         </div>
+                    </div>
+                    <div class="sidebar-widget-heading">
+                        <button  onClick={this.closefilter} >Apple Filter</button>
                     </div>
                 </div>
            

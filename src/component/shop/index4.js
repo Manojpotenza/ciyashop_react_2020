@@ -102,7 +102,8 @@ class ShopPage4 extends Component {
                                 {products.length > 0 ?
                                     <div>
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
-                                            {products.slice(0,this.state.limit).map((product, index) =>
+                                            {products.slice(0,this.state.limit)
+                                            .map((product, index) =>
                                                         <ProductList product={product} key={index} layoutstyle={layoutstyle} />
                                                 )
                                             }

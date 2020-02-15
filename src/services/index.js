@@ -4,7 +4,7 @@ export const uniqueCategory = (products) => {
     products.map((product) => {
         if (product.tags.length > 0 && product.tags) {
             product.tags.map((categorys) => {
-                if(categorys !== null || categorys !== '')
+                if(categorys && categorys.length > 0)
                 {
                     if (uniqueCategorys.indexOf(categorys) === -1) {
                         uniqueCategorys.push(categorys);
@@ -22,7 +22,7 @@ export const uniqueSizes = (products) => {
     products.map((product) => {
         if (product.size.length > 0 && product.size) {
             product.size.map((sizes) => {
-                if(sizes !== null || sizes !== '')
+                if(sizes && sizes.length > 0)
                 {
                     if (uniqueSizes.indexOf(sizes) === -1) {
                         uniqueSizes.push(sizes);
@@ -181,7 +181,7 @@ export const uniqueColors = (products) => {
 
         if(product.colors.length > 0 && product.colors) {
             product.colors.map((color) => {
-                if(color !== null || color !== '')
+                if(color && color.length > 0)
                 {
                     if (uniqueColors.indexOf(color) === -1) {
                         uniqueColors.push(color);

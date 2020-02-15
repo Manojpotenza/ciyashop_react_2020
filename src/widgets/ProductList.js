@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import Slider from "react-slick";
 import { Row, Col, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast  } from 'react-toastify';
 
 
 class ProductList extends Component {
@@ -28,14 +28,17 @@ class ProductList extends Component {
         var Cart = JSON.parse(localStorage.getItem("LocalCartItems"));
         if (Cart == null)
             Cart = new Array();
-        let selectedProduct = Cart.find(product => product.ProductName === ProductName);
+        let selectedProduct = Cart.find(product => product.ProductID === ProductID);
         if (selectedProduct == null) {
-
             Cart.push({ ProductID: ProductID, ProductName: ProductName, ProductImage: ProductImage, Qty: Qty, Rate: Rate, StockStatus: StockStatus });
             localStorage.removeItem("LocalCartItems");
             localStorage.setItem("LocalCartItems", JSON.stringify(Cart));
-
-            toast.success("Item Added to Cart");
+            var flag=0;
+            if(flag == 0)
+            {
+                toast.success("Item Added to Cart");
+                flag=1;
+            }
         }
         else {
             toast.warning("Item is already in Cart");
@@ -55,10 +58,10 @@ class ProductList extends Component {
             localStorage.removeItem("LocalWishListItems");
             localStorage.setItem("LocalWishListItems", JSON.stringify(Cart));
 
-            toast.success("Item Added to WishList");
+            toast("Item Added to WishList");
         }
         else {
-            toast.warning("Item is already in WishList");
+            toast("Item is already in WishList");
         }
 
 
@@ -105,7 +108,7 @@ class ProductList extends Component {
         };
         return (
             <div key={1} className={this.props.layoutstyle}>
-                <ToastContainer autoClose={1000} />
+                <ToastContainer autoClose={1000}  draggable={false} /> 
                 <div className="product product_tag-black product-hover-style-default product-hover-button-style-light product_title_type-single_line product_icon_type-line-icon">
                     <div className="product-inner element-hovered">
                         <div className="product-thumbnail">
@@ -140,7 +143,7 @@ class ProductList extends Component {
                                     </div>
                                     <div className="product-action product-action-wishlist">
                                         {!this.CheckWishList(product.id) ?
-                                            <Link onClick={() => this.AddToWishList(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="add_to_wishlist" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top"> Add to
+                                            <Link onClick={() => this.c(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="add_to_wishlist" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top"> Add to
                                     Wishlist</Link>
                                             :
                                             <Link to="/wishlist" className="add_to_wishlist_fill" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top">View Wishlist</Link>
