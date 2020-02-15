@@ -76,9 +76,20 @@ body {
   }
   .shop-filter-wrapper .ant-slider-track {
     background-color: #04d39f;
+    height: 2px;
+  }
+  .shop-filter-wrapper .ant-slider-mark {
+    top: 18px;
+  }
+  .shop-filter-wrapper .ant-slider-dot {
+    height: 6px;
+    width: 6px;
+    background: #04d39f;
+    border-color: #04d39f;
   }
   .shop-filter-wrapper .ant-slider-rail {
     background-color: #eee;
+    height: 2px;
   }
   .shop-filter-wrapper .ant-slider-handle {
     border-color: #04d39f;
@@ -155,6 +166,11 @@ body {
   .filter-wrapper .clear-filter:focus {
   background: #d2e3fc
   }
+
+  .shop-sidebar-widgets .price-clear-filter {
+    color: #04d39f !important;
+  }
+
 .root {
   width: 50%;
   margin-bottom: 20px;
@@ -721,7 +737,7 @@ body {
     padding: 20px 20px 0;
   }
 }
-@media screen and (max-width:360px) {
+@media screen and (max-width:479px) {
   .products .ant-pagination-prev, .products .ant-pagination-next, .products .ant-pagination-jump-prev, .products .ant-pagination-jump-next {
     min-width: 30px;
     height: 30px;

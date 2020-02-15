@@ -193,9 +193,10 @@ class SideFilter extends Component {
                     <input type="text" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
                 </div>
                 <div className="widget widget_price_filter">
-                    <p><a  onClick={() => this.clearprice(this.props.prices)}>Clear</a></p>
-                    <h4 className="widget-title">Filter by Price</h4>
-                   
+                    <div className="d-flex align-items-center justify-content-between">
+                        <h4 className="widget-title">Filter by Price</h4>
+                        <p><a  className="price-clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</a></p>
+                    </div>
                     <div classs="shop-filter shop-filter-product-price widget_price_filter">
                         <div className="shop-filter-wrapper">
                             <div className="price_slider_wrapper">

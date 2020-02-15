@@ -4994,12 +4994,13 @@ header.site-header.is-sticky .mega-menu .menu-links > li .drop-down.grid-col-12 
     text-align: left;
     margin-top: -1px;
   }
-  .navbar.navbar-light .navbar-toggler {
-    top: -41px !important;
+  nav.navbar.navbar-light.bg-faded {
+    top: 69px;
   }
-  /* header.site-header.is-sticky  .navbar.navbar-light .navbar-toggler {
-    top: -38px !important;
-  } */
+  .site-header.is-sticky nav.navbar.navbar-light.bg-faded {
+    top: 60px;
+}
+  
 
 }
 
@@ -5340,6 +5341,9 @@ footer.site-footer .pgs-newsletter-widget .newsletter_form .button-area .input-g
   content: "\f1d9";
   font-family: FontAwesome;
   font-size: 14px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)
 }
 
 footer.site-footer .pgs-opening-widget .pgs-opening-hours ul li {
@@ -12057,6 +12061,9 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   margin: 0 !important;
   border-radius: 0;
   color: #a7a5a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .products .product-hover-style-default .product-actions a:hover {
@@ -15232,6 +15239,12 @@ ul.products .product-inner .product-info .stock {
   line-height: 30px;
   font-size: 15px;
 }
+.add-to-wishlist-fill a {
+  color: #323232;
+}
+.add-to-wishlist-fill:hover a {
+  color: #04d39f;
+}
 
 .single-product .product-summary-actions .add-to-wishlist a:before {
   content: "\f08a";
@@ -18047,6 +18060,7 @@ ul.products .product-inner .product-info .stock {
 .slider-arrow-hover .slick-next {
   line-height: 40px;
   height: 40px;
+  width: 26px;
 }
 
 .slider-arrow-hover .slick-prev:before,
