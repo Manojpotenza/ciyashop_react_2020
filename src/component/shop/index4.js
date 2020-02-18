@@ -23,13 +23,15 @@ class ShopPage4 extends Component {
           limit: 8,
           hasMoreProduct: true,
           getproduct:AllProduct,
-          lastScrollTop:0
+          lastScrollTop:0,
+          isloading:false
         }
 
         window.onscroll = debounce(() => {
+          
             var st = window.pageYOffset || document.documentElement.scrollTop; 
             if (st > this.state.lastScrollTop){
-                this.onLoadMore();
+                    this.onLoadMore();
             }
             this.setState({
                 lastScrollTop: st <= 0 ? 0 : st
@@ -40,9 +42,13 @@ class ShopPage4 extends Component {
         this.onLoadMore();
     }
     onLoadMore = () => {
-        this.setState({
-            limit: this.state.limit + 8
-        });
+        this.setState({ isloading: true });
+        setTimeout(() => {
+            this.setState({
+                limit: this.state.limit + 8, 
+                isloading: false 
+            });
+        }, 2500);
     }
     render() {
     let {products} = this.props;
@@ -88,9 +94,6 @@ class ShopPage4 extends Component {
                             </div>
                             <div className="content col-xl-9 col-lg-8">
                                 <div className="products-header">
-                                    <div className="right-banner">
-                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)}  className="img-fluid" />
-                                    </div>
                                     <div className="loop-header">
                                         <div className="loop-header-tools">
                                             <div className="loop-header-tools-wrapper">
@@ -108,6 +111,10 @@ class ShopPage4 extends Component {
                                                 )
                                             }
                                         </Row>
+                                        {this.state.isloading && 
+                                            <div className="lazyload-img"></div>
+                                        }
+                                  
                                     </div>
                                 :
                                       <Row className="products products-loop grid ciyashop-products-shortcode">
@@ -120,7 +127,8 @@ class ShopPage4 extends Component {
                                       </Row>
                                 }
                             </div>
-
+                     
+                         
                         </Row>
                   </Container>
                 </div>

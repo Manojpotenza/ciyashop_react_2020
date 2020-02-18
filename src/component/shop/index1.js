@@ -73,9 +73,6 @@ class ShopPage1 extends Component {
                         <Row>
                             <div className="content col-xl-12 col-lg-12">
                                 <div className="products-header">
-                                    <div className="right-banner">
-                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
-                                    </div>
                                     <div className="sticky-filter" id="sticky-filter">
                                         <Container className="px-0">
                                             <div className="d-flex align-items-center">

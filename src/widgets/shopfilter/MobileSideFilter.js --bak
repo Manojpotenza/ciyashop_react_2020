@@ -27,7 +27,6 @@ class MobileSideFilter extends Component {
             categorydrop: false,
             sizedrop: false,
 
-
         }
         this.pricedrop = this.pricedrop.bind(this);
         this.colordrop = this.colordrop.bind(this);

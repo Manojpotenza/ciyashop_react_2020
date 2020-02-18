@@ -87,11 +87,11 @@ class App extends React.Component {
                     <Route exact path="/index-new-fashion" component={HomePage2} />
                     <Route exact path="/index-modern" component={HomePage3} />
                     <Route exact path="/index-home-classic" component={HomePage4} />
-                    <Route exact path="/shop" component={ShopPage} />
-                    <Route exact path="/shop1" component={ShopPage1} />
-                    <Route exact path="/shop2" component={ShopPage2} />
-                    <Route exact path="/shop3" component={ShopPage3} />
-                    <Route exact path="/shop4" component={ShopPage4} />
+                    <Route exact path="/sidebar-with-load-more" component={ShopPage} />
+                    <Route exact path="/topbar-with-load-more" component={ShopPage1} />
+                    <Route exact path="/sidebar-without-lazyload" component={ShopPage2} />
+                    <Route exact path="/topbar-without-lazyload" component={ShopPage3} />
+                    <Route exact path="/sidebar-with-lazyload" component={ShopPage4} />
                     <Route exact path="/ShopingCart" component={ShopingCart} />
                     <Route exact path="/MyAccount" component={MyAccount} />
                     <Route exact path="/BlogSinglePage" component={BlogSinglePage} />

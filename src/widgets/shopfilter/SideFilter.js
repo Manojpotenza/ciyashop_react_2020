@@ -3,6 +3,7 @@
  */
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
+import { Row, Col, Container, Form, Nav, Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import {uniqueCategory,uniqueSizes,uniqueColors,uniqueMinMaxPrice} from '../../services';
 import {categoryValue, sizeValue,colorValue,priceValue,searchValue} from '../../actions/filter';
 import {Slider} from 'antd';
@@ -14,8 +15,10 @@ class SideFilter extends Component {
         this.state={
             SearchValue:'',
             priceplace: [this.props.prices.min, this.props.prices.max],
-            setfistprice: [this.props.prices.min, this.props.prices.max]
+            setfistprice: [this.props.prices.min, this.props.prices.max],
+            sidebarmenu:false,
         }
+        this.showfilter = this.showfilter.bind(this);
     }
     componentDidMount(){
         this.setState({
@@ -25,7 +28,11 @@ class SideFilter extends Component {
         this.props.searchValue('');
         this.nameInput.focus();
     }
-
+    showfilter(){
+        this.setState(prevState => ({
+            sidebarmenu: !prevState.sidebarmenu
+        }));
+    }
     onClickColorFilter = (event, colors) =>{
         var index = colors.indexOf(event.target.value);
         if (event.target.checked)
@@ -172,7 +179,23 @@ class SideFilter extends Component {
         })
         this.props.priceValue({ value })
     }
+    // Clear Color Filter Code
+    clearcolor () {
+        var colors = [];
+        this.props.colorValue(colors);
+    }
+    // Clear Category Filter Code
+    clearcategory() {
+        var categorys = [];
+        this.props.categoryValue(categorys);
+    }
+    // Clear Size Filter Code
+    clearsize() {
+        var sizes = [];
+        this.props.sizeValue(sizes);
+    }
     render(){
+        const {sidebarmenu} = this.state;
         var max = this.props.prices.max;
         var maxdivide = max / 5;
         const marks = {
@@ -188,11 +211,15 @@ class SideFilter extends Component {
         const colorsFilterValues = this.props.filters.color;
        return (
            <div>
-                <div className="widget">
+                <Button onClick={this.showfilter} >
+                    <i className="fa fa-filter"> </i> Filter by
+                </Button>
+                <div className={"off-canvas-filter "+ (sidebarmenu ? "side-filter-open" : " ")}> 
+                    <div className="widget">
                     <h4 className="widget-title">Search</h4>
                     <input type="text" id="btn-search" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
                 </div>
-                <div className="widget widget_price_filter">
+                    <div className="widget widget_price_filter">
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className="widget-title">Filter by Price</h4>
                         <p><a  className="price-clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</a></p>
@@ -214,8 +241,11 @@ class SideFilter extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                    <h4 className="widget-title">Filter by Color</h4>
+                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <h4 className="widget-title">Filter by Color</h4>
+                        <p><a  className="price-clear-filter" onClick={() => this.clearcolor()} >Clear</a></p>
+                    </div>
                     <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{height: '210px'}}>
                         <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{right: '-17px'}}>
                          {this.props.colors.map((color, index) => {
@@ -230,8 +260,11 @@ class SideFilter extends Component {
                         </ul>
                     </div>
                 </div>
-                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                    <h4 className="widget-title">Product Categories</h4>
+                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
+                        <div className="d-flex align-items-center justify-content-between">
+                            <h4 className="widget-title">Filter by Categories</h4>
+                            <p><a  className="price-clear-filter" onClick={() => this.clearcategory()} >Clear</a></p>
+                        </div>
                         <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{height: '215px'}}>
                          {this.props.categorys.map((category, index) => {
                                             return (
@@ -243,8 +276,11 @@ class SideFilter extends Component {
                             })}
                     </div>
                  </div>
-                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                    <h4 className="widget-title">Filter by Size</h4>
+                    <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <h4 className="widget-title">Filter by Size</h4>
+                        <p><a  className="price-clear-filter" onClick={() => this.clearsize()} >Clear</a></p>
+                    </div>
                     <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{height: '215px'}}>
 
                         {this.props.sizes.map((size, index) => {
@@ -258,6 +294,7 @@ class SideFilter extends Component {
                             })}
                     </div>
                  </div>
+                </div>
             </div>
        )
     }

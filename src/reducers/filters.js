@@ -13,7 +13,7 @@ export default (state = {category: [],size:[],color: [], ratings:"",value: { min
     {
         return {
                     ...state,
-                    sizes: action.size
+                    size: action.size
                 };
     }
     else if(action.type == "GET_COLOR_VALUE")

@@ -36,37 +36,37 @@ export default [
    },
    {
       "menu_title": "Shop",
-      "path": "/shop",
+      "path": "/sidebar-with-load-more",
       "mega": true,
       "icon": "party_mode",
       "type": "subMenu",
       "child_routes": [
          {
-            "path": "/shop",
-            "menu_title": "Sidebar With load More",
+            "path": "/sidebar-with-load-more",
+            "menu_title": "Sidebar With Load More",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
-            "path": "/shop1",
-            "menu_title": "Topbar  With load More",
+            "path": "/topbar-with-load-more",
+            "menu_title": "Topbar  With Load More",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
-            "path": "/shop2",
+            "path": "/sidebar-without-lazyload",
             "menu_title": "Sidebar Without Lazyload",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
-            "path": "/shop3",
+            "path": "/topbar-without-lazyload",
             "menu_title": "Topbar Without Lazyload",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
-            "path": "/shop4",
+            "path": "/sidebar-with-lazyload",
             "menu_title": "Sidebar With Lazyload",
             "icon": "arrow_right_alt",
             "child_routes": null

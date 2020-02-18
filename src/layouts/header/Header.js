@@ -173,25 +173,25 @@ class Header extends React.Component {
         let pathArray = pathnames.split('/');
         let pageName = '/'+pathArray[pathArray.length -1];
         var searchName;
-        if(pageName== '/shop1')
+        if(pageName== '/topbar-with-load-more')
         {
-            searchName="/shop1"
+            searchName="/topbar-with-load-more"
         }
-        else if(pageName== '/shop2')
+        else if(pageName== '/sidebar-without-lazyload')
         {
-            searchName="/shop2"
+            searchName="/sidebar-without-lazyload"
         }
-        else if(pageName== '/shop3')
+        else if(pageName== '/topbar-without-lazyload')
         {
-            searchName="/shop3"
+            searchName="/topbar-without-lazyload"
         }
-        else if(pageName== '/shop4')
+        else if(pageName== '/sidebar-with-lazyload')
         {
-            searchName="/shop4"
+            searchName="/sidebar-with-lazyload"
         }
         else
         {
-            searchName="/shop"
+            searchName="/sidebar-with-load-more"
         }
         if (this.state.timeout == true) {
             setTimeout(function () {

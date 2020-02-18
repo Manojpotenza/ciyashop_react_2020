@@ -16,24 +16,23 @@ class HorizontalFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pricecapfilter: true,
             priceplace: [this.props.prices.min, this.props.prices.max],
             isOpen: false,
-            pricefilter: true,
+            pricecapfilter: true,
             colorfilter: true,
             categoryfilter: true,
             sizefilter: true,
             colordrop: false,
             categorydrop: false,
             sizedrop: false,
-            sidedrop:false
-
-
+            sidedrop:false,
+            width:window.innerWidth
         }
         this.pricedrop = this.pricedrop.bind(this);
         this.colordrop = this.colordrop.bind(this);
         this.categorydrop = this.categorydrop.bind(this);
         this.sizedrop = this.sizedrop.bind(this);
+
         this.showfilter = this.showfilter.bind(this);
         this.closefilter = this.closefilter.bind(this);
 
@@ -53,6 +52,7 @@ class HorizontalFilter extends Component {
         document.addEventListener('mousedown', this.handleClickOutsideColor);
         document.addEventListener('mousedown', this.handleClickOutsideCategory);
         document.addEventListener('mousedown', this.handleClickOutsidesize);
+        window.addEventListener('resize', this.handleWindowSizeChange);
         window.addEventListener('scroll', this.handleScroll); 
         
         this.setdefaultvalue();
@@ -63,10 +63,12 @@ class HorizontalFilter extends Component {
         document.removeEventListener('mousedown', this.handleClickOutsideColor);
         document.removeEventListener('mousedown', this.handleClickOutsideCategory);
         document.removeEventListener('mousedown', this.handleClickOutsidesize);
+        window.removeEventListener('resize', this.handleWindowSizeChange);
         window.removeEventListener('scroll', this.handleScroll);
-
-
     }
+    handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth });
+    };
     handleScroll(event) {
         var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
         document.body.scrollTop;
@@ -420,10 +422,43 @@ class HorizontalFilter extends Component {
         }
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
+    clearallfilter(){
 
+        this.setState({
+            pricecapfilter: true,
+            pricedrop: false,
+            priceplace: [this.props.prices.min, this.props.prices.max]
+        })
+        this.props.priceValue({value: {min: this.props.prices.min, max: this.props.prices.max}})
+
+        var colors = [];
+        this.setState({
+            removecolorlist: colors,
+            colorfilter: true
+        })
+        this.props.colorValue(colors);
+  
+        var categorys = [];
+        this.setState({
+            removecategorylist: categorys,
+            categoryfilter: true
+        })
+        this.props.categoryValue(categorys);
+
+        var size = [];
+        this.setState({
+            removesizelist: size,
+            sizefilter: true
+        })
+        this.props.sizeValue(size);
+
+    }
 
     render() {
-        const { colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist,sidedrop } = this.state;
+        const { pricecapfilter,pricedrop,width,colorfilter, colordrop, removecolorlist, categoryfilter, categorydrop, removecategorylist, sizefilter, sizedrop, removesizelist,sidedrop } = this.state;
+
+        const isMobile = width <= 767;
+
         const sizeFilterValues = this.props.filters.size;
         const categoryFilterValues = this.props.filters.category;
         const colorsFilterValues = this.props.filters.color;
@@ -449,217 +484,216 @@ class HorizontalFilter extends Component {
         }
         return (
             <div className="d-flex align-items-center filters-wrapper">
-                <p class="mb-0 filter-title filter-by"><i className="fa fa-filter"></i> Filter by</p>
-
-                <Button onClick={this.showfilter} className="btn-filter">
-                    <i className="fa fa-filter"> </i> Filter by
-                </Button>
-
-                <div className="horizontal-filter-dropdown" ref={this.setPriceRef}>
-                    {(this.state.pricecapfilter) ?
-                        <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
-                        :
-                        <p><Button className="btn-white dropdown-toggle bg-highlight" onClick={this.pricedrop}>Filter By Price : <b>{(this.props.filters.value.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - {(this.props.filters.value.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</b></Button><a className="filter-close" onClick={() => this.clearprice(this.props.prices)} to=""></a></p>
-                    }
-                    {(this.state.pricedrop) ?
-                        <div className="filter-wrapper zoomIn animated">
-                            <div className="widget-title-header">
-                                <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
-                            </div>
-                            {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
-                                <p>Between: <span>$ {(this.props.prices.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {(this.props.prices.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                 {(!isMobile) ?
+                    <div>
+                        <p class="mb-0 filter-title filter-by"><i className="fa fa-filter"></i> Filter by</p>
+                        <div className="horizontal-filter-dropdown" ref={this.setPriceRef}>
+                            {(pricecapfilter) ?
+                                <Button className="btn-white dropdown-toggle btn btn-secondary" onClick={this.pricedrop}>Filter By Price</Button>
                                 :
-                                <p>Between: <span>$ {(this.props.filters.value.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {(this.props.filters.value.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                <p><Button className="btn-white dropdown-toggle bg-highlight" onClick={this.pricedrop}>Filter By Price : <b>{(this.props.filters.value.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - {(this.props.filters.value.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</b></Button><a className="filter-close" onClick={() => this.clearprice(this.props.prices)} to=""></a></p>
                             }
-                            <Slider
-                                range
-                                step={1}
-                                min={0}
-                                max={100}
-                                tipFormatter={this.toolformatter}
-                                defaultValue={this.state.priceplace}
-                                onAfterChange={this.onChangePricePlace}
-                                marks={marks}
-                            />
-                        </div>
-                        : null}
-                </div>
-
-                <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
-                    {(colorfilter) ?
-                        <Button caret className="btn-white dropdown-toggle" onClick={this.colordrop}>
-                            <span className="mb-0">Filter by Color</span>
-                        </Button>
-                        :
-                        <p><Button caret className="btn-white bg-highlight" onClick={this.colordrop}>Color: <b>{(removecolorlist.length === 1) ? this.Capitalize(removecolorlist[0]) : this.Capitalize(removecolorlist[0]) + '+' + (totalremovecolor - 1)}</b></Button><a  className="filter-close" onClick={() => this.clearcolor()} to=""></a></p>
-                    }
-                    {(colordrop) ?
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
-                            <div className="widget-title-header">
-                                <h4 className="widget-title">Filter by Color <a  className="btn-close" onClick={() => this.closecolor()}></a></h4>
-                             </div>
-                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
-                                    {this.props.colors.map((color, index) => {
-                                        return (
-                                            <div className="form-check pgs-filter-checkbox" key={index}>
-                                                <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
-                                                <label className="form-check-label"
-                                                    htmlFor={color}>{color}</label>
-                                            </div>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
-                        : null}
-                </div>
-
-                <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
-                    {(categoryfilter) ?
-                        <Button caret className="btn-white dropdown-toggle" onClick={this.categorydrop}>
-                            <span className="mb-0">Product Categories</span>
-                        </Button>
-                        :
-                        <p><Button caret className="btn-white bg-highlight" onClick={this.categorydrop}>Category: <b>{(removecategorylist.length === 1) ? this.Capitalize(removecategorylist[0]) : this.Capitalize(removecategorylist[0]) + '+' + (totalremovecategory - 1)}</b></Button><a  className="filter-close" onClick={() => this.clearcategory()} to=""></a></p>
-                    }
-                    {(categorydrop) ?
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
-                            <div className="widget-title-header">
-                                <h4 className="widget-title">Product Categories<a  className="btn-close" onClick={() => this.closecategory()}></a></h4>
-                            </div>
-                           <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                {this.props.categorys.map((category, index) => {
-                                    return (
-                                        <div className="form-check pgs-filter-checkbox" key={index}>
-                                            <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
-                                            <label className="form-check-label"
-                                                htmlFor={category}>{category}</label>
-                                        </div>)
-                                })}
-                            </div>
-                        </div>
-                        : null}
-                </div>
-
-
-                <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
-                    {(sizefilter) ?
-                        <Button caret className="btn-white dropdown-toggle" onClick={this.sizedrop}>
-                            <span className="mb-0">Filter By Size</span>
-                        </Button>
-                        :
-                        <p><Button caret className="btn-white bg-highlight" onClick={this.sizedrop}>Size: <b>{(removesizelist.length === 1) ? this.Capitalize(removesizelist[0]) : this.Capitalize(removesizelist[0]) + '+' + (totalremovesize - 1)}</b></Button><a  className="filter-close" onClick={() => this.clearsize()} ></a></p>
-                    }
-                    {(sizedrop) ?
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
-                            <div className="widget-title-header">
-                                <h4 className="widget-title">Filter By Size<a  className="btn-close" onClick={() => this.closesize()}></a></h4>
-                            </div>
-                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                {this.props.sizes.map((size, index) => {
-                                    return (
-
-                                        <div class="form-check pgs-filter-checkbox">
-                                            <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
-                                            <label class="form-check-label" htmlFor={size}>{size}</label>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                        : null}
-                </div>
-
-
-                <div className="site-header-row" id="site-header-row"></div>
-                
-                {/* Responsive Mobile */}
-                <div className={"off-canvas-filter horizontal-mobile-filter"+ (sidedrop ? " filter-open" : " ")}   id="off-canvas-filter">
-                    <div class="sidebar-widget-heading">
-                        <button className="apply-filter-btn" onClick={this.closefilter} >Apply Filter</button>
-                        <a  onClick={this.closefilter} class="close-sidebar-widget"></a>
-                    </div>
-                    <div className="horizontal-filter-dropdown" >
-                
-                        <div className="filter-wrapper">
-                            <h5 className="filter-title">Price Range</h5>
-                            {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
-                                <p>Between: <span>$ {this.props.prices.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.prices.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
-                                :
-                                <p>Between: <span>$ {this.props.filters.value.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.filters.value.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
-                            }
-                            <Slider
-                                 range
-                                 step={1}
-                                 min={0}
-                                 max={100}
-                                 tipFormatter={this.toolformatter}
-                                 value={this.state.priceplace}
-                                 onChange={this.onChangePricePlace}
-                                 marks={marks}
-                            />
-                        </div>
-                </div>
-                    <div className="horizontal-filter-dropdown" >
-                    
-                            <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                                <div className="widget-title-header">
-                                    <h4 className="widget-title">Filter by Color </h4>
+                            {(pricedrop) ?
+                                <div className="filter-wrapper zoomIn animated">
+                                    <div className="widget-title-header">
+                                        <h5 className="filter-title">Price Range <span className="btn-close" onClick={() => this.closeprice(this.props.filters.value)}></span></h5>
+                                    </div>
+                                    {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
+                                        <p>Between: <span>$ {(this.props.prices.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {(this.props.prices.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                        :
+                                        <p>Between: <span>$ {(this.props.filters.value.min).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {(this.props.filters.value.max).toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                    }
+                                    <Slider
+                                        range
+                                        step={1}
+                                        min={0}
+                                        max={100}
+                                        tipFormatter={this.toolformatter}
+                                        defaultValue={this.state.priceplace}
+                                        onAfterChange={this.onChangePricePlace}
+                                        marks={marks}
+                                    />
                                 </div>
+                                : null}
+                        </div>
+                        <div className="horizontal-filter-dropdown" ref={this.setColorRef}>
+                            {(colorfilter) ?
+                                <Button caret className="btn-white dropdown-toggle" onClick={this.colordrop}>
+                                    <span className="mb-0">Filter by Color</span>
+                                </Button>
+                                :
+                                <p><Button caret className="btn-white bg-highlight" onClick={this.colordrop}>Color: <b>{(removecolorlist.length === 1) ? this.Capitalize(removecolorlist[0]) : this.Capitalize(removecolorlist[0]) + '+' + (totalremovecolor - 1)}</b></Button><a  className="filter-close" onClick={() => this.clearcolor()} to=""></a></p>
+                            }
+                            {(colordrop) ?
+                                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                                    <div className="widget-title-header">
+                                        <h4 className="widget-title">Filter by Color <a  className="btn-close" onClick={() => this.closecolor()}></a></h4>
+                                    </div>
+                                    <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                        <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
+                                            {this.props.colors.map((color, index) => {
+                                                return (
+                                                    <div className="form-check pgs-filter-checkbox" key={index}>
+                                                        <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                                        <label className="form-check-label"
+                                                            htmlFor={color}>{color}</label>
+                                                    </div>
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
+                                : null}
+                        </div>
+                        <div className="horizontal-filter-dropdown" ref={this.setCategoryRef}>
+                            {(categoryfilter) ?
+                                <Button caret className="btn-white dropdown-toggle" onClick={this.categorydrop}>
+                                    <span className="mb-0">Product Categories</span>
+                                </Button>
+                                :
+                                <p><Button caret className="btn-white bg-highlight" onClick={this.categorydrop}>Category: <b>{(removecategorylist.length === 1) ? this.Capitalize(removecategorylist[0]) : this.Capitalize(removecategorylist[0]) + '+' + (totalremovecategory - 1)}</b></Button><a  className="filter-close" onClick={() => this.clearcategory()} to=""></a></p>
+                            }
+                            {(categorydrop) ?
+                                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                                    <div className="widget-title-header">
+                                        <h4 className="widget-title">Product Categories<a  className="btn-close" onClick={() => this.closecategory()}></a></h4>
+                                    </div>
                                 <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                    <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
-                                        {this.props.colors.map((color, index) => {
+                                        {this.props.categorys.map((category, index) => {
                                             return (
                                                 <div className="form-check pgs-filter-checkbox" key={index}>
-                                                    <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                                    <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
                                                     <label className="form-check-label"
-                                                        htmlFor={color}>{color}</label>
+                                                        htmlFor={category}>{category}</label>
+                                                </div>)
+                                        })}
+                                    </div>
+                                </div>
+                                : null}
+                        </div>
+                        <div className="horizontal-filter-dropdown" ref={this.setSizeRef}>
+                            {(sizefilter) ?
+                                <Button caret className="btn-white dropdown-toggle" onClick={this.sizedrop}>
+                                    <span className="mb-0">Filter By Size</span>
+                                </Button>
+                                :
+                                <p><Button caret className="btn-white bg-highlight" onClick={this.sizedrop}>Size: <b>{(removesizelist.length === 1) ? this.Capitalize(removesizelist[0]) : this.Capitalize(removesizelist[0]) + '+' + (totalremovesize - 1)}</b></Button><a  className="filter-close" onClick={() => this.clearsize()} ></a></p>
+                            }
+                            {(sizedrop) ?
+                                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav zoomIn animated">
+                                    <div className="widget-title-header">
+                                        <h4 className="widget-title">Filter By Size<a  className="btn-close" onClick={() => this.closesize()}></a></h4>
+                                    </div>
+                                    <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                        {this.props.sizes.map((size, index) => {
+                                            return (
+
+                                                <div class="form-check pgs-filter-checkbox">
+                                                    <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
+                                                    <label class="form-check-label" htmlFor={size}>{size}</label>
                                                 </div>
                                             )
                                         })}
-                                    </ul>
+                                    </div>
                                 </div>
+                                : null}
+                        </div>
+                        <div className="site-header-row" id="site-header-row"></div>
+                        <div>
+                            <button onClick={()=>this.clearallfilter()} >Clear All</button>
+                        </div>
+                    </div>
+                :
+                    <div>
+                        <Button onClick={this.showfilter} className="btn-filter">
+                            <i className="fa fa-filter"> </i> Filter by
+                        </Button>
+                        <div className={"off-canvas-filter horizontal-mobile-filter"+ (sidedrop ? " filter-open" : " ")}   id="off-canvas-filter">
+                            <div class="sidebar-widget-heading">
+                            <button className="apply-filter-btn" onClick={this.closefilter} >Apply Filter</button>
+                            <a  onClick={this.closefilter} class="close-sidebar-widget"></a>
+                        </div>
+                            <div className="horizontal-filter-dropdown" >
+                    
+                            <div className="filter-wrapper">
+                                <h5 className="filter-title">Price Range</h5>
+                                {(this.props.filters.value.max === this.props.prices.max && this.props.filters.value.min === this.props.prices.min) ?
+                                    <p>Between: <span>$ {this.props.prices.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.prices.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                    :
+                                    <p>Between: <span>$ {this.props.filters.value.min.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} - $ {this.props.filters.value.max.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </span> <span className="clear-filter" onClick={() => this.clearprice(this.props.prices)}>Clear</span></p>
+                                }
+                                <Slider
+                                    range
+                                    step={1}
+                                    min={0}
+                                    max={100}
+                                    tipFormatter={this.toolformatter}
+                                    value={this.state.priceplace}
+                                    onChange={this.onChangePricePlace}
+                                    marks={marks}
+                                />
                             </div>
                     </div>
-                    <div className="horizontal-filter-dropdown" >
+                            <div className="horizontal-filter-dropdown" >
+                        
+                                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
+                                    <div className="widget-title-header">
+                                        <h4 className="widget-title">Filter by Color </h4>
+                                    </div>
+                                    <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                        <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
+                                            {this.props.colors.map((color, index) => {
+                                                return (
+                                                    <div className="form-check pgs-filter-checkbox" key={index}>
+                                                        <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
+                                                        <label className="form-check-label"
+                                                            htmlFor={color}>{color}</label>
+                                                    </div>
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
+                        </div>
+                            <div className="horizontal-filter-dropdown" >
+                                <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
+                                    <div className="widget-title-header">
+                                        <h4 className="widget-title">Product Categories</h4>
+                                    </div>
+                                <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                        {this.props.categorys.map((category, index) => {
+                                            return (
+                                                <div className="form-check pgs-filter-checkbox" key={index}>
+                                                    <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
+                                                    <label className="form-check-label"
+                                                        htmlFor={category}>{category}</label>
+                                                </div>)
+                                        })}
+                                    </div>
+                                </div>
+                                
+                        </div>
+                            <div className="horizontal-filter-dropdown">
                             <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                                 <div className="widget-title-header">
-                                    <h4 className="widget-title">Product Categories</h4>
+                                    <h4 className="widget-title">Filter By Size</h4>
                                 </div>
-                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                    {this.props.categorys.map((category, index) => {
+                                <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
+                                    {this.props.sizes.map((size, index) => {
                                         return (
-                                            <div className="form-check pgs-filter-checkbox" key={index}>
-                                                <input type="checkbox" onClick={(e) => this.onClickCategoryFilter(e, categoryFilterValues)} value={category} defaultChecked={categoryFilterValues.includes(category) ? true : false} className="form-check-input" id={category} />
-                                                <label className="form-check-label"
-                                                    htmlFor={category}>{category}</label>
-                                            </div>)
+
+                                            <div class="form-check pgs-filter-checkbox">
+                                                <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
+                                                <label class="form-check-label" htmlFor={size}>{size}</label>
+                                            </div>
+                                        )
                                     })}
                                 </div>
                             </div>
-                            
-                    </div>
-                    <div className="horizontal-filter-dropdown">
-                        <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
-                            <div className="widget-title-header">
-                                <h4 className="widget-title">Filter By Size</h4>
-                            </div>
-                            <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
-                                {this.props.sizes.map((size, index) => {
-                                    return (
-
-                                        <div class="form-check pgs-filter-checkbox">
-                                            <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
-                                            <label class="form-check-label" htmlFor={size}>{size}</label>
-                                        </div>
-                                    )
-                                })}
-                            </div>
+                        </div>
                         </div>
                     </div>
-                </div>
-           
+                 }
             </div>
 
         )
