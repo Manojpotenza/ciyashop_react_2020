@@ -68,11 +68,11 @@ class ShopPage1 extends Component {
                     </Container>
                 </div>
 
-                <div className="content-wrapper section-pt mb-3 mb-md-5">
+                <div className="content-wrapper mb-3 mb-md-5">
                     <Container>
                         <Row>
                             <div className="content col-xl-12 col-lg-12">
-                                <div className="products-header">
+                                <div className="products-header pt-5">
                                     <div className="sticky-filter" id="sticky-filter">
                                         <Container className="px-0">
                                             <div className="d-flex align-items-center">
