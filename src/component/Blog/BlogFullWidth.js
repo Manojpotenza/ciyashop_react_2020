@@ -618,3 +618,4 @@ class BlogFullWidth extends Component {
     }
 }
 export default BlogFullWidth;
+    

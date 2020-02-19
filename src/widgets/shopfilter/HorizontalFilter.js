@@ -591,9 +591,11 @@ class HorizontalFilter extends Component {
                                 : null}
                         </div>
                         <div className="site-header-row" id="site-header-row"></div>
+                        {((!pricecapfilter) || (!colorfilter) || (!categoryfilter) || (!sizefilter)) ? 
                         <div>
                             <button className="clear-all-btn" onClick={()=>this.clearallfilter()} >Clear All</button>
                         </div>
+                        : null}
                     </div>
                 :
                     <div>
