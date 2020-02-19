@@ -6,12 +6,14 @@ import { connect } from 'react-redux';
 import { Row, Col, Container, Form, Nav, Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import {uniqueCategory,uniqueSizes,uniqueColors,uniqueMinMaxPrice} from '../../services';
 import {categoryValue, sizeValue,colorValue,priceValue,searchValue} from '../../actions/filter';
+//import CustomScroll from 'react-custom-scroll';
 import {Slider} from 'antd';
 
 class SideFilter extends Component {
 
     constructor(props) {
         super(props);
+        console.log('props =>',props)
         this.state={
             SearchValue:'',
             priceplace: [this.props.prices.min, this.props.prices.max],
@@ -195,7 +197,7 @@ class SideFilter extends Component {
         this.props.sizeValue(sizes);
     }
     render(){
-        const {sidebarmenu} = this.state;
+      
         var max = this.props.prices.max;
         var maxdivide = max / 5;
         const marks = {
@@ -211,14 +213,10 @@ class SideFilter extends Component {
         const colorsFilterValues = this.props.filters.color;
        return (
            <div>
-                <Button onClick={this.showfilter} >
-                    <i className="fa fa-filter"> </i> Filter by
-                </Button>
-                <div className={"off-canvas-filter "+ (sidebarmenu ? "side-filter-open" : " ")}> 
                     <div className="widget">
-                    <h4 className="widget-title">Search</h4>
-                    <input type="text" id="btn-search" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
-                </div>
+                        <h4 className="widget-title">Search</h4>
+                        <input type="text" id="btn-search" ref={(input) => { this.nameInput = input; }}  className="form-control"  value={this.state.SearchValue}  onChange={this.SearchTextchange.bind(this)} placeholder="Search a Product" />
+                    </div>
                     <div className="widget widget_price_filter">
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className="widget-title">Filter by Price</h4>
@@ -246,7 +244,9 @@ class SideFilter extends Component {
                         <h4 className="widget-title">Filter by Color</h4>
                         <p><a  className="price-clear-filter" onClick={() => this.clearcolor()} >Clear</a></p>
                     </div>
+
                     <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{height: '210px'}}>
+                    {/* <CustomScroll> */}
                         <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{right: '-17px'}}>
                          {this.props.colors.map((color, index) => {
                                  return (
@@ -258,6 +258,7 @@ class SideFilter extends Component {
                                     )
                             })}
                         </ul>
+                    {/* </CustomScroll> */}
                     </div>
                 </div>
                     <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
@@ -294,7 +295,6 @@ class SideFilter extends Component {
                             })}
                     </div>
                  </div>
-                </div>
             </div>
        )
     }

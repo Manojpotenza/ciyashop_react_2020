@@ -483,9 +483,9 @@ class HorizontalFilter extends Component {
             var totalremovesize = removesizelist.length;
         }
         return (
-            <div className="d-flex align-items-center filters-wrapper">
+            <div className="filters-wrapper">
                  {(!isMobile) ?
-                    <div>
+                    <div className="d-flex align-items-center">
                         <p class="mb-0 filter-title filter-by"><i className="fa fa-filter"></i> Filter by</p>
                         <div className="horizontal-filter-dropdown" ref={this.setPriceRef}>
                             {(pricecapfilter) ?

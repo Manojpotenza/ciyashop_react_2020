@@ -565,6 +565,99 @@ body {
   align-items: center;
   margin-bottom: 20px;
 }
+
+/********************************
+        sidebar overlay 
+*********************************/
+.sidebar.sidebar-overlay.sidebar-overlay-open {
+  transform: translateX(0px);
+}
+
+.sidebar.sidebar-overlay {
+  position: fixed;
+  width: 340px;
+  z-index: 99999;
+  background: #fff;
+  padding: 30px;
+  -webkit-box-shadow: 0 0 3px #ddd;
+  box-shadow: 0 0 3px #ddd;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+  top: 0;
+  height: 100%;
+  bottom: 0;
+}
+.overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-overlay-btn {
+  position: fixed;
+  left: 30px;
+  background: #04d39f;
+  height: 38px;
+  border: 0px;
+  bottom: 30px;
+  color: #fff;
+  border-radius: 50px;
+  width: 100px;
+  font-weight: 500;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9;
+}
+.filter-overlay-btn i {
+  color: #fff;
+  margin-right: 5px;
+}
+.filter-overlay-btn:hover, .filter-overlay-btn:focus {
+  background-color: #323232;
+  color: #fff;
+}
+.sidebar-overlay-close {
+    width: 25px;
+    min-height: 25px;
+    position: relative;
+    float: right;
+    display: block;
+}
+.sidebar-overlay-close:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.sidebar-overlay-close:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.sidebar-overlay-close:before , .sidebar-overlay-close:after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  margin-top: -2px;
+  margin-right: -12px;
+  display: inline-block;
+  background-color: #323232;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  z-index: 0;
+}
+.sidebar-overlay .shop-sidebar-widgets {
+  clear: both;
+}
+
+
 /*************************
      Responsive 
 *************************/
