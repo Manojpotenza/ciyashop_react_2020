@@ -1,18 +1,17 @@
 /**
  *  Home New Fasshion Page
  */
-import React , {Component} from 'react';
-import HomeSlider from '../../widgets/HomSlider2.js';
-import HomeBanner2 from '../../widgets/home2/HomeBanner2.js';
-import NewCollecation from '../../widgets/home2/NewCollecation.js';
-import DealOfTheWeek2 from '../../widgets/home2/DealOfTheWeek2.js';
-import ProductList from '../../widgets/home2/ProductList.js';
-import Subscribe2 from '../../widgets/home2/Subscribe2.js';
-import LatestBlogSlider from '../../widgets/home2/LatestBlogSlider.js';
-import BrandLogoSlider from '../../widgets/BrandLogoSlider.js';
-import ProductSlider from '../../widgets/ProductSlider.js';
-import { Row, Col,Container } from 'reactstrap';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import BrandLogoSlider from '../../widgets/BrandLogoSlider.js';
+import DealOfTheWeek2 from '../../widgets/home2/DealOfTheWeek2.js';
+import HomeBanner2 from '../../widgets/home2/HomeBanner2.js';
+import LatestBlogSlider from '../../widgets/home2/LatestBlogSlider.js';
+import NewCollecation from '../../widgets/home2/NewCollecation.js';
+import Subscribe2 from '../../widgets/home2/Subscribe2.js';
+import HomeSlider from '../../widgets/HomSlider2.js';
+import ProductSlider from '../../widgets/ProductSlider.js';
 
 const saleslider = {
     dots: false,

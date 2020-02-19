@@ -1,8 +1,8 @@
 /**
  * Sub Scribe Widgets
  */
-import React , {Component} from 'react';
-import { Row, Col, Container,Button } from 'reactstrap';
+import React, { Component } from 'react';
+import { Col, Container, Row } from 'reactstrap';
 import BG_Image from '../assets/images/newsletter/img-03.jpg';
 
 class Subscribe1 extends Component {
@@ -15,12 +15,10 @@ class Subscribe1 extends Component {
 
     handleValidation()
     {
-          let fieldvalue=this.state.fieldvalue;
-          let errors = {};
-          let formIsValid = true;
-
-
-
+        let fieldvalue=this.state.fieldvalue;
+        let errors = {};
+        let formIsValid = true;
+        
         //Email ID
         if (!fieldvalue["newsletter_email"]) {
           formIsValid = false;

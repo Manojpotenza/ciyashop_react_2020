@@ -1,23 +1,24 @@
 /**
  *  Admin Dashboard Menu
  */
-import React, { Component,Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom';
+import PageNotFound from '../../component/Pages/PageNotFound';
+import Footer from '../../layouts/footer/Footer';
+import Headers from '../../layouts/header/Header';
 
 // Component
 import AdminHeader from './Adminheader';
-import { Route } from 'react-router-dom';
-import Reports from './Reports';
-import Invoices from './Invoices';
-import Profile from './Profile';
 import AdminProductList from './AdminProductList';
-import Productedit from './Product/Productedit';
-import Settings from './Settings';
 import Collaboration from './Collaboration';
-import Profileedit from './Profileedit';
+import Invoices from './Invoices';
 import Productadd from './Product/Productadd';
-import PageNotFound from '../../component/Pages/PageNotFound';
-import Headers from '../../layouts/header/Header';
-import Footer from '../../layouts/footer/Footer';
+import Productedit from './Product/Productedit';
+import Profile from './Profile';
+import Profileedit from './Profileedit';
+import Reports from './Reports';
+import Settings from './Settings';
+
 
 class AdminDashboard extends Component {
   

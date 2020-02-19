@@ -2,10 +2,11 @@
  * User Address Edit
  */
 import React, { Component } from 'react';
-import { Row, Col,Container} from 'reactstrap';
-import Sitebar from './Sitebar';
-import Common from '../../api/common';
 import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import Common from '../../api/common';
+import Sitebar from './Sitebar';
+
 class Addressedit extends Component {
 
       state = {

@@ -2,8 +2,8 @@
  *  Admin Site Product Edit Page
  */
 import React, { Component } from 'react';
-import productdata from '../../../api/product';
 import { Container } from 'reactstrap';
+import productdata from '../../../api/product';
 import ProductEditDetail from '../../../templates/product-edit-detail';
 
 

@@ -1,9 +1,9 @@
 /**
  * Home 2 Product List
  */
-import React , {Component} from 'react';
+import React, { Component } from 'react';
+import { Row } from 'reactstrap';
 import ProductSlider from '../ProductSlider';
-import { Row, Col,Container } from 'reactstrap';
 
 class ProductList extends Component {
 

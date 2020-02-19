@@ -1,13 +1,13 @@
 /*
 * Admin Site Product Edit Page
 */
-import React , {Component} from 'react';
-import Slider from "react-slick";
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import { Row, FormGroup, Label, Input } from 'reactstrap';
 import ImageUploader from 'react-images-upload';
+import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import { FormGroup, Input, Label, Row } from 'reactstrap';
 
 const settings = {
     dots: false,

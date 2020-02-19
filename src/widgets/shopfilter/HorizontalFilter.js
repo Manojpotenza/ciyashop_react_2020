@@ -1,13 +1,13 @@
 /**
  * Shop Page Side Bar Filter
  */
+import { Slider } from 'antd';
+import "antd/dist/antd.css";
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Container, Form, Nav, Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
-import { Slider } from 'antd';
-import "antd/dist/antd.css"
-import { uniqueCategory, uniqueSizes, uniqueColors, uniqueMinMaxPrice } from '../../services';
-import { categoryValue, sizeValue, colorValue, priceValue } from '../../actions/filter';
+import { Button } from 'reactstrap';
+import { categoryValue, colorValue, priceValue, sizeValue } from '../../actions/filter';
+import { uniqueCategory, uniqueColors, uniqueMinMaxPrice, uniqueSizes } from '../../services';
 import './styles.css';
 
 var removecate = [], removecategorylist = [], removesizelist = [];
@@ -87,20 +87,12 @@ class HorizontalFilter extends Component {
     showfilter(){
         this.setState(prevState => ({
             sidedrop: !prevState.sidedrop
-        }));
-        // document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter-show");
-        // document.getElementById("site-header-row").setAttribute("class","off-canvas-overlay");
-        // document.getElementById("sticky-filter").setAttribute("class","sticky-filter open");
-        
+        }));        
     }
     closefilter(){
         this.setState({
             sidedrop: false
         });
-        // document.getElementById("site-header-row").setAttribute("class","site-header-row");
-        // document.getElementById("off-canvas-filter").setAttribute("class","off-canvas-filter");
-        // document.getElementById("sticky-filter").setAttribute("class","sticky-filter");
-
     }
     convertValue = (labelValue) => {
         return labelValue.toLocaleString("en", {   

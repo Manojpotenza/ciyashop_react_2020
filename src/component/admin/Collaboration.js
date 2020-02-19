@@ -3,10 +3,10 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container,Button,Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Adminsitebar from './Adminsitebar';
-import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import { Button, Col, Container, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import MyCollaboration from '../../api/collaboration';
+import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import Adminsitebar from './Adminsitebar';
 
 class Collaboration extends Component {
 

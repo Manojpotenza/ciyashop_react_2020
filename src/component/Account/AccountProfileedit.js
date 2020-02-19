@@ -2,10 +2,11 @@
  *  Account Profile Edit
  */
 import React, { Component } from 'react';
-import { Row, Col,Container,Button } from 'reactstrap';
-import Sitebar from './Sitebar';
-import Common from '../../api/common';
 import { Link } from 'react-router-dom';
+import { Button, Col, Container, Row } from 'reactstrap';
+import Common from '../../api/common';
+import Sitebar from './Sitebar';
+
 class AccountProfileedit extends Component {
 
   state = {

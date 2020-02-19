@@ -3,10 +3,8 @@
  * ProductList Widget
  */
 import React, { Component } from 'react';
-import Slider from "react-slick";
-import { Row, Col, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast  } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 class ProductList extends Component {

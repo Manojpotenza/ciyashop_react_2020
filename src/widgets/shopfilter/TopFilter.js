@@ -1,13 +1,14 @@
 /**
  * Shop Page Top Filter
  */
-import React , {Component} from 'react';
-import { Row, Col,Form } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import {sortValue,ratingValue} from '../../actions/filter';
-import {getFilterProductsdata} from '../../services';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Form, Row } from 'reactstrap';
+import { ratingValue, sortValue } from '../../actions/filter';
 import MyProduct from '../../api/product';
+import { getFilterProductsdata } from '../../services';
+
 class TopFilter extends Component {
 
         componentDidMount()

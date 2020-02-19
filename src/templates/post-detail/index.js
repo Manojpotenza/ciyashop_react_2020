@@ -2,13 +2,13 @@
 /*
 * Post Detail Page
 */
-import React , {Component} from 'react';
-import Slider from "react-slick";
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import { Row, Col,Container } from 'reactstrap';
-import { ToastContainer,toast  } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import { toast } from 'react-toastify';
+import { Row } from 'reactstrap';
 
 const settings = {
     dots: false,

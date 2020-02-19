@@ -2,10 +2,10 @@
  *  Admin Site Product Listing Page
  */
 import React, { Component } from 'react';
-import { Row, Col,Container } from 'reactstrap';
-import AdminproductList from '../../widgets/AdminProduct';
+import { Col, Container, Row } from 'reactstrap';
 import productdata from '../../api/product';
 import Pagination from '../../services/Pagination';
+import AdminproductList from '../../widgets/AdminProduct';
 
 class AdminProduct extends Component {
 

@@ -1,16 +1,16 @@
 /**
  *  Home Classic Page
  */
-import React , {Component} from 'react';
-import HomSlider from '../../widgets/HomSlider4';
-import ProductSlider from '../../widgets/ProductSlider';
-import OurLatestPost from '../../widgets/OurLatestPost';
-import { Row, Col,Container } from 'reactstrap';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
 import AboutBanner3 from '../../widgets/AbountBanner3';
 import NewCollecation from '../../widgets/home2/NewCollecation';
-import Subscribe1 from '../../widgets/Subscribe1';
-import { Link } from 'react-router-dom';
+import HomSlider from '../../widgets/HomSlider4';
 import Instagram from '../../widgets/Instafeed';
+import OurLatestPost from '../../widgets/OurLatestPost';
+import ProductSlider from '../../widgets/ProductSlider';
+import Subscribe1 from '../../widgets/Subscribe1';
 
 const saleslider = {
     dots: false,
