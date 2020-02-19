@@ -14,6 +14,7 @@ import {getFilterProductsdata} from '../../services';
 import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
 import debounce from "lodash.debounce";
+import { Button } from 'antd';
 
 class ShopPage4 extends Component {
 
@@ -26,7 +27,7 @@ class ShopPage4 extends Component {
           lastScrollTop:0,
           isloading:false
         }
-
+        
         window.onscroll = debounce(() => {
           
             var st = window.pageYOffset || document.documentElement.scrollTop; 
@@ -37,10 +38,37 @@ class ShopPage4 extends Component {
                 lastScrollTop: st <= 0 ? 0 : st
             }) 
         }, 100);
+
+        this.showfilter = this.showfilter.bind(this);
+        this.setSidebar = this.setSidebar.bind(this);
+        this.sidebarOutClick = this.sidebarOutClick.bind(this);
+    }
+    componentDidMount(){
+        document.addEventListener('mousedown', this.sidebarOutClick);
     }
     componentWillMount() {
+        document.removeEventListener('mousedown', this.sidebarOutClick);
         this.onLoadMore();
     }
+    setSidebar(node) {
+        this.SideRef = node;
+    }
+
+    
+    sidebarOutClick(event) {
+        if (this.SideRef && !this.SideRef.contains(event.target)) {
+            this.setState({
+                sidebarmenu: false
+            });
+        }
+    }
+
+    showfilter(){
+        this.setState(prevState => ({
+            sidebarmenu: !prevState.sidebarmenu
+        }));
+    }
+
     onLoadMore = () => {
         this.setState({ isloading: true });
         setTimeout(() => {
@@ -52,6 +80,7 @@ class ShopPage4 extends Component {
     }
     render() {
     let {products} = this.props;
+    const {sidebarmenu} = this.state;
     let layoutstyle=localStorage.getItem('setLayoutStyle')
 
     if(layoutstyle == null)
@@ -61,6 +90,10 @@ class ShopPage4 extends Component {
 
      return (
             <div className="site-content">
+                {(sidebarmenu) ? 
+                <div className="overlay">
+                </div>
+                : null}
                 <div className="inner-intro">
                 <Container>
                     <Row className="intro-title align-items-center">
@@ -82,26 +115,33 @@ class ShopPage4 extends Component {
                     </Row>
                 </Container>
                 </div>
+                <Container>
+                <div className="products-header pt-5">
+                    <div className="loop-header">
+                        <div className="loop-header-tools">
+                            <div className="loop-header-tools-wrapper">
+                                <TopFilter productlength={products.length} />
+                                <Button className="filter-overlay-btn" onClick={this.showfilter} >
+                                    <i className="fa fa-filter"> </i> Filter
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </Container>
                 <div className="content-wrapper section-pt mb-3 mb-md-5">
+                    <div className={"sidebar sidebar-overlay desktop "+(sidebarmenu ? "sidebar-overlay-open" : "")}  ref={this.setSidebar}>
+                    <a class="sidebar-overlay-close" onClick={this.showfilter}></a>
+                        <div className="shop-sidebar-widgets">
+                            <SideFilter />
+                            <SocialFilter />
+                            <ShopBanner />
+                        </div>
+                    </div>
                   <Container>
                         <Row>
-                        <div className="sidebar col-xl-3 col-lg-4 desktop">
-                                <div className="shop-sidebar-widgets">
-                                    <SideFilter />
-                                    <SocialFilter />
-                                    <ShopBanner />
-                                </div>
-                            </div>
-                            <div className="content col-xl-9 col-lg-8">
-                                <div className="products-header">
-                                    <div className="loop-header">
-                                        <div className="loop-header-tools">
-                                            <div className="loop-header-tools-wrapper">
-                                                <TopFilter productlength={products.length}  />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="content col-xl-12 col-lg-12">
+                               
                                 {products.length > 0 ?
                                     <div>
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
