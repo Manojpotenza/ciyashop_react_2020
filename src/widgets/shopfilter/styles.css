@@ -446,7 +446,7 @@ body {
   background-color: transparent;
 }
 .sticky-filter{
-  padding: 20px 0px 30px;
+  padding: 10px 0px 30px;
   transition: padding 300ms ease;
 }
 .sticky-filter.is-sticky {
@@ -564,6 +564,15 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
+.clear-all-btn {
+  color: #fff !important;
+  background: #04d39f;
+  font-weight: 600;
+  padding: 5px 15px;
+  margin-top: 0px;
+  border: 0px;
+  border-radius: 5px;
 }
 
 /********************************

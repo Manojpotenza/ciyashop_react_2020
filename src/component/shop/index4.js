@@ -82,11 +82,11 @@ class ShopPage4 extends Component {
                     </Row>
                 </Container>
                 </div>
-                <div className="content-wrapper section-pt mb-3 mb-md-5">
+                <div className="content-wrapper pt-5 mb-3 mb-md-5">
                   <Container>
                         <Row>
                         <div className="sidebar col-xl-3 col-lg-4 desktop">
-                                <div className="shop-sidebar-widgets">
+                                <div className="shop-sidebar-widgets pt-3">
                                     <SideFilter />
                                     <SocialFilter />
                                     <ShopBanner />

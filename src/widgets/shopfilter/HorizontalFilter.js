@@ -600,7 +600,7 @@ class HorizontalFilter extends Component {
                         </div>
                         <div className="site-header-row" id="site-header-row"></div>
                         <div>
-                            <button onClick={()=>this.clearallfilter()} >Clear All</button>
+                            <button className="clear-all-btn" onClick={()=>this.clearallfilter()} >Clear All</button>
                         </div>
                     </div>
                 :
