@@ -572,7 +572,7 @@ body {
   padding: 5px 15px;
   margin-top: 0px;
   border: 0px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 /********************************
@@ -595,6 +595,7 @@ body {
   top: 0;
   height: 100%;
   bottom: 0;
+  overflow-y: auto;
 }
 .overlay {
   position: fixed;
@@ -664,6 +665,70 @@ body {
 }
 .sidebar-overlay .shop-sidebar-widgets {
   clear: both;
+}
+
+/****************************
+      table list view
+****************************/
+.products.table-list table {
+  width: 100%;
+}
+.products.table-list .product-thumbnail-inner {
+  position: relative;
+  width: 50px;
+  margin: 0 auto;
+}
+.products.table-list .product-name a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  margin: 0;
+  display: block;
+  color: #323232;
+}
+.products.table-list .ciyashop-product-category span {
+  font-size: 14px;
+  color: #ababab;
+  line-height: 18px;
+  text-transform: capitalize;
+}
+.products.table-list .product-rating .fa.fa-star {
+  color: #ffbe00;
+}
+.products.table-list .product-action-wishlist a {
+  font-size: 0;
+  position: relative;
+  background: #dddddd;
+  width: 40px;
+  display: inline-block;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  margin-right: 5px;
+  color: #323232;
+}
+.products.table-list .product-action-wishlist a::before {
+  content: "\f18a";
+  font-family: pgsicon-ecommerce;
+  font-size: 18px;
+  position: relative;
+  font-size: 16px;
+}
+.products.table-list .product-action-add-to-cart a {
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 36px;
+  text-transform: uppercase;
+  background: #04d39f;
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+  height: 36px;
+}
+.products.table-list .product-actions-list {
+  position: relative;
+  align-items: center;
 }
 
 
