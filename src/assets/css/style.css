@@ -4994,6 +4994,14 @@ header.site-header.is-sticky .mega-menu .menu-links > li .drop-down.grid-col-12 
     text-align: left;
     margin-top: -1px;
   }
+  nav.navbar.navbar-light.bg-faded {
+    top: 0 !important;
+    position: relative !important;
+}
+  .site-header.is-sticky nav.navbar.navbar-light.bg-faded {
+    top: 0px !important;
+}
+
 
 }
 
@@ -5334,6 +5342,9 @@ footer.site-footer .pgs-newsletter-widget .newsletter_form .button-area .input-g
   content: "\f1d9";
   font-family: FontAwesome;
   font-size: 14px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)
 }
 
 footer.site-footer .pgs-opening-widget .pgs-opening-hours ul li {
@@ -11664,11 +11675,12 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 
 .products .product .product-actions a:before {
   content: "";
-  position: relative;
-  left: 0;
+  position: absolute;
+  left: 50%;
   top: 6px;
   font-family: FontAwesome;
   font-size: 16px;
+  transform: translateX(-50%);
 }
 
 .products .product .product-actions .product-action-wishlist a:before {
@@ -12012,7 +12024,7 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 .products .product-hover-style-default .product-actions {
   padding-left: 15px;
   padding-right: 15px;
-  bottom: 10px;
+  bottom: 15px;
   opacity: 0;
 }
 
@@ -12053,6 +12065,9 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   margin: 0 !important;
   border-radius: 0;
   color: #a7a5a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .products .product-hover-style-default .product-actions a:hover {
@@ -14547,8 +14562,8 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 
 .products.list .product-thumbnail {
   position: relative;
-  -ms-flex: 0 0 100px;
-  flex: 0 0 100px;
+  -ms-flex: 0 0 140px;
+  flex: 0 0 140px;
 }
 
 .products.list .product-thumbnail img {
@@ -14565,10 +14580,50 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   top: 0;
   padding: 0px;
   margin-left: 30px;
+  margin-top: 0;
+}
+.products.list .product-actions {
+  display: none;
+}
+.products .product-actions.product-actions-list {
+  display: none;
+}
+.products.list .product-actions.product-actions-list {
+  display: block;
+  padding: 0;
+  margin-top: 15px;
+}
+.products.list .product-hover-style-default .product-actions {
+  opacity: 1;
 }
 
 .products.list .product-info .gridlist-buttonwrap {
   display: none;
+}
+.products.list .product-hover-style-default.product-hover-button-style-light .product-actions-list .product-actions-inner {
+  background: transparent;
+  box-shadow: none;
+}
+.products.list .product-action.product-action-add-to-cart {
+  border: 0px !important;
+  width: 140px !important;
+  margin-left: 10px;
+}
+.products.list .product-action.product-action-add-to-cart a {
+  color: #fff !important;
+  background: #04d39f;
+}
+.products.list .product-action.product-action-add-to-cart a:hover {
+  background: #323232;
+}
+.products.list .product-hover-style-default .product-rating-price {
+  display: inherit;
+}
+.products.list .product-action.product-action-wishlist {
+  background: #dddddd;
+}
+.products.list .product-hover-style-default .product-rating-price .product-rating {
+  margin-top: 5px;
 }
 
 .products.list .product-hover-style-image-center .product-info .product-actions,
@@ -15184,6 +15239,12 @@ ul.products .product-inner .product-info .stock {
   color: #323232;
   line-height: 30px;
   font-size: 15px;
+}
+.add-to-wishlist-fill a {
+  color: #323232;
+}
+.add-to-wishlist-fill:hover a {
+  color: #04d39f;
 }
 
 .single-product .product-summary-actions .add-to-wishlist a:before {
@@ -16423,6 +16484,7 @@ ul.products .product-inner .product-info .stock {
   margin-top: .5em;
   display: inline-block;
   font-weight: 400;
+  color: #04d39f;
 }
 
 .cart_totals .shipping-calculator .popup-content {
@@ -17999,6 +18061,7 @@ ul.products .product-inner .product-info .stock {
 .slider-arrow-hover .slick-next {
   line-height: 40px;
   height: 40px;
+  width: 26px;
 }
 
 .slider-arrow-hover .slick-prev:before,
@@ -19190,4 +19253,21 @@ button:focus {
   border-left-color: transparent;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+.loadmore-btn {
+  font-size: 16px;
+  color: #fff !important;
+  background: #04d39f;
+  font-weight: 600;
+  padding: 10px 24px;
+  margin-top: 0px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.loadmore-btn:hover {
+  background: #323232;
+}
+.navbar-nav .dropdown-item.active, .navbar-nav .dropdown-item:active {
+  color: #04d39f;
+  background-color: transparent;
 }

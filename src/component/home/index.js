@@ -1,17 +1,17 @@
 /**
  * Default Home Page
  */
-import React , {Component} from 'react';
-import HomeSlider from '../../widgets/HomSlider.js';
-import EndOfSeason from '../../widgets/EndOfSeason.js';
-import TopSellingProduct from '../../widgets/TopSellingProduct.js';
-import HomeBanner from '../../widgets/HomeBanner.js';
-import DealOfTheWeek from '../../widgets/DealOfTheWeek.js';
+import React, { Component } from 'react';
+import { Col, Container, Row } from 'reactstrap';
 import AboutBanner from '../../widgets/AboutBanner.js';
-import Subscribe from '../../widgets/Subscribe.js';
-import OurLatestPost from '../../widgets/OurLatestPost.js';
-import { Row, Col,Container } from 'reactstrap';
+import DealOfTheWeek from '../../widgets/DealOfTheWeek.js';
+import EndOfSeason from '../../widgets/EndOfSeason.js';
+import HomeBanner from '../../widgets/HomeBanner.js';
+import HomeSlider from '../../widgets/HomSlider.js';
 import Instagram from '../../widgets/Instafeed.js';
+import OurLatestPost from '../../widgets/OurLatestPost.js';
+import Subscribe from '../../widgets/Subscribe.js';
+import TopSellingProduct from '../../widgets/TopSellingProduct.js';
 
 
 const latestblogslider = {

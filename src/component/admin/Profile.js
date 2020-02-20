@@ -3,10 +3,10 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container,FormGroup,Form,Input,Button } from 'reactstrap';
-import Adminsitebar from './Adminsitebar';
-import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import { Col, Container, Row } from 'reactstrap';
 import Common1 from '../../api/common';
+import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import Adminsitebar from './Adminsitebar';
 
 class Profile extends Component {
     componentDidMount() {

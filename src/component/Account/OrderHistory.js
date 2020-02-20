@@ -1,11 +1,11 @@
 /**
  *  Account Page Order History
  */
-import React, { Component  } from 'react';
-import { Row,Container,Col ,Modal, ModalBody, ModalHeader  } from 'reactstrap';
-import Sitebar from './Sitebar';
-import OrderData from '../../api/userOrder';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Container, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
+import OrderData from '../../api/userOrder';
+import Sitebar from './Sitebar';
 
 class OrderHistory extends Component {
     constructor(props){

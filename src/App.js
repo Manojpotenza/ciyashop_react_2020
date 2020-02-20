@@ -1,4 +1,4 @@
-import React,{Component,Fragment} from 'react';
+import React,{Fragment} from 'react';
 import {Switch,Route,withRouter} from 'react-router-dom';
 
 import Headers from './layouts/header/Header';
@@ -17,6 +17,8 @@ import ShopPage from './component/shop';
 import ShopPage1 from './component/shop/index1';
 import ShopPage2 from './component/shop/index2';
 import ShopPage3 from './component/shop/index3';
+import ShopPage4 from './component/shop/index4';
+import ShopPage5 from './component/shop/index5';
 import ProductDetail from './component/shop/product-detail';
 import ShopingCart from './component/shop/ShopingCart';
 import MyAccount from './component/Account/MyAccount';
@@ -86,10 +88,12 @@ class App extends React.Component {
                     <Route exact path="/index-new-fashion" component={HomePage2} />
                     <Route exact path="/index-modern" component={HomePage3} />
                     <Route exact path="/index-home-classic" component={HomePage4} />
-                    <Route exact path="/shop" component={ShopPage} />
-                    <Route exact path="/shop1" component={ShopPage1} />
-                    <Route exact path="/shop2" component={ShopPage2} />
-                    <Route exact path="/shop3" component={ShopPage3} />
+                    <Route exact path="/sidebar-with-load-more" component={ShopPage} />
+                    <Route exact path="/topbar-with-load-more" component={ShopPage1} />
+                    <Route exact path="/sidebar-without-lazyload" component={ShopPage2} />
+                    <Route exact path="/topbar-without-lazyload" component={ShopPage3} />
+                    <Route exact path="/sidebar-with-lazyload" component={ShopPage4} />
+                    <Route exact path="/topbar-with-listview" component={ShopPage5} />
                     <Route exact path="/ShopingCart" component={ShopingCart} />
                     <Route exact path="/MyAccount" component={MyAccount} />
                     <Route exact path="/BlogSinglePage" component={BlogSinglePage} />

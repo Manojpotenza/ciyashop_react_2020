@@ -2,24 +2,18 @@
  *  CommingSoon Page
  */
 import React, { Component } from 'react';
-import pyamentimg from '../../assets/images/payments.png';
-import { Link } from 'react-router-dom';
-import { Row, Col,Container } from 'reactstrap';
-import CommingSoonCounter from '../../widgets/CommingSoonCounter';
+import { Col, Container, Row } from 'reactstrap';
 import CommingSoonimg from '../../assets/images/comingsoon.png';
-
+import CommingSoonCounter from '../../widgets/CommingSoonCounter';
 
 class ComingSoon extends Component {
-
     constructor(props){
         super(props)
     }
-
-     componentDidMount() {
+    componentDidMount() {
         window.scrollTo(0, 0)
-
-     }
-
+    }
+    
     render() {
         return (
             <body>

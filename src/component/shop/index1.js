@@ -2,69 +2,46 @@
 /**
  *  Shop Main Page
  */
-import React, { Component, useState } from 'react';
-import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
-import SocialFilter from '../../widgets/shopfilter/SocialInfo';
-import ShopBanner from '../../widgets/shopfilter/ShopBanner';
-import { Link } from 'react-router-dom';
-import { Row, Col, Container, Form, Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
-import AllProduct from '../../api/product';
-import ProductList from '../../widgets/ProductList';
-import { getFilterProductsdata } from '../../services';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import AllProduct from '../../api/product';
+import { getFilterProductsdata } from '../../services';
+import ProductList from '../../widgets/ProductList';
+import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 class ShopPage1 extends Component {
 
     constructor(props, context) {
         super(props, context)
         this.state = {
-            limit: 5,
+            limit: 8,
             hasMoreProduct: true,
             getproduct: AllProduct,
         }
     }
-
-
     componentWillMount() {
         if (this.state.limit < this.state.getproduct.length) {
             setTimeout(() => {
                 this.setState({
-                    limit: this.state.limit + 5
+                    limit: this.state.limit + 8
                 });
             }, 2500);
         }
     }
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-    componentDidUpdate(prevProps) {
-        if (this.state.limit < prevProps.products.length) {
-            setTimeout(() => {
-                this.setState({
-                    limit: this.state.limit + 5
-                });
-            }, 2500);
-        }
-    }
-    fetchProduct = () => {
-        if (this.state.limit >= this.props.products.length) {
-            this.setState({ hasMoreProduct: false });
-            return;
-        }
-        setTimeout(() => {
-            this.setState({
-                limit: this.state.limit + 5
-            });
-        }, 2500);
+    onLoadMore = () => {
+        this.setState({
+            limit: this.state.limit + 8
+        });
     }
     render() {
         let { products } = this.props;
         let layoutstyle = localStorage.getItem('setLayoutStyle')
 
         if (layoutstyle == null) {
-            layoutstyle = localStorage.setItem('setLayoutStyle', 'col-sm-6 col-md-4')
+            layoutstyle = localStorage.setItem('setLayoutStyle', 'col-sm-6 col-xl-3 col-lg-4')
         }
 
         return (
@@ -91,14 +68,11 @@ class ShopPage1 extends Component {
                     </Container>
                 </div>
 
-                <div className="content-wrapper section-pt mb-3 mb-md-5">
+                <div className="content-wrapper mb-3 mb-md-5">
                     <Container>
                         <Row>
                             <div className="content col-xl-12 col-lg-12">
-                                <div className="products-header">
-                                    <div className="right-banner">
-                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
-                                    </div>
+                                <div className="products-header pt-5">
                                     <div className="sticky-filter" id="sticky-filter">
                                         <Container className="px-0">
                                             <div className="d-flex align-items-center">
@@ -119,19 +93,17 @@ class ShopPage1 extends Component {
                                     </div>
                                 </div>
                                 {products.length > 0 ?
-                                    <InfiniteScroll
-                                        dataLength={this.state.limit}
-                                        next={this.fetchProduct}
-                                        hasMore={this.state.hasMoreProduct}
-                                        loader={<div className="lazyload-img"></div>}
-                                    >
+                                    <div>
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
                                             {products.slice(0, this.state.limit).map((product, index) =>
                                                 <ProductList product={product} key={index} layoutstyle={layoutstyle} />
                                             )
                                             }
                                         </Row>
-                                    </InfiniteScroll>
+                                        <div className="text-center">
+                                            <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>
+                                        </div>
+                                    </div>
                                     :
                                     <Row className="products products-loop grid ciyashop-products-shortcode">
                                         <div className="col-sm-12 text-center  mt-5" >

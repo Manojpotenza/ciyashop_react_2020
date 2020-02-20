@@ -2,17 +2,18 @@
 /**
  *  Shop Main Page
  */
+import { Pagination } from 'antd';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import { getFilterProductsdata } from '../../services';
+import ProductList from '../../widgets/ProductList';
+import ShopBanner from '../../widgets/shopfilter/ShopBanner';
 import SideFilter from '../../widgets/shopfilter/SideFilter';
 import SocialFilter from '../../widgets/shopfilter/SocialInfo';
-import ShopBanner from '../../widgets/shopfilter/ShopBanner';
-import { Link } from 'react-router-dom';
-import { Row, Col, Container, Form, Nav } from 'reactstrap';
-import ProductList from '../../widgets/ProductList';
-import { getFilterProductsdata } from '../../services';
-import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
-import { Pagination } from 'antd';
+
 const numEachPage = 12;
 class ShopPage2 extends Component {
 
@@ -29,11 +30,14 @@ class ShopPage2 extends Component {
     }
     handleChange = value => {
       
-        this.setState({
+        this.setState({ 
           minValue: (value - 1) * numEachPage,
           maxValue: value * numEachPage
         });
     };
+    refreshPage = () => {
+        window.location.reload(false);
+    }
     render() {
         let { products } = this.props;
         let layoutstyle = localStorage.getItem('setLayoutStyle')
@@ -65,11 +69,11 @@ class ShopPage2 extends Component {
                         </Row>
                     </Container>
                 </div>
-                <div className="content-wrapper section-pt mb-3 mb-md-5">
+                <div className="content-wrapper pt-5 mb-3 mb-md-5">
                     <Container>
                         <Row>
                             <div className="sidebar col-xl-3 col-lg-4 desktop">
-                                <div className="shop-sidebar-widgets">
+                                <div className="shop-sidebar-widgets pt-3">
                                     <SideFilter />
                                     <SocialFilter />
                                     <ShopBanner />
@@ -77,9 +81,6 @@ class ShopPage2 extends Component {
                             </div>
                             <div className="content col-xl-9 col-lg-8">
                                 <div className="products-header">
-                                    <div className="right-banner">
-                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)} className="img-fluid" />
-                                    </div>
                                     <div className="loop-header">
                                         <div className="loop-header-tools">
                                             <div className="loop-header-tools-wrapper">
@@ -93,12 +94,14 @@ class ShopPage2 extends Component {
                                         {products.slice(this.state.minValue, this.state.maxValue).map((product,index) => (
                                                 <ProductList product={product} key={index} layoutstyle={layoutstyle} />
                                         ))}
-                                        <Pagination
-                                            defaultCurrent={1}
-                                            defaultPageSize={numEachPage} //default size of page
-                                            onChange={this.handleChange}
-                                            total={products.length} //total number of card data available
-                                        />
+                                        <div className="text-center col-12">
+                                            <Pagination
+                                                defaultCurrent={1}
+                                                defaultPageSize={numEachPage} //default size of page
+                                                onChange={this.handleChange}
+                                                total={products.length} //total number of card data available
+                                            />
+                                        </div>
                                     </Row>
                                     :
                                     <Row className="products products-loop grid ciyashop-products-shortcode">
@@ -106,7 +109,7 @@ class ShopPage2 extends Component {
                                             <img src={require(`../../assets/images/empty-search.jpg`)} className="img-fluid mb-4" />
                                             <h3>Sorry! No products were found matching your selection!    </h3>
                                             <p>Please try to other words.</p>
-                                            <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
+                                            <button onClick={this.refreshPage} className="btn btn-solid">Continue Shopping</button>
                                         </div>
                                     </Row>
                                 }

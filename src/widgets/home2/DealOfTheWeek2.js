@@ -1,10 +1,10 @@
 /**
  * Day Of the Week Banner
  */
-import React , {Component} from 'react';
-import CountDownTimer from '../CountDownTimer';
-import { Row, Col,Container } from 'reactstrap';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Row } from 'reactstrap';
+import CountDownTimer from '../CountDownTimer';
 
 class DealOfTheWeek2 extends Component {
 

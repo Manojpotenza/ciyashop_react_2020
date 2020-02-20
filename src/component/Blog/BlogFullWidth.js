@@ -2,10 +2,10 @@
  *  Blog Full Width
  */
 import React, { Component } from 'react';
-import PageTitle from '../../widgets/PageTitle';
-import Slider from "react-slick";
-import { Row, Col,Container,NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import { Col, Container, Row } from 'reactstrap';
+import PageTitle from '../../widgets/PageTitle';
 
 const settings = {
     dots: false,
@@ -618,3 +618,4 @@ class BlogFullWidth extends Component {
     }
 }
 export default BlogFullWidth;
+    

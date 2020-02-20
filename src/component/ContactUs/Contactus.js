@@ -1,13 +1,14 @@
 /**
  *  Contact Us Page
  */
+import { GoogleApiWrapper, Map } from 'google-maps-react';
 import React, { Component } from 'react';
+import { Col, Container, Row } from 'reactstrap';
+import Businessschedule from '../../widgets/Businessschedule';
 import ContactDetail from '../../widgets/ContactDetail';
 import ContactForm from '../../widgets/ContactForm';
-import Businessschedule from '../../widgets/Businessschedule';
 import PageTitle from '../../widgets/PageTitle';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
-import { Row, Col,Container } from 'reactstrap';
+
 const mapStyles = {
   width: '100%',
   height: '100%'

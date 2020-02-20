@@ -2,11 +2,11 @@
  *  Admin Header
  */
 import React, { Component } from 'react';
-import { Row, Col,Container,Dropdown, DropdownToggle, DropdownMenu, DropdownItem,Navbar,NavbarToggler, Nav, NavItem, NavLink, UncontrolledDropdown, Collapse } from 'reactstrap';
-import profile from '../../assets/images/testimonials/img-02.jpg';
-import logo from '../../assets/images/logo.svg';
 import { Link } from 'react-router-dom';
+import { Col, Collapse, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarToggler, NavItem, Row, UncontrolledDropdown } from 'reactstrap';
 import Common from '../../api/common';
+import logo from '../../assets/images/logo.svg';
+import profile from '../../assets/images/testimonials/img-02.jpg';
 
 class AdminHeader extends Component {
     constructor(props) {

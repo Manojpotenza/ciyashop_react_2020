@@ -2,17 +2,16 @@
 /**
  *  Shop Main Page
  */
-import React , {Component , useState }from 'react';
-import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
-import SocialFilter from '../../widgets/shopfilter/SocialInfo';
-import ShopBanner from '../../widgets/shopfilter/ShopBanner';
-import { Link } from 'react-router-dom';
-import { Row, Col,Container,Form,Nav,Dropdown,DropdownItem,DropdownToggle,DropdownMenu } from 'reactstrap';
-import ProductList from '../../widgets/ProductList';
-import {getFilterProductsdata} from '../../services';
-import { connect } from 'react-redux';
-import TopFilter from '../../widgets/shopfilter/TopFilter';
 import { Pagination } from 'antd';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import { getFilterProductsdata } from '../../services';
+import ProductList from '../../widgets/ProductList';
+import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
+import TopFilter from '../../widgets/shopfilter/TopFilter';
+
 const numEachPage = 12;
 class ShopPage3 extends Component {
 
@@ -39,7 +38,7 @@ class ShopPage3 extends Component {
 
         if(layoutstyle == null)
         {
-            layoutstyle=localStorage.setItem('setLayoutStyle','col-sm-6 col-md-4')
+            layoutstyle=localStorage.setItem('setLayoutStyle','col-sm-6 col-xl-3 col-lg-4')
         }
 
      return (
@@ -65,14 +64,11 @@ class ShopPage3 extends Component {
                     </Row>
                 </Container>
                 </div>
-                <div className="content-wrapper section-pt mb-3 mb-md-5">
+                <div className="content-wrapper mb-3 mb-md-5">
                   <Container>
                         <Row>
                             <div className="content col-xl-12 col-lg-12">
-                                <div className="products-header">
-                                    <div className="right-banner">
-                                        <img alt="Shop Banner" src={require(`../../assets/images/shop/shop-banner.jpg`)}  className="img-fluid" />
-                                    </div>
+                                <div className="products-header pt-5">
                                     <div className="sticky-filter" id="sticky-filter">
                                         <Container className="px-0">
                                             <div className="d-flex align-items-center">
@@ -97,12 +93,15 @@ class ShopPage3 extends Component {
                                             {products.slice(this.state.minValue, this.state.maxValue).map((product,index) => (
                                                     <ProductList product={product} key={index} layoutstyle={layoutstyle} />
                                             ))}
+                                        <div className="text-center col-12">
                                             <Pagination
                                                 defaultCurrent={1}
                                                 defaultPageSize={numEachPage} //default size of page
                                                 onChange={this.handleChange}
                                                 total={products.length} //total number of card data available
                                             />
+                                        </div>
+
                                         </Row>
                                 :
                                       <Row className="products products-loop grid ciyashop-products-shortcode">

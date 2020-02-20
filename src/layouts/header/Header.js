@@ -1,18 +1,14 @@
 /**
  *  Header Main
  */
-import React, { Fragment } from 'react';
-import { Link,Redirect } from 'react-router-dom';
-import navLinks from '../../NavLinks.js';
-import logo from '../../assets/images/logo.svg';
-import { Row, Col, Container } from 'reactstrap';
-import Loader from 'react-loader-spinner';
-import AllProduct from '../../api/product';
-import {
-    Modal, ModalHeader, ModalBody, DropdownMenu, DropdownItem, Navbar,
-    NavbarToggler, Nav, NavItem, NavLink, UncontrolledDropdown, Collapse, TabContent, TabPane
-} from 'reactstrap';
 import classnames from 'classnames';
+import React, { Fragment } from 'react';
+import Loader from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
+import { Col, Collapse, Container, DropdownItem, DropdownMenu, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarToggler, NavItem, NavLink, Row, TabContent, TabPane, UncontrolledDropdown } from 'reactstrap';
+import AllProduct from '../../api/product';
+import logo from '../../assets/images/logo.svg';
+import navLinks from '../../NavLinks.js';
 
 
 class Header extends React.Component {
@@ -172,6 +168,27 @@ class Header extends React.Component {
         let pathnames = document.location.href;
         let pathArray = pathnames.split('/');
         let pageName = '/'+pathArray[pathArray.length -1];
+        var searchName;
+        if(pageName== '/topbar-with-load-more')
+        {
+            searchName="/topbar-with-load-more"
+        }
+        else if(pageName== '/sidebar-without-lazyload')
+        {
+            searchName="/sidebar-without-lazyload"
+        }
+        else if(pageName== '/topbar-without-lazyload')
+        {
+            searchName="/topbar-without-lazyload"
+        }
+        else if(pageName== '/sidebar-with-lazyload')
+        {
+            searchName="/sidebar-with-lazyload"
+        }
+        else
+        {
+            searchName="/sidebar-with-load-more"
+        }
         if (this.state.timeout == true) {
             setTimeout(function () {
                 this.setState({ timeout: false });
@@ -280,31 +297,30 @@ class Header extends React.Component {
                                                                                      <Navbar light expand="md" class="front_menu" >
                                                                                         <NavbarToggler onClick={this.toggle} />
                                                                                         <Collapse isOpen={this.state.isOpen} navbar>
-                                                                                        {navLinks.map((navLink, index) => (
-                                                                                            <Nav className="ml-auto" navbar>
-                                                                                                {(navLink.type && navLink.type === 'subMenu') ?
-                                                                                                <Fragment>
-                                                                                                    <UncontrolledDropdown nav inNavbar onMouseEnter={()=>this.OpenSubmenuOpen(`submenu_${index}`)} onMouseLeave={()=>this.OpenSubmenuClose(`submenu_${index}`)}>
-                                                                                                    <Link aria-haspopup="true" to={navLink.path} className="dropdown-toggle nav-link" aria-expanded="true"> {navLink.menu_title}</Link>
-                                                                                                    <DropdownMenu right id={`submenu_${index}`}>
+                                                                                            {navLinks.map((navLink, index) => (
+                                                                                                <Nav className="ml-auto" navbar>
+                                                                                                    {(navLink.type && navLink.type === 'subMenu') ?
+                                                                                                        <Fragment>
+                                                                                                            <UncontrolledDropdown nav inNavbar onMouseEnter={()=>this.OpenSubmenuOpen(`submenu_${index}`)} onMouseLeave={()=>this.OpenSubmenuClose(`submenu_${index}`)}>
+                                                                                                                <Link aria-haspopup="true" to={navLink.path} className="dropdown-toggle nav-link" aria-expanded="true"> {navLink.menu_title}</Link>
+                                                                                                                <DropdownMenu right id={`submenu_${index}`}>
 
-                                                                                                        {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
-                                                                                                      <DropdownItem tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
-                                                                                                        ))}
-                                                                                                    </DropdownMenu>
-                                                                                                </UncontrolledDropdown>
+                                                                                                                    {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
+                                                                                                                        <DropdownItem tag={Link}  className={`nav-item  ${(pageName == subNavLink.path || (subNavLink.path == "/shop/clothing/29" && pageName == "/29")) ? 'active' : '' }`} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
+                                                                                                                    ))}
+                                                                                                                </DropdownMenu>
+                                                                                                            </UncontrolledDropdown>
+                                                                                                    </Fragment>
+                                                                                                    :
+                                                                                                    <Fragment>
+                                                                                                        <NavItem>
+                                                                                                            <NavLink href={navLink.path}>{navLink.menu_title}</NavLink>
+                                                                                                        </NavItem>
 
-                                                                                                </Fragment>
-                                                                                                :
-                                                                                                <Fragment>
-                                                                                                     <NavItem>
-                                                                                                    <NavLink href={navLink.path}>{navLink.menu_title}</NavLink>
-                                                                                                </NavItem>
-
-                                                                                                </Fragment>
-                                                                                                }
-                                                                                            </Nav>
-                                                                                            ))}
+                                                                                                    </Fragment>
+                                                                                                    }
+                                                                                                </Nav>
+                                                                                             ))}
                                                                                         </Collapse>
                                                                                     </Navbar>
                                                                                 </div>
@@ -390,7 +406,7 @@ class Header extends React.Component {
                                                                     }
                                                                 </li>
                                                                  <li className="ciya-tools-action ciya-tools-wishlist"> <Link to="/wishlist"><i className="glyph-icon pgsicon-ecommerce-like" /> <span className="wishlist ciyashop-wishlist-count"> {this.ReadWishListItems() == null ? 0 : this.ReadWishListItems().length} </span> </Link></li>
-                                                                 <li className="ciya-tools-action ciya-tools-search"><Link to="/shop"><i className="glyph-icon pgsicon-ecommerce-magnifying-glass"  /></Link></li>
+                                                                 <li className="ciya-tools-action ciya-tools-search"><Link to={searchName} ><i className="glyph-icon pgsicon-ecommerce-magnifying-glass"  /></Link></li>
                                                             </ul>
                                                         </div>
                                                     </div>

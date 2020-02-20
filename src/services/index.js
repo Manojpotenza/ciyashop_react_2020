@@ -4,8 +4,11 @@ export const uniqueCategory = (products) => {
     products.map((product) => {
         if (product.tags.length > 0 && product.tags) {
             product.tags.map((categorys) => {
-                if (uniqueCategorys.indexOf(categorys) === -1) {
-                    uniqueCategorys.push(categorys);
+                if(categorys && categorys.length > 0)
+                {
+                    if (uniqueCategorys.indexOf(categorys) === -1) {
+                        uniqueCategorys.push(categorys);
+                    }
                 }
             })
         }
@@ -19,8 +22,11 @@ export const uniqueSizes = (products) => {
     products.map((product) => {
         if (product.size.length > 0 && product.size) {
             product.size.map((sizes) => {
-                if (uniqueSizes.indexOf(sizes) === -1) {
-                    uniqueSizes.push(sizes);
+                if(sizes && sizes.length > 0)
+                {
+                    if (uniqueSizes.indexOf(sizes) === -1) {
+                        uniqueSizes.push(sizes);
+                    }
                 }
             })
         }
@@ -33,6 +39,7 @@ export const uniqueSizes = (products) => {
 export const getFilterProductsdata = (data, { category, size, color,value, sortOrder,ratings,search}) => {
     
     let sizes = size;  
+
     return data.products.filter(product => {
         
         let categoryMatchValue;
@@ -43,7 +50,6 @@ export const getFilterProductsdata = (data, { category, size, color,value, sortO
    
 
         let sizeMatchValue;
-        console.log('product.size',product.size)
         if(product.size)
              sizeMatchValue = product.size.some(size => sizes.includes(size))
         else
@@ -162,7 +168,7 @@ export const getFilterProductsdata = (data, { category, size, color,value, sortO
         } else if (sortOrder === 'NewProduct') {
             return sortpro2.id < sortpro1.id ? -1 : 1;
         } else{
-            return sortpro2.id > sortpro1.id ? -1 : 1;
+            return sortpro2.salePrice > sortpro1.salePrice ? -1 : 1;
         }
     });
 }
@@ -172,11 +178,16 @@ export const getFilterProductsdata = (data, { category, size, color,value, sortO
 export const uniqueColors = (products) => {
     var uniqueColors = [];
     products.map((product) => {
+
         if(product.colors.length > 0 && product.colors) {
             product.colors.map((color) => {
-                if (uniqueColors.indexOf(color) === -1) {
-                    uniqueColors.push(color);
+                if(color && color.length > 0)
+                {
+                    if (uniqueColors.indexOf(color) === -1) {
+                        uniqueColors.push(color);
+                    }
                 }
+
             })
         }
     })

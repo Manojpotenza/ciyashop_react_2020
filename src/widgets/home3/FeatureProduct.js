@@ -1,9 +1,9 @@
 /**
  * Home 3 page Feature Product
  */
-import React , {Component} from 'react';
+import React, { Component } from 'react';
+import { Row } from 'reactstrap';
 import ProductSlider from '../ProductSlider';
-import { Row, Col,Container } from 'reactstrap';
 
 const homesaleslider = {
     dots: false,

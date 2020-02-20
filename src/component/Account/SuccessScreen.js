@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import CommonList from '../../api/common';
 
 class SuccessScreen extends Component {

@@ -3,9 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container } from 'reactstrap';
+import { toast, ToastContainer } from 'react-toastify';
+import { Col, Row } from 'reactstrap';
 import MyProducts from '../../api/product.json';
-import { ToastContainer,toast  } from 'react-toastify';
 
 class NewCollecation extends Component {
 
@@ -40,7 +40,7 @@ AddToWishList(ProductID,ProductName,ProductImage,Qty,Rate,StockStatus) {
  if(Cart == null)
     Cart = new Array();
 
-    let selectedProduct = Cart.find(product => product.ProductName === ProductName);
+    let selectedProduct = Cart.find(product => product.ProductID === ProductID);
     if(selectedProduct == null)
     {
 

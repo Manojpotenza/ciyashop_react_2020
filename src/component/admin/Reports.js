@@ -2,12 +2,12 @@
  *  Report Page
  */
 import React, { Component } from 'react';
-import { Row, Col, Container } from 'reactstrap';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import "react-tabs/style/react-tabs.css";
+import { Col, Container, Row } from 'reactstrap';
+import ExpenseCategoryList from '../../api/ExpenseCategory.json';
 import TransactionList from '../../api/TransactionList.json';
 import TransferList from '../../api/Transfer.json';
-import ExpenseCategoryList from '../../api/ExpenseCategory.json';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import "react-tabs/style/react-tabs.css";
 import CanvasJSReact from '../../assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 

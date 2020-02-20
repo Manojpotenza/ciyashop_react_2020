@@ -11,20 +11,15 @@ import { ToastContainer, toast } from 'react-toastify';
 function ProductSlider(props) {
     const settings = props.settings;
     const productSub = props.productSub;
-    console.log('productSub',productSub)
     var cloneproduct=[];
     var cnt=0;
     MyProducts.map((product,index) => {
             if(product.subcategory===productSub && cnt <6 ){
-               // cloneproduct=product.push(cloneproduct); 
                 cloneproduct[cnt]= product;
                 cnt++;  
-                console.log('sub',product)
-                console.log('cnt',cnt)
             }
         }
     );
-    console.log('cloneproduct',cloneproduct)
     function AddToCart(ProductID,ProductName,ProductImage,Qty,Rate,StockStatus) {
         var Cart = JSON.parse(localStorage.getItem("LocalCartItems"));
         if(Cart == null)
@@ -78,7 +73,7 @@ function ProductSlider(props) {
         if(Cart == null)
            Cart = new Array();
 
-           let selectedProduct = Cart.find(product => product.ProductName === ProductName);
+           let selectedProduct = Cart.find(product => product.ProductID === ProductID);
            if(selectedProduct == null)
            {
 

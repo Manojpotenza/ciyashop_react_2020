@@ -2,9 +2,9 @@
  *  Settings
  */
 import React, { Component } from 'react';
-import { Row, Col,Container,FormGroup,Form,Input,Button } from 'reactstrap';
-import Adminsitebar from './Adminsitebar';
+import { Col, Container, Row } from 'reactstrap';
 import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import Adminsitebar from './Adminsitebar';
 
 class Settings extends Component {
   componentDidMount() {

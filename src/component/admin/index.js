@@ -1,23 +1,24 @@
 /**
  *  Admin Dashboard Menu
  */
-import React, { Component,Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom';
+import PageNotFound from '../../component/Pages/PageNotFound';
+import Footer from '../../layouts/footer/Footer';
+import Headers from '../../layouts/header/Header';
 
 // Component
 import AdminHeader from './Adminheader';
-import { Route } from 'react-router-dom';
-import Reports from './Reports';
-import Invoices from './Invoices';
-import Profile from './Profile';
 import AdminProductList from './AdminProductList';
-import Productedit from './Product/Productedit';
-import Settings from './Settings';
 import Collaboration from './Collaboration';
-import Profileedit from './Profileedit';
+import Invoices from './Invoices';
 import Productadd from './Product/Productadd';
-import PageNotFound from '../../component/Pages/PageNotFound';
-import Headers from '../../layouts/header/Header';
-import Footer from '../../layouts/footer/Footer';
+import Productedit from './Product/Productedit';
+import Profile from './Profile';
+import Profileedit from './Profileedit';
+import Reports from './Reports';
+import Settings from './Settings';
+
 
 class AdminDashboard extends Component {
   
@@ -50,22 +51,22 @@ class AdminDashboard extends Component {
 
             <div>
             <AdminHeader />
-            <Route path={`${match.url}/Reports`} component={Reports} />
-            <Route path={`${match.url}/Invoices`} component={Invoices} />
-            <Route path={`${match.url}/Profile`} component={Profile} />
-            <Route path={`${match.url}/Product`} component={AdminProductList} />
-            <Route path={`${match.url}/Profileedit`} component={Profileedit} />
-            <Route path={`${match.url}/Collaboration`}  component={Collaboration} />
-            <Route path={`${match.url}/Settings`} component={Settings} />
-            <Route path={`${match.url}/product-add`} component={Productadd} /> 
-            <Route path={`${match.url}/Product-edit/:category/:id`} component={Productedit} /> 
+              <Route path={`${match.url}/Reports`} component={Reports} />
+              <Route path={`${match.url}/Invoices`} component={Invoices} />
+              <Route path={`${match.url}/Profile`} component={Profile} />
+              <Route path={`${match.url}/Product`} component={AdminProductList} />
+              <Route path={`${match.url}/Profileedit`} component={Profileedit} />
+              <Route path={`${match.url}/Collaboration`}  component={Collaboration} />
+              <Route path={`${match.url}/Settings`} component={Settings} />
+              <Route path={`${match.url}/product-add`} component={Productadd} /> 
+              <Route path={`${match.url}/Product-edit/:category/:id`} component={Productedit} /> 
             </div>
 
             :
 
             <div>
               <Headers />
-              <Route exact  component={PageNotFound} />
+                <Route exact  component={PageNotFound} />
               <Footer />
             </div>
 

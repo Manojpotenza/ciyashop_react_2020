@@ -1,10 +1,9 @@
 /**
  * Brand Logo Slider
  */
-import React , {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import Slider from "react-slick";
-import { Row, Col, Container } from 'reactstrap';
+import { Col } from 'reactstrap';
 
 const settings = {
     dots: false,

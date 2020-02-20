@@ -2,12 +2,12 @@
  *  WishList Page Set
  */
 import React, { Component } from 'react';
-import { Row, Col, Container, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-class WishList extends Component {
+import { Col, Container, Row, Table } from 'reactstrap';
 
+class WishList extends Component {
 
     constructor(props) {
         super(props);
@@ -85,7 +85,7 @@ class WishList extends Component {
                         <Row>
                             <Col sm={12}>
                                 {(this.ReadWishListItems() != null && this.ReadWishListItems().length > 0) ?
-                                    <div className="table-responsive-md">
+                                    <div className="table-responsive">
                                         <Table className="table wishlist-table cart-table">
                                             <thead>
                                                 <tr>
