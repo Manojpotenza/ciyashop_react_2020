@@ -2,18 +2,18 @@
 /**
  *  Home Modern Page
  */
-import React , {Component} from 'react';
-import HomSlider from '../../widgets/HomSlider3';
-import HomeBanner3 from '../../widgets/home3/HomeBanner3';
-import BrandLogoSlider from '../../widgets/BrandLogoSlider';
-import FeatureProduct from '../../widgets/home3/FeatureProduct';
-import HomeSaleBanner from '../../widgets/home3/HomeSaleBanner';
-import ProductSlider from '../../widgets/ProductSlider';
-import CountDownTimer from '../../widgets/CountDownTimer';
-import Testimonial from '../../widgets/Testimonial';
-import OurLatestPost from '../../widgets/OurLatestPost';
-import { Row, Col,Container } from 'reactstrap';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import BrandLogoSlider from '../../widgets/BrandLogoSlider';
+import CountDownTimer from '../../widgets/CountDownTimer';
+import FeatureProduct from '../../widgets/home3/FeatureProduct';
+import HomeBanner3 from '../../widgets/home3/HomeBanner3';
+import HomeSaleBanner from '../../widgets/home3/HomeSaleBanner';
+import HomSlider from '../../widgets/HomSlider3';
+import OurLatestPost from '../../widgets/OurLatestPost';
+import ProductSlider from '../../widgets/ProductSlider';
+import Testimonial from '../../widgets/Testimonial';
 
 const saleslider = {
     dots: false,

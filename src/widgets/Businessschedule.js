@@ -1,8 +1,8 @@
 /**
  * Business Schedule Page
  */
-import React , {Component} from 'react';
-import { Row, Col, Container } from 'reactstrap';
+import React, { Component } from 'react';
+import { Col, Row } from 'reactstrap';
 
 
 class Businessschedule extends Component {

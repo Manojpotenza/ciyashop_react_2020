@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container,FormGroup,Form,Input,Button } from 'reactstrap';
+import { Button, Col, Container, Form, FormGroup, Input, Row } from 'reactstrap';
 
 class MyAccount extends Component {
     componentDidMount() {

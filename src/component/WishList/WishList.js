@@ -2,12 +2,12 @@
  *  WishList Page Set
  */
 import React, { Component } from 'react';
-import { Row, Col, Container, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-class WishList extends Component {
+import { Col, Container, Row, Table } from 'reactstrap';
 
+class WishList extends Component {
 
     constructor(props) {
         super(props);

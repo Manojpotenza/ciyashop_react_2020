@@ -3,13 +3,13 @@
  *  Shop Main Page
  */
 import React, { Component } from 'react';
-import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
-import { Link } from 'react-router-dom';
-import { Row, Col, Container } from 'reactstrap';
-import AllProduct from '../../api/product';
-import ProductList from '../../widgets/ProductList';
-import { getFilterProductsdata } from '../../services';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import AllProduct from '../../api/product';
+import { getFilterProductsdata } from '../../services';
+import ProductList from '../../widgets/ProductList';
+import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
 
 class ShopPage1 extends Component {

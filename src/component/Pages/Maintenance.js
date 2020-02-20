@@ -2,16 +2,15 @@
  *  Maintenance Page
  */
 import React, { Component } from 'react';
-import pyamentimg from '../../assets/images/payments.png';
-import { Link } from 'react-router-dom';
-import { Row, Col,Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import maintenanceimg from '../../assets/images/maintenance.png';
 
-
 class Maintenance extends Component {
+
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
+
     render() {
         return (
             <div className="maintenance">

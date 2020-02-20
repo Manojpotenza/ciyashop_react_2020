@@ -2,17 +2,16 @@
 /**
  *  Shop Main Page
  */
-import React , {Component , useState }from 'react';
-import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
-import SocialFilter from '../../widgets/shopfilter/SocialInfo';
-import ShopBanner from '../../widgets/shopfilter/ShopBanner';
-import { Link } from 'react-router-dom';
-import { Row, Col,Container,Form,Nav,Dropdown,DropdownItem,DropdownToggle,DropdownMenu } from 'reactstrap';
-import ProductList from '../../widgets/ProductList';
-import {getFilterProductsdata} from '../../services';
-import { connect } from 'react-redux';
-import TopFilter from '../../widgets/shopfilter/TopFilter';
 import { Pagination } from 'antd';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import { getFilterProductsdata } from '../../services';
+import ProductList from '../../widgets/ProductList';
+import HorizontalFilter from '../../widgets/shopfilter/HorizontalFilter';
+import TopFilter from '../../widgets/shopfilter/TopFilter';
+
 const numEachPage = 12;
 class ShopPage3 extends Component {
 

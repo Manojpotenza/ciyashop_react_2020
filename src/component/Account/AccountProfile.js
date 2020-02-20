@@ -3,9 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container,FormGroup,Form,Input,Button } from 'reactstrap';
-import Sitebar from './Sitebar';
+import { Col, Container, Row } from 'reactstrap';
 import Common from '../../api/common';
+import Sitebar from './Sitebar';
 
 
 class AccountProfile extends Component {

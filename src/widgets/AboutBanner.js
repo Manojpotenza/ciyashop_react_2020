@@ -1,11 +1,10 @@
 /**
  * About Banner
  */
-import React , {Component} from 'react';
-import { Row, Col, Container } from 'reactstrap';
-
-import { Collapse } from 'reactstrap';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Row } from 'reactstrap';
+
 
 class AboutBanner extends Component {
 

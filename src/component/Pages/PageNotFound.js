@@ -2,14 +2,16 @@
  *  Page Not Found Page
  */
 import React, { Component } from 'react';
-import PageNotFoundImage from '../../assets/images/error-404-image.png';
 import { Link } from 'react-router-dom';
-import { Row, Col,Container,Button } from 'reactstrap';
+import { Button, Col, Container, Row } from 'reactstrap';
+import PageNotFoundImage from '../../assets/images/error-404-image.png';
 
 class PageNotFound extends Component {
+
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
+
     render() {
         return (
             <div className="site-content">

@@ -1,9 +1,9 @@
 /**
  * Home 2 Banner
  **/
-import React , {Component} from 'react';
-import { Row, Col,Container } from 'reactstrap';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Row } from 'reactstrap';
 
 class HomeBanner2 extends Component {
 

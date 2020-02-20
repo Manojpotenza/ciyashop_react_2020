@@ -1,18 +1,14 @@
 /**
  *  Header Main
  */
-import React, { Fragment } from 'react';
-import { Link,Redirect } from 'react-router-dom';
-import navLinks from '../../NavLinks.js';
-import logo from '../../assets/images/logo.svg';
-import { Row, Col, Container } from 'reactstrap';
-import Loader from 'react-loader-spinner';
-import AllProduct from '../../api/product';
-import {
-    Modal, ModalHeader, ModalBody, DropdownMenu, DropdownItem, Navbar,
-    NavbarToggler, Nav, NavItem, NavLink, UncontrolledDropdown, Collapse, TabContent, TabPane
-} from 'reactstrap';
 import classnames from 'classnames';
+import React, { Fragment } from 'react';
+import Loader from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
+import { Col, Collapse, Container, DropdownItem, DropdownMenu, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarToggler, NavItem, NavLink, Row, TabContent, TabPane, UncontrolledDropdown } from 'reactstrap';
+import AllProduct from '../../api/product';
+import logo from '../../assets/images/logo.svg';
+import navLinks from '../../NavLinks.js';
 
 
 class Header extends React.Component {

@@ -3,14 +3,16 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PageTitle from '../../widgets/PageTitle';
-import { Row, Col,Container,Input,Button } from 'reactstrap';
+import { Button, Col, Container, Input, Row } from 'reactstrap';
 import BlogSingPageSlider from '../../widgets/BlogSingPageSlider.js';
+import PageTitle from '../../widgets/PageTitle';
 
 class BlogSinglePage extends Component {
+    
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
+
     render() {
         return (
                 <div className="site-content">

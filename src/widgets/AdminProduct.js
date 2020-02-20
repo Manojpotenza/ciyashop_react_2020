@@ -2,17 +2,16 @@
 /**
  * Admin List Product Display
  **/
-import React , {Component} from 'react';
-import { Row, Col, Container,Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import {Link} from 'react-router-dom';
-import { ToastContainer,toast  } from 'react-toastify';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { Col, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 
 class AdminproductList extends Component {
     constructor(props){
         super(props);
         this.toggle1 = this.toggle1.bind(this);
-        var AddToCart,AddToWishList
 
         this.state = {
             open: false,

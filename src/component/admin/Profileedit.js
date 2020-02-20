@@ -2,10 +2,10 @@
  *  Profile Edit
  */
 import React, { Component } from 'react';
-import { Row, Col,Container,Button } from 'reactstrap';
-import Adminsitebar from './Adminsitebar';
-import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import { Button, Col, Container, Row } from 'reactstrap';
 import Common from '../../api/common';
+import AdminProfileDetail from '../../widgets/AdminProfileDetail';
+import Adminsitebar from './Adminsitebar';
 
 class Profileedit extends Component {
 

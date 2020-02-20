@@ -2,19 +2,19 @@
 /**
  *  Shop Main Page
  */
-import React , {Component} from 'react';
+import { Button } from 'antd';
+import debounce from "lodash.debounce";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
+import AllProduct from '../../api/product';
+import { getFilterProductsdata } from '../../services';
+import ProductList from '../../widgets/ProductList';
+import ShopBanner from '../../widgets/shopfilter/ShopBanner';
 import SideFilter from '../../widgets/shopfilter/SideFilter';
 import SocialFilter from '../../widgets/shopfilter/SocialInfo';
-import ShopBanner from '../../widgets/shopfilter/ShopBanner';
-import { Link } from 'react-router-dom';
-import { Row, Col,Container,Form,Nav } from 'reactstrap';
-import AllProduct from '../../api/product';
-import ProductList from '../../widgets/ProductList';
-import {getFilterProductsdata} from '../../services';
-import { connect } from 'react-redux';
 import TopFilter from '../../widgets/shopfilter/TopFilter';
-import debounce from "lodash.debounce";
-import { Button } from 'antd';
 
 class ShopPage4 extends Component {
 

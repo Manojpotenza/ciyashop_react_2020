@@ -15,7 +15,6 @@ function ProductSlider(props) {
     var cnt=0;
     MyProducts.map((product,index) => {
             if(product.subcategory===productSub && cnt <6 ){
-               // cloneproduct=product.push(cloneproduct); 
                 cloneproduct[cnt]= product;
                 cnt++;  
             }
