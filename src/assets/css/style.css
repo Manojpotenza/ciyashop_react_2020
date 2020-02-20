@@ -11822,10 +11822,11 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
 
 .products .product-info .ciyashop-product-category,
 .products .product-info .ciyashop-product-category a {
-  font-size: 14px;
+  font-size: 12px;
   color: #ababab;
-  line-height: 18px;
+  line-height: 16px;
   display: block;
+  text-transform: uppercase;
 }
 
 .products .product-info .ciyashop-product-category a:hover {
@@ -11958,7 +11959,9 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   color: #ffffff;
   background: #323232;
 }
-
+.products.list .product-hover-style-default .product-actions .product-actions-inner {
+  display: none;
+}
 .products .product-hover-style-default {
   border: none;
   box-shadow: none;
@@ -14538,17 +14541,14 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap
 }
 
 .products.list .product-thumbnail {
   position: relative;
-  -ms-flex: 0 0 280px;
-  flex: 0 0 280px;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
 }
 
 .products.list .product-thumbnail img {
