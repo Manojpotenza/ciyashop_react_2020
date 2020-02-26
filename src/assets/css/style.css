@@ -10917,6 +10917,7 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   padding: 0;
   margin: 0;
   list-style-type: none;
+  outline: none;
 }
 
 .sidebar .shop-sidebar-widgets .pgs-widget-layered-nav-list div span {
