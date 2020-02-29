@@ -176,98 +176,102 @@ class ShopPage5 extends Component {
                                 {products.length > 0 ?
                                         <Row className="products products-loop grid ciyashop-products-shortcode test pgs-product-list table-list">
                                             <ToastContainer autoClose={1000} draggable={false} />
-                                            
-                                                <table>
-                                                    <tr>
-                                                        <th>Image</th>
-                                                        <th>Name</th>
-                                                        <th>Price</th>
-                                                        <th>Category</th>
-                                                        <th>Rating</th>
-                                                        <th></th>
-                                                    </tr>
-                                                    {products.slice(this.state.minValue, this.state.maxValue).map((product, index) => (
-                                                            <tr className="product product_tag-black product-hover-style-default product-hover-button-style-light product_title_type-single_line product_icon_type-line-icon">
-                                                                <td>
-                                                                <div className="product-inner element-hovered">
-                                                                    <div className="product-thumbnail">
-                                                                        <div className="product-thumbnail-inner">
-                                                                            <Link to={`/shop/${product.category}/${product.id}`}>
-                                                                                {product.pictures[0] ?
-                                                                                    <div className="product-thumbnail-main">
-                                                                                        <img src={require(`../../assets/images/${product.pictures[0]}`)} className="img-fluid" />
-                                                                                    </div>
-                                                                                    :
-                                                                                    null
-                                                                                }
-                                                                                {product.pictures[1] ?
-                                                                                    <div className="product-thumbnail-swap">
-                                                                                        <img src={require(`../../assets/images/${product.pictures[1]}`)} className="img-fluid" />
-                                                                                    </div>
-                                                                                    :
-                                                                                    null
-                                                                                }
-                                                                            </Link>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    {product.name ?
-                                                                        <h3 className="product-name">
-                                                                            <Link to={`/shop/${product.category}/${product.id}`}>
-                                                                                {product.name}
-                                                                            </Link>
-                                                                        </h3>
-                                                                        : null}
-                                                                </td>
-                                                                <td>
-                                                                    {product.salePrice ?
-                                                                        <span className="price">
-                                                                            <ins>
-                                                                                <span className="price-amount amount">
-                                                                                    <span className="currency-symbol">$</span>{product.salePrice.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
-                                                                                </span>
-                                                                            </ins>
-                                                                        </span>
-                                                                        : null}
-                                                                </td>
-                                                                <td>
-                                                                    {product.tags ?
-                                                                        <span className="ciyashop-product-category">
-                                                                            {product.tags.map((tag, index) =>
-                                                                                <span>{tag}{index === product.tags.length - 1 ? '' : ', '}</span>
-                                                                            )}
-                                                                        </span>
-                                                                        : null}
-                                                                </td>
-                                                                <td>
-                                                                    <div className="product-rating">{this.Productrating(product.rating)}</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div className="d-flex product-actions-list">
-                                                                        <div className="product-action product-action-wishlist">
-                                                                            {!this.CheckWishList(product.id) ?
-                                                                                <Link onClick={() => this.AddToWishList(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="add_to_wishlist" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top"> Add to
-                                                                            Wishlist</Link>
-                                                                                :
-                                                                                <Link to="/wishlist" className="add_to_wishlist_fill" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top">View Wishlist</Link>
-                                                                            }
-                                                                        </div>
-                                                                        <div className="product-action product-action-add-to-cart">
-                                                                            {!this.CheckCardItem(product.id) ?
-                                                                                <Link onClick={() => this.AddToCart(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="button add_to_cart_button" rel="nofollow">Add to
-                                                                                cart</Link>
-                                                                                :
-                                                                                <Link to="/ShopingCart" className="button add_to_cart_button" rel="nofollow">View Cart</Link>
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
+                                                <div className="table-responsive">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Image</th>
+                                                                <th>Name</th>
+                                                                <th>Price</th>
+                                                                <th>Category</th>
+                                                                <th>Rating</th>
+                                                                <th></th>
                                                             </tr>
-                                                    ))}
-                                                </table>
-                                            
+                                                            </thead>
+                                                        <tbody>
+                                                            {products.slice(this.state.minValue, this.state.maxValue).map((product, index) => (
+                                                                    <tr className="product product_tag-black product-hover-style-default product-hover-button-style-light product_title_type-single_line product_icon_type-line-icon">
+                                                                        <td>
+                                                                        <div className="product-inner element-hovered">
+                                                                            <div className="product-thumbnail">
+                                                                                <div className="product-thumbnail-inner">
+                                                                                    <Link to={`/shop/${product.category}/${product.id}`}>
+                                                                                        {product.pictures[0] ?
+                                                                                            <div className="product-thumbnail-main">
+                                                                                                <img src={require(`../../assets/images/${product.pictures[0]}`)} className="img-fluid" />
+                                                                                            </div>
+                                                                                            :
+                                                                                            null
+                                                                                        }
+                                                                                        {product.pictures[1] ?
+                                                                                            <div className="product-thumbnail-swap">
+                                                                                                <img src={require(`../../assets/images/${product.pictures[1]}`)} className="img-fluid" />
+                                                                                            </div>
+                                                                                            :
+                                                                                            null
+                                                                                        }
+                                                                                    </Link>
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            {product.name ?
+                                                                                <h3 className="product-name">
+                                                                                    <Link to={`/shop/${product.category}/${product.id}`}>
+                                                                                        {product.name}
+                                                                                    </Link>
+                                                                                </h3>
+                                                                                : null}
+                                                                        </td>
+                                                                        <td>
+                                                                            {product.salePrice ?
+                                                                                <span className="price">
+                                                                                    <ins>
+                                                                                        <span className="price-amount amount">
+                                                                                            <span className="currency-symbol">$</span>{product.salePrice.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
+                                                                                        </span>
+                                                                                    </ins>
+                                                                                </span>
+                                                                                : null}
+                                                                        </td>
+                                                                        <td>
+                                                                            {product.tags ?
+                                                                                <span className="ciyashop-product-category">
+                                                                                    {product.tags.map((tag, index) =>
+                                                                                        <span>{tag}{index === product.tags.length - 1 ? '' : ', '}</span>
+                                                                                    )}
+                                                                                </span>
+                                                                                : null}
+                                                                        </td>
+                                                                        <td>
+                                                                            <div className="product-rating">{this.Productrating(product.rating)}</div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div className="d-flex product-actions-list">
+                                                                                <div className="product-action product-action-wishlist">
+                                                                                    {!this.CheckWishList(product.id) ?
+                                                                                        <Link onClick={() => this.AddToWishList(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="add_to_wishlist" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top"> Add to
+                                                                                    Wishlist</Link>
+                                                                                        :
+                                                                                        <Link to="/wishlist" className="add_to_wishlist_fill" data-toggle="tooltip" data-original-title="Wishlist" data-placement="top">View Wishlist</Link>
+                                                                                    }
+                                                                                </div>
+                                                                                <div className="product-action product-action-add-to-cart">
+                                                                                    {!this.CheckCardItem(product.id) ?
+                                                                                        <Link onClick={() => this.AddToCart(product.id, product.name, product.pictures[0], 1, product.salePrice, "In Stock")} className="button add_to_cart_button" rel="nofollow">Add to
+                                                                                        cart</Link>
+                                                                                        :
+                                                                                        <Link to="/ShopingCart" className="button add_to_cart_button" rel="nofollow">View Cart</Link>
+                                                                                    }
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             <div className="text-center col-12">
                                                 <Pagination
                                                     defaultCurrent={1}

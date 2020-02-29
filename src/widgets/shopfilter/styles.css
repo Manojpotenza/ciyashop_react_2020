@@ -575,6 +575,8 @@ body {
   border-radius: 3px;
 }
 
+
+
 /********************************
         sidebar overlay 
 *********************************/
@@ -714,6 +716,13 @@ body {
   position: relative;
   font-size: 16px;
 }
+.products.table-list .product-action-wishlist a:hover:before {
+  color: #04d39f;
+}
+.products.table-list .product-action-wishlist .add_to_wishlist_fill::before {
+  content: "\f004";
+  font-family: FontAwesome;
+}
 .products.table-list .product-action-add-to-cart a {
   font-size: 13px;
   font-weight: 400;
@@ -730,7 +739,19 @@ body {
   position: relative;
   align-items: center;
 }
+.products.table-list thead th {
+  padding: 8px;
+}
+.products.table-list .product-name {
+  margin-bottom: 0;
+}
 
+.products.table-list .product {
+  margin-bottom: 0;
+}
+.products.table-list .product-rating {
+  display: flex;
+}
 
 /*************************
      Responsive 
