@@ -35,7 +35,6 @@ const settings = {
   ]
 };
 
-
 class Instagram extends Component {
 
     constructor (props) {
