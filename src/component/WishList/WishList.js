@@ -138,7 +138,7 @@ class WishList extends Component {
                                     <div className="wishlist-not-found">
                                     <img src={require(`../../assets/images/empty-search.jpg`)} className="img-fluid mb-4" />
                                     <h4 className="d-block">WishList empty</h4>
-                                    <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
+                                    <Link to="/sidebar-with-load-more" className="btn btn-solid">Continue Shopping</Link>
                                     </div>
                                 }
                             </Col>

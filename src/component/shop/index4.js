@@ -1,4 +1,3 @@
-
 /**
  *  Shop Main Page
  */
@@ -141,7 +140,6 @@ class ShopPage4 extends Component {
                   <Container>
                         <Row>
                             <div className="content col-xl-12 col-lg-12">
-                               
                                 {products.length > 0 ?
                                     <div>
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
@@ -167,8 +165,6 @@ class ShopPage4 extends Component {
                                       </Row>
                                 }
                             </div>
-                     
-                         
                         </Row>
                   </Container>
                 </div>

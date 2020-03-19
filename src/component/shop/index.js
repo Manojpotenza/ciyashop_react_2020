@@ -1,4 +1,3 @@
-
 /**
  *  Shop Main Page
  */
@@ -34,6 +33,7 @@ class ShopPage extends Component {
         }
     }
     onLoadMore = () => {
+        
         this.setState({
             limit: this.state.limit + 8
         });
@@ -43,6 +43,8 @@ class ShopPage extends Component {
     }
     render() {
     let {products} = this.props;
+    const productlength=this.props.productlength;
+    console.log('productlength',products.length)
     let layoutstyle=localStorage.getItem('setLayoutStyle')
 
     if(layoutstyle == null)
@@ -94,6 +96,7 @@ class ShopPage extends Component {
                                     </div>
                                 </div>
                                 {products.length > 0 ?
+                                       
                                     <div>
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
                                             {products.slice(0,this.state.limit).map((product, index) =>
@@ -101,9 +104,13 @@ class ShopPage extends Component {
                                                 )
                                             }
                                         </Row>
+                                        {products.length > 10 && this.state.limit < products.length ?
                                         <div className="text-center">
                                             <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>
+                                        </div>: <div className="text-center">
+                                            <a className="loadmore-btn">No more product to load</a>
                                         </div>
+                                        }
                                     </div>
                                 :
                                       <Row className="products products-loop grid ciyashop-products-shortcode">
@@ -126,6 +133,7 @@ class ShopPage extends Component {
 }
 const mapDispatchToProps  = (state) => ({
     products: getFilterProductsdata(state.data, state.filters)
+    
 })
 export default connect(
     mapDispatchToProps , {}

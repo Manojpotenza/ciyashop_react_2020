@@ -100,9 +100,11 @@ class ShopPage1 extends Component {
                                             )
                                             }
                                         </Row>
+                                        {products.length > 10 ?
                                         <div className="text-center">
                                             <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>
-                                        </div>
+                                        </div>:null
+                                        }
                                     </div>
                                     :
                                     <Row className="products products-loop grid ciyashop-products-shortcode">

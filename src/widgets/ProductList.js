@@ -5,8 +5,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-
-
+import Img from 'react-image'
 class ProductList extends Component {
     constructor(props) {
         super(props);
@@ -17,10 +16,9 @@ class ProductList extends Component {
             open: false,
             stock: 'InStock',
             quantity: 1,
-            image: ''
+            image: '',
         }
     }
-
 
     AddToCart(ProductID, ProductName, ProductImage, Qty, Rate, StockStatus) {
         var Cart = JSON.parse(localStorage.getItem("LocalCartItems"));
@@ -91,7 +89,6 @@ class ProductList extends Component {
     }
     render() {
         const { product } = this.props;
-
         let rat = [];
         let rating = product.rating;
         let i = 1;
@@ -114,7 +111,7 @@ class ProductList extends Component {
                                 <Link to={`/shop/${product.category}/${product.id}`}>
                                     {product.pictures[0] ?
                                         <div className="product-thumbnail-main">
-                                            <img src={require(`../assets/images/${product.pictures[0]}`)} className="img-fluid" />
+                                            <Img src={require(`../assets/images/${product.pictures[0]}`)} className="img-fluid" loader={<img src={require(`../assets/images/loading.gif`)} className="img-fluid" />} />
                                         </div>
                                         :
                                         null
@@ -128,7 +125,6 @@ class ProductList extends Component {
                                     }
                                 </Link>
                             </div>
-
                             <div className="product-actions">
                                 <div className="product-actions-inner">
                                     <div className="product-action product-action-add-to-cart">

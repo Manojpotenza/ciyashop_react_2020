@@ -94,7 +94,7 @@ class FeatureProduct extends Component {
                 <div className="row">
                     <div className="col-12">
                     <div className="products products-loop grid ciyashop-products-shortcode row">
-                    <ProductSlider settings={homesaleslider} />
+                    <ProductSlider settings={homesaleslider} productSub="women"  />
                     </div>
                 </div>
 

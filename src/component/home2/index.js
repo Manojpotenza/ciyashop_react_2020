@@ -111,7 +111,7 @@ class HomePage2 extends Component {
                                                         <div className="ciyashop_products_listing_wrapper ciyashop_products_listing-1">
                                                              <div className="products-listing-wrapper products-listing-type-carousel products-listing-without-intro">
                                                             <Row>
-                                                                 <ProductSlider settings={saleslider}    />
+                                                                 <ProductSlider settings={saleslider}  productSub="dresswear"   />
                                                             </Row>
                                                             </div>
                                                         </div>

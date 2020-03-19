@@ -91,6 +91,7 @@ class Invoices extends Component {
 
     onViewInvoicePopup(data)
     {
+      console.log(data);
       this.setState({
         invoiceview:data
       })
