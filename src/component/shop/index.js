@@ -107,9 +107,7 @@ class ShopPage extends Component {
                                         {products.length > 10 && this.state.limit < products.length ?
                                         <div className="text-center">
                                             <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>
-                                        </div>: <div className="text-center">
-                                            <a className="loadmore-btn">No more product to load</a>
-                                        </div>
+                                        </div>: null
                                         }
                                     </div>
                                 :

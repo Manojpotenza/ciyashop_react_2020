@@ -23,7 +23,7 @@ class HomeBanner extends Component {
                         <div className="ciyashop_banner-text-wrap ciyashop_banner-text-wrap-2 hidden-lg hidden-md hidden-sm hidden-xs">
                         <div className="ciyashop_banner-text"><h2> Checked Blouse With Ruffle Trims</h2></div>
                         </div>
-                        <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square"> <Link to="/shop" className="ciyashop_banner-btn inline_hover">Shop Now</Link></div>
+                        <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square"> <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn inline_hover">Shop Now</Link></div>
                     </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ class HomeBanner extends Component {
                         <div className="ciyashop_banner-text-wrap ciyashop_banner-text-wrap-2 hidden-lg hidden-md hidden-sm hidden-xs">
                         <div className="ciyashop_banner-text"><h2> trousers with contrasting topstitching</h2></div>
                         </div>
-                        <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square justify-content-end"> <Link to="/shop" className="ciyashop_banner-btn inline_hover">Shop Now</Link></div>
+                        <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square justify-content-end"> <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn inline_hover">Shop Now</Link></div>
                     </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ class HomeBanner extends Component {
                         <h3>Season festival</h3>
                         </div>
                         </div>
-                        <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-flat ciyashop_banner-btn-size-md ciyashop_banner-btn-shape-square"> <Link to="/shop" className="ciyashop_banner-btn">Buy now!</Link></div>
+                        <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-flat ciyashop_banner-btn-size-md ciyashop_banner-btn-shape-square"> <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn">Buy now!</Link></div>
                     </div>
                     </div>
                 </div>
