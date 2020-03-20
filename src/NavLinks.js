@@ -71,12 +71,12 @@ export default [
             "icon": "arrow_right_alt",
             "child_routes": null
          },
-         {
+        /* {
             "path": "/topbar-with-listview",
             "menu_title": "Sidebar With Listview",
             "icon": "arrow_right_alt",
             "child_routes": null
-         },
+         },*/
          {
             "path": "/shop/clothing/29",
             "menu_title": "Product Detail",

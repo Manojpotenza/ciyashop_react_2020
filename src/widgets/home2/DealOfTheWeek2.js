@@ -24,7 +24,7 @@ class DealOfTheWeek2 extends Component {
                       </div>
                     </div>
                     <div className="ciyashop-btn-wrap ciyashop-btn-style-middle ciyashop-btn-shape-square text-center">
-                      <Link to="/shop" className="ciyashop-btn inline_hover">Get the offer</Link>
+                      <Link to="/sidebar-with-load-more" className="ciyashop-btn inline_hover">Get the offer</Link>
                     </div>
                   </Col>
                 </Row>

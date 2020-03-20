@@ -36,7 +36,7 @@ class AboutBanner3 extends Component {
                                         End of Season</div>
                                     </div>
                                     <div class="ciyashop_button_wrapper ciyashop_button_width_default mt-0">
-                                        <div className="inline_hover ciyashop_button_default ciyashop_button_border_square ciyashop_button_size_medium"> <Link to="/shop" className="ciyashop_banner-btn ">Shop now</Link></div>
+                                        <div className="inline_hover ciyashop_button_default ciyashop_button_border_square ciyashop_button_size_medium"> <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn ">Shop now</Link></div>
                                     </div>
                                 </div>
                             </div>

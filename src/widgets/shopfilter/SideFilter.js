@@ -18,6 +18,7 @@ class SideFilter extends Component {
             priceplace: [this.props.prices.min, this.props.prices.max],
             setfistprice: [this.props.prices.min, this.props.prices.max],
             sidebarmenu: false,
+            colorfilter:false
         }
         this.showfilter = this.showfilter.bind(this);
     }
@@ -35,6 +36,7 @@ class SideFilter extends Component {
         }));
     }
     onClickColorFilter = (event, colors) => {
+        
         var index = colors.indexOf(event.target.value);
         if (event.target.checked) {
             colors.push(event.target.value);
@@ -42,6 +44,7 @@ class SideFilter extends Component {
         else {
             colors.splice(index, 1);
         }
+       
         this.props.colorValue(colors)
     }
 
@@ -173,23 +176,9 @@ class SideFilter extends Component {
         })
         this.props.priceValue({ value })
     }
-    // Clear Color Filter Code
-    clearcolor() {
-        var colors = [];
-        this.props.colorValue(colors);
-    }
-    // Clear Category Filter Code
-    clearcategory() {
-        var categorys = [];
-        this.props.categoryValue(categorys);
-    }
-    // Clear Size Filter Code
-    clearsize() {
-        var sizes = [];
-        this.props.sizeValue(sizes);
-    }
+   
     render() {
-
+        
         var max = this.props.prices.max;
         var maxdivide = max / 5;
         const marks = {
@@ -234,20 +223,21 @@ class SideFilter extends Component {
                 <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className="widget-title">Filter by Color</h4>
-                        <p><a className="price-clear-filter" onClick={() => this.clearcolor()} >Clear</a></p>
                     </div>
 
                     <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '210px' }}>
                         <Scrollbars>
                             <ul className="pgs-widget-layered-nav-list" tabIndex={0} style={{ right: '-17px' }}>
+                                
                                 {this.props.colors.map((color, index) => {
-                                    return (
+                                     return (
                                         <div className="form-check pgs-filter-checkbox" key={index}>
                                             <input type="checkbox" onClick={(e) => this.onClickColorFilter(e, colorsFilterValues)} value={color} defaultChecked={colorsFilterValues.includes(color) ? true : false} className="form-check-input" id={color} />
-                                            <label className="form-check-label"
+                                            <label className="form-check-label "
                                                 htmlFor={color}>{color}</label>
                                         </div>
                                     )
+
                                 })}
                             </ul>
                         </Scrollbars>
@@ -256,7 +246,6 @@ class SideFilter extends Component {
                 <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className="widget-title">Filter by Categories</h4>
-                        <p><a className="price-clear-filter" onClick={() => this.clearcategory()} >Clear</a></p>
                     </div>
                     <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '215px' }}>
                         <Scrollbars>
@@ -274,13 +263,12 @@ class SideFilter extends Component {
                 <div className="widget widget_layered_nav widget-layered-nav pgs_widget-layered-nav">
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className="widget-title">Filter by Size</h4>
-                        <p><a className="price-clear-filter" onClick={() => this.clearsize()} >Clear</a></p>
+                        
                     </div>
                     <div className="pgs-widget-layered-nav-list-container has-scrollbar" style={{ height: '215px' }}>
                         <Scrollbars>
                             {this.props.sizes.map((size, index) => {
                                 return (
-
                                     <div class="form-check pgs-filter-checkbox">
                                         <input type="checkbox" onClick={(e) => this.onClickSizeFilter(e, sizeFilterValues)} value={size} defaultChecked={sizeFilterValues.includes(size) ? true : false} class="form-check-input" id={size} />
                                         <label class="form-check-label" htmlFor={size}>{size}</label>

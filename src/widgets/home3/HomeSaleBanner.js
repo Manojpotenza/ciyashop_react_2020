@@ -11,7 +11,7 @@ class HomeSaleBanner extends Component {
     return (
         <div className="col-sm-12">
             <div className="ciyashop_banner_wrapper">
-                <div className="ciyashop_banner ciyashop_banner-style-style-1 ciyashop_banner-effect-none ciya-banner-3">
+                <div className="ciyashop_banner ciyashop_banner-style-style-1 ciyashop_final_sale ciyashop_banner-effect-none ciya-banner-3">
                     <img className="ciyashop_banner-image img-fluid inline" alt="Banner" src={require(`../../assets/images/categories/modern/sub-banner.jpg`)}  />
                 <div className="ciyashop_banner-content p-4 p-sm-5 ciyashop_banner-content-hleft ciyashop_banner-content-vmiddle ">
                     <div className="ciyashop_banner-content-wrapper">
@@ -26,7 +26,7 @@ class HomeSaleBanner extends Component {
                         <div className="ciyashop_banner-text"> Final Sale Items</div>
                         </div>
                         <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square">
-                        <Link to="/shop" className="ciyashop_banner-btn inline_hover">Shop now</Link></div>
+                        <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn inline_hover">Shop now</Link></div>
                     </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ class HomeBanner2 extends Component {
                         <h3 className="font-weight-bold">Always Trendy</h3>
                         <p>All your fashion &amp; lifestyle needs at an affordable price</p>
                         <div className="ciyashop-btn">
-                        <Link to="/shop" className="inline_hover">Shop Now</Link>
+                        <Link to="/sidebar-with-load-more" className="inline_hover">Shop Now</Link>
                         </div>
                     </div>
                     <div className="text-wrapper bg-orange">
@@ -49,7 +49,7 @@ class HomeBanner2 extends Component {
                         <h3 className="font-weight-bold">Women Tops</h3>
                         <p>Massive range of Women Clothing for your wardrobe</p>
                         <div className="ciyashop-btn">
-                        <Link to="/shop" className="inline_hover">Shop Now</Link>
+                        <Link to="/sidebar-with-load-more" className="inline_hover">Shop Now</Link>
                         </div>
                     </div>
                     </div>
@@ -64,7 +64,7 @@ class HomeBanner2 extends Component {
                         <h3 className="font-weight-bold">New Backpack</h3>
                         <p>Select from New Collection Bags for Women available</p>
                         <div className="ciyashop-btn">
-                        <Link to="/shop" className="inline_hover">Shop Now</Link>
+                        <Link to="/sidebar-with-load-more" className="inline_hover">Shop Now</Link>
                         </div>
                     </div>
                     <div className="text-wrapper bg-green">

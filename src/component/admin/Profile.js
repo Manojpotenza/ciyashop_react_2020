@@ -27,7 +27,7 @@ class Profile extends Component {
                   <div className="woocommerce-Address">
                     <div className="woocommerce-Address-title">
                       <h5 class="mb-0">Profile Information</h5>
-                      <Link class="edit" to="/admin-panel/Profileedit">Edit</Link>
+                      <Link class="edit edit-link" to="/admin-panel/Profileedit">Edit</Link>
                     </div>
                     <div className="woocommerce-Address-info mt-4">
                       <ul class="list-unstyled mb-0">

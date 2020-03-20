@@ -38,7 +38,7 @@ class HomSlider3 extends Component {
                                         Final Reductions
                                     </div>
                                     <p>Layer up in style with our new arrivals</p>
-                                    <Link class="slide-button" to="/shop">View the collection  </Link>
+                                    <Link class="slide-button" to="/sidebar-with-load-more">View the collection  </Link>
                                 </div>
                             </div>
                         </div>

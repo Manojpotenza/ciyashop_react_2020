@@ -20,7 +20,7 @@ class EndOfSeason extends Component {
             </div>
             <div className="ciyashop_button_wrapper ciyashop_button_width_default">
                 <div className="inline_hover ciyashop_button_default ciyashop_button_border_square ciyashop_button_size_medium">
-                <Link to="/shop"> Shop Now </Link>
+                <Link to="/sidebar-with-load-more"> Shop Now </Link>
                 </div>
             </div>
             </Col>

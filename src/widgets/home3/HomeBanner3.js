@@ -11,7 +11,7 @@ class HomeBanner3 extends Component {
         <div className="row">
             <div className="col-md-6">
             <div className="ciyashop_banner_wrapper ">
-                <Link className="pgs_banner-link" to="/shop">
+                <Link className="pgs_banner-link" to="/sidebar-with-load-more">
                 <div className="ciyashop_banner ciyashop_banner-style-style-1 ciyashop_banner-effect-none ciya-banner-1"> <img className="ciyashop_banner-image img-fluid inline" alt="Banner" src={require(`../../assets/images/categories/modern/women.jpg`)}  />
                     <div className="ciyashop_banner-content ciyashop_banner-content-hcenter ciyashop_banner-content-vbottom">
                     <div className="ciyashop_banner-content-wrapper">
@@ -28,7 +28,7 @@ class HomeBanner3 extends Component {
             </div>
             <div className="col-md-6 mt-4 mt-md-0">
             <div className="ciyashop_banner_wrapper ">
-                <Link className="pgs_banner-link" to="/shop">
+                <Link className="pgs_banner-link" to="/sidebar-with-load-more">
                 <div className="ciyashop_banner ciyashop_banner-style-style-1 ciyashop_banner-effect-none ciya-banner-2"> <img className="ciyashop_banner-image img-fluid inline" alt="Banner" src={require(`../../assets/images/categories/modern/men.jpg`)}  />
                     <div className="ciyashop_banner-content ciyashop_banner-content-hcenter ciyashop_banner-content-vbottom">
                     <div className="ciyashop_banner-content-wrapper">

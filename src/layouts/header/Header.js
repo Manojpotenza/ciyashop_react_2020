@@ -487,8 +487,12 @@ class Header extends React.Component {
                                                             <Link className="btn btn-primary mt-1" >Log in</Link>
                                                             <Link className="btn btn-secondary ml-2 mt-1" onClick={this.toggle} >Cancel</Link>
                                                         </div>
-                                                        <p className="mb-0">Don't have account? <Link to="#" className={classnames({ active: this.state.activeTab === '2' })}
-                                                            onClick={() => { this.logintoggle('2'); }} > Register </Link>here</p>
+                                                        <p className="mb-0">Don't have account? 
+                                                        {/*<Link to="#" className={classnames({ active: this.state.activeTab === '2' })}
+                                                            onClick={() => { this.logintoggle('2'); }} > Register </Link>*/}
+                                                            <Link to="#" className="form-signup-signin"
+                                                            onClick={() => { this.logintoggle('2'); }} > Register </Link>
+                                                            here</p>
                                                     </form>
                                                 </TabPane>
                                                 <TabPane tabId="2">
@@ -514,8 +518,12 @@ class Header extends React.Component {
                                                             <Link className="btn btn-secondary ml-2" onClick={this.toggle} >Cancel</Link>
 
                                                         </div>
-                                                        <p className="mb-0">Already have account? <Link to="#" className={classnames({ active: this.state.activeTab === '1' })}
-                                                            onClick={() => { this.logintoggle('1'); }} > SignIn </Link> here </p>
+                                                        <p className="mb-0">Already have account? 
+                                                        {/*<Link to="#" className={classnames({ active: this.state.activeTab === '1' })}
+                                                            onClick={() => { this.logintoggle('1'); }} > SignIn </Link>*/}
+                                                            <Link to="#" className="form-signup-signin"
+                                                            onClick={() => { this.logintoggle('1'); }} > SignIn </Link>
+                                                             here </p>
                                                     </form>
                                                 </TabPane>
                                             </TabContent>

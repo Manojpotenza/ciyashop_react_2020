@@ -32,7 +32,7 @@ class DealOfTheWeek extends Component {
                                     <CountDownTimer time={'152350'}></CountDownTimer>
                                 </div>
                             </div>
-                            <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-flat ciyashop_banner-btn-size-md ciyashop_banner-btn-shape-square justify-content-center mt-lg-5 mt-2"> <Link to="/shop" className="ciyashop_banner-btn">Shop Now</Link></div>
+                            <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-flat ciyashop_banner-btn-size-md ciyashop_banner-btn-shape-square justify-content-center mt-lg-5 mt-2"> <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn">Shop Now</Link></div>
                         </div>
                         </div>
                     </div>

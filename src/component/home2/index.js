@@ -80,7 +80,7 @@ class HomePage2 extends Component {
                                                                 </div>
                                                                 </div>
                                                                 <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square mt-0">
-                                                                <Link to="/shop" className="ciyashop_banner-btn inline_hover">Shop Now</Link>
+                                                                <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn inline_hover">Shop Now</Link>
                                                                 </div>
                                                             </div>
                                                             </div>

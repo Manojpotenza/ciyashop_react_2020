@@ -95,7 +95,7 @@ class HomePage4 extends Component {
                         <Row className="margin-top-4">
                         <Col sm={12}  >
                             <div className="products products-loop grid ciyashop-products-shortcode row">
-                                    <ProductSlider settings={saleslider} />
+                                    <ProductSlider settings={saleslider} productSub="dresswear" />
                             </div>
                         </Col>
                         </Row>
@@ -127,7 +127,7 @@ class HomePage4 extends Component {
                                         New Collection </div>
                                     </div>
                                     <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square mt-0">
-                                        <Link to="/shop" className="ciyashop_banner-btn inline_hover">Shop Now</Link> </div>
+                                        <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn inline_hover">Shop Now</Link> </div>
                                     </div>
                                 </div>
                                 </div>

@@ -111,7 +111,7 @@ class HomePage3 extends Component {
                                                 <Row>
                                                     <Col lg={6}>
                                                     <div className="ciyashop_banner_wrapper">
-                                                        <div className="ciyashop_banner ciyashop_banner-style-deal-2 ciyashop_banner-effect-none">
+                                                        <div className="ciyashop_banner ciyashop_banner-style-deal-2 ciyashop_final_sale ciyashop_banner-effect-none">
                                                             <img className="ciyashop_banner-image img-fluid inline" alt="Banner" src={require(`../../assets/images/categories/modern/deal-1.png`)}  />
                                                         <div className="ciyashop_banner-content ciyashop_banner-content-hcenter ciyashop_banner-content-vbottom">
                                                             <div className="ciyashop_banner-content-wrapper">
@@ -125,7 +125,7 @@ class HomePage3 extends Component {
                                                                 </div>
                                                                 </div>
                                                                 <div className="ciyashop_banner-btn-wrap ciyashop_banner-btn-style-link ciyashop_banner-btn-shape-square">
-                                                                <Link to="/shop" className="ciyashop_banner-btn inline_hover">Shop now</Link></div>
+                                                                <Link to="/sidebar-with-load-more" className="ciyashop_banner-btn inline_hover">Shop now</Link></div>
                                                             </div>
                                                             </div>
                                                         </div>

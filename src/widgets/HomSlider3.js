@@ -41,7 +41,7 @@ class HomSlider3 extends Component {
                                             <img className="mx-auto" src={require(`../assets/images/home-03-slider/img-03.png`)} alt="slide-1" />
                                         </div>
                                     </div>
-                                    <Link class="slide-button" to="/shop">Shop now </Link>
+                                    <Link class="slide-button" to="/sidebar-with-load-more">Shop now </Link>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ class HomSlider3 extends Component {
                                             <img className="mx-auto" src={require(`../assets/images/home-03-slider/img-06.png`)} alt="slide-1" />
                                         </div>
                                     </div>
-                                    <Link class="slide-button" to="/shop">Shop now </Link>
+                                    <Link class="slide-button" to="/sidebar-with-load-more">Shop now </Link>
                                 </div>
                             </div>
                         </div>

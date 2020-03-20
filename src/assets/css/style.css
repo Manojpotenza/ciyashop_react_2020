@@ -7251,6 +7251,17 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   background: none;
 }
 
+.ciyashop_banner-style-style-1.ciyashop_final_sale .ciyashop_banner-text-wrap-1,.ciyashop_banner-style-style-1.ciyashop_final_sale .ciyashop_banner-text-wrap-2,.ciyashop_banner-style-style-1.ciyashop_final_sale .ciyashop_banner-text-wrap-3{ line-height:50px;}
+.ciyashop_banner.ciyashop_final_sale .ciyashop_banner-content .ciyashop_banner-content-inner-wrapper .ciyashop_banner-text{ font-weight:400;}
+.ciyashop_banner-style-style-1.ciyashop_final_sale .ciyashop_banner-text-wrap-2{ margin-top:30px;}
+
+.ciyashop_banner-style-deal-2.ciyashop_final_sale .ciyashop_banner-text-wrap-1,.ciyashop_banner-style-deal-2.ciyashop_final_sale .ciyashop_banner-text-wrap-2,.ciyashop_banner-style-deal-2.ciyashop_final_sale .ciyashop_banner-text-wrap-3{ line-height:50px;}
+
+.ciyashop_banner-style-deal-2.ciyashop_final_sale .counter-style-style-6 { line-height:30px; }
+
+
+
+
 .ciyashop_banner .ciyashop_banner-content .ciyashop_banner-content-inner-wrapper .ciyashop_banner-btn-wrap.ciyashop_banner-btn-size-md .ciyashop_banner-btn:hover,
 .ciyashop_banner .ciyashop_banner-content .ciyashop_banner-content-inner-wrapper .ciyashop_banner-btn-wrap.ciyashop_banner-btn-size-md .ciyashop_banner-btn:focus {
   border: 2px solid #04d39f;
@@ -19255,6 +19266,7 @@ button:focus {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
 .loadmore-btn {
   font-size: 16px;
   color: #fff !important;
@@ -19271,4 +19283,13 @@ button:focus {
 .navbar-nav .dropdown-item.active, .navbar-nav .dropdown-item:active {
   color: #04d39f;
   background-color: transparent;
+}
+.error-search-box-description-link{
+	color: #04d39f;
+}
+.edit-link{
+	color: #04d39f;
+}
+.form-signup-signin{
+	color: #04d39f;
 }

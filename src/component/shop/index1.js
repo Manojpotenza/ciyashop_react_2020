@@ -112,7 +112,7 @@ class ShopPage1 extends Component {
                                             <img src={require(`../../assets/images/empty-search.jpg`)} className="img-fluid mb-4" />
                                             <h3>Sorry! No products were found matching your selection!    </h3>
                                             <p>Please try to other words.</p>
-                                            <Link to="/shop" className="btn btn-solid">Continue Shopping</Link>
+                                            <Link to="/sidebar-with-load-more" className="btn btn-solid">Continue Shopping</Link>
                                         </div>
                                     </Row>
                                 }

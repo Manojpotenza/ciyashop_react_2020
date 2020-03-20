@@ -90,7 +90,7 @@ class Footer extends React.Component {
                                 <ul className="menu">
                                     <li className="menu-item active"><Link to="/">Home</Link></li>
                                     <li className="menu-item"><Link to="/aboutus">About Us</Link></li>
-                                    <li className="menu-item"><Link to="/shop">Shop</Link></li>
+                                    <li className="menu-item"><Link to="/sidebar-with-load-more">Shop</Link></li>
                                     <li className="menu-item"><Link to="/Contactus">Contact Us</Link></li>
                                     <li className="menu-item"><Link to="#">Privacy Policy</Link></li>
                                     <li className="menu-item"><Link to="#">Terms Conditions</Link></li>
