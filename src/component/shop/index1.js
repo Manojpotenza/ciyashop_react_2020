@@ -94,12 +94,14 @@ class ShopPage1 extends Component {
                                 </div>
                                 {products.length > 0 ?
                                     <div>
+                                   
                                         <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
-                                            {products.slice(0, this.state.limit).map((product, index) =>
-                                                <ProductList product={product} key={index} layoutstyle={layoutstyle} />
-                                            )
+                                            {products.slice(0,this.state.limit).map((product, index) =>
+                                                    <ProductList product={product} key={index} layoutstyle={layoutstyle} />
+                                                )
                                             }
                                         </Row>
+                                        
                                         {products.length > 10 ?
                                         <div className="text-center">
                                             <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>

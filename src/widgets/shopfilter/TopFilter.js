@@ -13,6 +13,7 @@ class TopFilter extends Component {
 
         componentDidMount()
         {
+            
             var removeelems = document.getElementsByClassName("gridlist-button");
             [].forEach.call(removeelems, function(el) {
                 el.classList.remove('active');
@@ -28,6 +29,7 @@ class TopFilter extends Component {
             }
             else if(layoutstyle == 'col-sm-12')
             {
+                
                 document.querySelector(".gridlist-toggle-list").classList.add("active");
                 document.querySelector(".pgs-product-list").classList.remove("grid");
                 document.querySelector(".pgs-product-list").classList.add("list");
@@ -39,6 +41,7 @@ class TopFilter extends Component {
         }
         // Grid List View Display
         GridListview(){
+            console.log('list')
             var removeelems = document.getElementsByClassName("gridlist-button");
             [].forEach.call(removeelems, function(el) {
                 el.classList.remove('active');
@@ -47,7 +50,7 @@ class TopFilter extends Component {
             document.querySelector(".gridlist-toggle-list").classList.add("active");
             document.querySelector(".pgs-product-list").classList.remove("grid");
             document.querySelector(".pgs-product-list").classList.add("list");
-            localStorage.setItem('setLayoutStyle','col-sm-12')
+            localStorage.setItem('setLayoutStyle','col-sm-12');
             var elems = document.querySelector(".pgs-product-list").childNodes;
             [].forEach.call(elems, function(el) {
                 el.className = '';

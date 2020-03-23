@@ -171,10 +171,11 @@ function ProductSlider(props) {
                                                 <div className="product-rating-price">
                                                 
                                                 <span className="price">
-                                                    <ins>
+                                                    <ins>{console.log('product Here',product)}
                                                         <span className="price-amount amount">
-                                                            <span className="currency-symbol">$</span>{product.salePrice.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
-                                        </span>
+                                                            <span className="currency-symbol">$</span>{/*product.salePrice.toLocaleString(navigator.language, { minimumFractionDigits: 0 })*/}
+                                                        {product.salePrice}
+                                                        </span>
                                                     </ins>
                                                 </span>
                                                 <div className="product-rating">{rating(product.rating)}</div>

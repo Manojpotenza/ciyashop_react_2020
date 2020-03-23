@@ -71,6 +71,7 @@ class SideFilter extends Component {
         this.props.sizeValue(sizes);
     }
     SearchTextchange(SearchText) {
+        console.log('d')
         this.setState({
             ...this.state,
             SearchValue: SearchText.target.value

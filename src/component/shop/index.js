@@ -44,14 +44,13 @@ class ShopPage extends Component {
     render() {
     let {products} = this.props;
     const productlength=this.props.productlength;
-    console.log('productlength',products.length)
+   // console.log('productlength',products.length)
     let layoutstyle=localStorage.getItem('setLayoutStyle')
-
+    console.log('layout',layoutstyle)
     if(layoutstyle == null)
     {
         layoutstyle=localStorage.setItem('setLayoutStyle','col-sm-6 col-md-4')
     }
-
      return (
             <div className="site-content">
                 <div className="inner-intro">
@@ -96,14 +95,22 @@ class ShopPage extends Component {
                                     </div>
                                 </div>
                                 {products.length > 0 ?
-                                       
                                     <div>
-                                        <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
-                                            {products.slice(0,this.state.limit).map((product, index) =>
+                                        {layoutstyle=="col-sm-12" ?
+                                            <Row className="products products-loop  ciyashop-products-shortcode pgs-product-list list">
+                                                {products.slice(0,this.state.limit).map((product, index) =>
                                                         <ProductList product={product} key={index} layoutstyle={layoutstyle} />
-                                                )
-                                            }
-                                        </Row>
+                                                    )
+                                                }
+                                            </Row> :
+                                            <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
+                                                {products.slice(0,this.state.limit).map((product, index) =>
+                                                        <ProductList product={product} key={index} layoutstyle={layoutstyle} />
+                                                    )
+                                                }
+                                            </Row>
+                                        }
+                                        
                                         {products.length > 10 && this.state.limit < products.length ?
                                         <div className="text-center">
                                             <a onClick={this.onLoadMore} className="loadmore-btn">Load More</a>
