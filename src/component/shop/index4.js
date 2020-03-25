@@ -142,15 +142,19 @@ class ShopPage4 extends Component {
                             <div className="content col-xl-12 col-lg-12">
                                 {products.length > 0 ?
                                     <div>
-                                        <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
-                                            {products.slice(0,this.state.limit)
-                                            .map((product, index) =>
+                                        {layoutstyle=="col-sm-12" ?
+                                            <Row className="products products-loop  ciyashop-products-shortcode pgs-product-list list">
+                                                {products.slice(0,this.state.limit).map((product, index) =>
                                                         <ProductList product={product} key={index} layoutstyle={layoutstyle} />
-                                                )
-                                            }
-                                        </Row>
-                                        {this.state.isloading && 
-                                            <div className="lazyload-img"></div>
+                                                    )
+                                                }
+                                            </Row> :
+                                            <Row className="products products-loop grid ciyashop-products-shortcode pgs-product-list">
+                                                {products.slice(0,this.state.limit).map((product, index) =>
+                                                        <ProductList product={product} key={index} layoutstyle={layoutstyle} />
+                                                    )
+                                                }
+                                            </Row>
                                         }
                                   
                                     </div>

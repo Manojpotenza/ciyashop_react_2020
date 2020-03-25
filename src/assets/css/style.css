@@ -3197,6 +3197,10 @@ a {
   outline: 0;
 }
 
+a:hover {
+  color: #323232 !important;
+}
+
 a:focus,
 a:hover {
   color: #323232;
@@ -11983,9 +11987,7 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   color: #ffffff;
   background: #323232;
 }
-.products.list .product-hover-style-default .product-actions .product-actions-inner {
-  display: none;
-}
+
 .products .product-hover-style-default {
   border: none;
   box-shadow: none;
@@ -14594,7 +14596,7 @@ footer.site-footer.footer-style-2 .footer-widgets-wrapper {
   margin-left: 30px;
   margin-top: 0;
 }
-.products.list .product-actions {
+.products.list .product-inner .product-thumbnail .product-actions {
   display: none;
 }
 .products .product-actions.product-actions-list {
